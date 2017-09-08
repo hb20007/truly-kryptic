@@ -3,11 +3,21 @@
   "version": "1.0.0",
   "description": "Truly Kryptic",
   "dependencies": {
+    "@angular/common": "^4.4.0-RC.0",
+    "@angular/compiler": "^4.4.0-RC.0",
+    "@angular/core": "^4.4.0-RC.0",
+    "@angular/platform-browser": "^4.4.0-RC.0",
+    "@angular/platform-browser-dynamic": "^4.4.0-RC.0",
+    "@types/jasmine": "^2.5.54",
+    "es6-shim": "^0.35.3",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.4.3",
     "ts-loader": "^2.3.6",
     "typescript": "^2.5.2",
     "wallaby-webpack": "0.0.39",
     "webpack": "^3.5.6",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-dev-server": "^2.7.1",
+    "zone.js": "^0.8.17"
   },
   "scripts": {
     "start": "webpack-dev-server"
