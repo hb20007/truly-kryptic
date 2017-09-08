@@ -1,0 +1,22 @@
+{
+  "name": "truly-kryptic",
+  "version": "1.0.0",
+  "description": "Truly Kryptic",
+  "dependencies": {
+    "ts-loader": "^2.3.6",
+    "typescript": "^2.5.2",
+    "wallaby-webpack": "0.0.39",
+    "webpack": "^3.5.6",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/hb20007/truly-kryptic.git"
+  },
+  "author": "hb20007",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/hb20007/truly-kryptic#readme"
+}
