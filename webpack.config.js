@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 let prod = -process.env.NODE_ENV === 'production';
 
@@ -60,5 +61,10 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        })
+    ]
 };
