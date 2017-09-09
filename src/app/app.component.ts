@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import * as AppTpl from './app.component.html';
 
 @Component({
   selector: 'app-root',
-  template: '<h1>Test</h1><br><input type="button" value="click here" />'
+  template: AppTpl,
 })
 export class AppComponent {
   title = 'app';
 }
+
