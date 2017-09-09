@@ -5,7 +5,6 @@
   "dependencies": {
     "@angular/common": "^4.4.0-RC.0",
     "@angular/compiler": "^4.4.0-RC.0",
-    "@angular/compiler-cli": "^4.4.0-RC.0",
     "@angular/core": "^4.4.0-RC.0",
     "@angular/platform-browser": "^4.4.0-RC.0",
     "@angular/platform-browser-dynamic": "^4.4.0-RC.0",
