@@ -3,7 +3,7 @@ import * as AppTpl from './app.component.html';
 
 @Component({
   selector: 'app-root',
-  template: <any> AppTpl,
+  template: AppTpl,
 })
 export class AppComponent {
   title = 'app';
