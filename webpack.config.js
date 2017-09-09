@@ -14,17 +14,6 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 use: [
-                    // {
-                    //     /**
-                    //      *  MAKE SURE TO CHAIN VANILLA JS CODE, I.E. TS COMPILATION OUTPUT.
-                    //      */
-                    //     loader: 'ng-router-loader',
-                    //     options: {
-                    //         loader: 'async-import',
-                    //         genDir: 'compiled',
-                    //         aot: prod,
-                    //     }
-                    // },
                     {
                         loader: 'awesome-typescript-loader',
                         options: {
@@ -32,15 +21,12 @@ module.exports = {
                             useCache: prod,
                         }
                     },
-                    // {
-                    //     loader: 'ngc-webpack',
-                    //     options: {
-                    //         disable: !prod,
-                    //     }
-                    // },
                     {
-                        loader: 'angular2-template-loader'
-                    }
+                        loader: 'ngc-webpack',
+                        options: {
+                            disable: !prod,
+                        }
+                    },
                 ],
                 exclude: /node_modules/
             },

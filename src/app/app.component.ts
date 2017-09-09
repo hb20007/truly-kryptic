@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-
+import * as AppTpl from './app.component.html';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: <any> AppTpl,
 })
 export class AppComponent {
   title = 'app';
 }
+
