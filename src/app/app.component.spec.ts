@@ -1,3 +1,7 @@
+import './required-libs'
+
+// console.log(Set)
+
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 describe('AppComponent', () => {
