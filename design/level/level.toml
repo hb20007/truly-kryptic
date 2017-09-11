@@ -1,0 +1,34 @@
+[SPC-level]
+text = '''
+The actual game where clues are displayed to the user and they have to 
+guess what the answer text is.
+'''
+
+[SPC-level-solution_input]
+text = '''
+A text input and a submit button that allow the user to check a solution.
+
+## Processing input
+
+remove chars matching [^A-Za-z0-9] then lowercase prior to submission
+
+~20 max chars
+'''
+
+[SPC-level-footer]
+text = '''
+
+'''
+
+
+
+
+[SPC-level-footer-donate]
+text = '''
+
+'''
+
+[SPC-level-footer-fb_like_button]
+text = '''
+
+'''
