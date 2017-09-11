@@ -1,0 +1,6 @@
+# project purpose and definition documentation
+
+[REQ-purpose]
+text = '''
+An app where users solve multiple levels of puzzles and have their rank displayed in a hall of fame.
+'''

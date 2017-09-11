@@ -1,0 +1,26 @@
+[SPC-level]
+text = '''
+
+'''
+
+[SPC-level-footer]
+text = '''
+
+'''
+
+
+[SPC-level-solution_input]
+text = '''
+
+'''
+
+
+[SPC-level-footer-donate]
+text = '''
+
+'''
+
+[SPC-level-footer-fb_like_button]
+text = '''
+
+'''

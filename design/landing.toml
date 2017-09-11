@@ -1,0 +1,19 @@
+[SPC-landing]
+text = '''
+The purpose of the landing page is to get new users started as fast as possible.
+'''
+
+[SPC-landing-create_account]
+text = '''
+At the center of the landing page, there will be a form for users to create a new account.
+
+Supported authentication methods:
+
+Classic, Facebook, Google
+'''
+
+[SPC-landing-site_description]
+text = '''
+Below the create account form, there will text providing background information on
+the purpose of the site.
+'''
