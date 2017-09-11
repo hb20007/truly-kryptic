@@ -2,7 +2,7 @@
 text = '''
 Page with login form displayed in center.
 
-See `SPC-landing-create_account` for supported auth options
+See [[SPC-landing-create_account]] for supported auth options
 
 The login form will also have the following links at the bottom:
 * Sign up - redirects to landing page

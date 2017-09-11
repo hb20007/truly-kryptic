@@ -17,18 +17,14 @@ remove chars matching [^A-Za-z0-9] then lowercase prior to submission
 
 [SPC-level-footer]
 text = '''
-
+The footer contains a facebook like button
 '''
 
-
-
-
-[SPC-level-footer-donate]
+[SPC-level-notes]
 text = '''
+A persisted textarea field displayed on every level
 
-'''
+Allows arbirary text to be entered by the user
 
-[SPC-level-footer-fb_like_button]
-text = '''
-
+Instantly persisted to the server when text is entered
 '''

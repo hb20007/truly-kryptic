@@ -4,12 +4,5 @@ A list of all users who completed the game.
 
 Ordered by: time of completion
 
-Fields:
-* Custom name (required)
-    * text input
-    * only for HOF
-    * prefilled with account name
-* Country (optional) - can be selected from list
-    * Dropdown
-* Comment (required)
+Fields: see [[SPC-level-completion]] form
 '''
