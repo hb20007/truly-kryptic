@@ -15,8 +15,10 @@
     "@types/zone.js": "^0.5.12",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.2.3",
+    "copy-webpack-plugin": "^4.0.1",
     "core-js": "^2.5.1",
     "css-loader": "^0.28.7",
+    "http-server": "^0.10.0",
     "jasmine-core": "^2.8.0",
     "karma": "^1.7.1",
     "karma-jasmine": "^1.1.0",
@@ -44,7 +46,10 @@
     "postinstall": "webdriver-manager update",
     "start": "webpack-dev-server",
     "test": "karma start --single-run",
-    "e2e": "protractor"
+    "build": "webpack",
+    "serve-prod": "http-server dist/ -a localhost -p 9090",
+    "webd": "webdriver-manager start",
+    "e2e": "protractor protractor.conf.js"
   },
   "repository": {
     "type": "git",
