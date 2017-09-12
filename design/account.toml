@@ -4,14 +4,29 @@ Displays user account info and provides account
 related functionality.
 '''
 
+[TST-account]
+text = '''
+Assert logged in user can navigate to the account page.
+'''
+
 [SPC-account-title]
 text = '''
 Username is displayed on the top of the page.
 '''
 
+[TST-account-title]
+text = '''
+Verify that the correct username is displayed for various account types.
+'''
+
 [SPC-account-auth_provider_info]
 text = '''
 Additional information like email or facebook account name.
+'''
+
+[TST-account-auth_provider_info]
+text = '''
+For every auth provider type, verify that the correct information is displayed.
 '''
 
 [SPC-account-delete]
@@ -20,4 +35,12 @@ Deletes the account remove all data related to it from the site.
 
 When confirming deletion, a warning is displayed
 about the user being removed from the hall of fame.
+'''
+
+[TST-account-delete]
+text = '''
+
+Create an Google account (so we don't need confirmation) though the create account form and immediately delete it.
+
+Expect delete confirmation message to be present.
 '''

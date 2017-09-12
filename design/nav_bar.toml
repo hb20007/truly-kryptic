@@ -17,3 +17,8 @@ Logged in
 * Account Settings
 * Levels
 '''
+
+[TST-nav_bar]
+text = '''
+Verify that the nav bar displays the correct links when logged in and logged out.
+'''
