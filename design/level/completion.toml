@@ -1,0 +1,15 @@
+[SPC-level-completion]
+text = '''
+When the user finishs all puzzles this screen will appear with a "Congratulations" message,
+a donate button, and a HOF comment submission field
+'''
+
+[SPC-level-completion-donate]
+text = '''
+A donate button powered by stripe.
+'''
+
+[SPC-level-completion-hof_comment]
+text = '''
+A required comment field that stores the user's comment for the hall of fame.
+'''

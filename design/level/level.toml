@@ -1,4 +1,5 @@
 [SPC-level]
+partof = 'REQ-tk_app'
 text = '''
 The actual game where clues are displayed to the user and they have to 
 guess what the answer text is.
@@ -15,9 +16,41 @@ remove chars matching [^A-Za-z0-9] then lowercase prior to submission
 ~20 max chars
 '''
 
+[TST-level-solution_input]
+text = '''
+Assert that the solution input box is displayed
+'''
+
+[TST-level-solution_input-additional_clues]
+partof =  'SPC-level-clue'
+text = '''
+Assert that additional clues are displayed when a partially correct solution
+is entered.
+'''
+
+[TST-level-solution_input-wrong_submission]
+text = '''
+Assert that a wrong solution message is displayed
+'''
+
+[TST-level-solution_input-correct_submission]
+text = '''
+Assert that the user progresses to the next level when they enter a correct solution
+'''
+
+[TST-level]
+text = '''
+Assert a logged in user can navigate to the level page though the level list.
+'''
+
 [SPC-level-footer]
 text = '''
 The footer contains a facebook like button
+'''
+
+[TST-level-footer]
+text = '''
+Assert that the facebook like button loads correctly
 '''
 
 [SPC-level-notes]
@@ -27,4 +60,11 @@ A persisted textarea field displayed on every level
 Allows arbirary text to be entered by the user
 
 Instantly persisted to the server when text is entered
+'''
+
+[TST-level-notes]
+text = '''
+Navigate to a level and enter some text in the note input.
+
+Refresh the page and assert that the text is persisted.
 '''

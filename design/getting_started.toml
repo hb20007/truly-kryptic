@@ -1,4 +1,5 @@
 [SPC-getting_started]
+partof = 'REQ-tk_app'
 text = '''
 Instructions for playing the game
 
@@ -8,4 +9,9 @@ Instructions for playing the game
 * FAQ
 
 Source of page hard-coded as html template
+'''
+
+[TST-getting_started]
+text = '''
+Navigate to the getting started page and verify that the title exists.
 '''

@@ -1,19 +1,42 @@
 [SPC-landing]
+partof = 'REQ-tk_app'
 text = '''
 The purpose of the landing page is to get new users started as fast as possible.
+'''
+
+[TST-landing]
+text = '''
+Assert that the landing page is displayed under the default path.
 '''
 
 [SPC-landing-create_account]
 text = '''
 At the center of the landing page, there will be a form for users to create a new account.
 
+The user will also be promped to enter the following data:
+* Displayed Name (for HOF)
+* Country
+
 Supported authentication methods:
 
 Classic, Facebook, Google
+'''
+
+[TST-landing-create_account]
+text = '''
+Enter random account details into creation form and
+submit form.
+
+Expect confirmation message to appear.
 '''
 
 [SPC-landing-site_description]
 text = '''
 Below the create account form, there will text providing background information on
 the purpose of the site.
+'''
+
+[TST-landing-site_description]
+text = '''
+make sure it appears
 '''

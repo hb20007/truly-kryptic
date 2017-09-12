@@ -5,16 +5,7 @@ All levels start with one prexisting image and text clue.
 Additional clues can be unlocked 
 '''
 
-[TST-level]
-text = '''
-All levels start with one prexisting image and text clue.
-
-Additional clues can be unlocked 
-'''
-
 [TST-level-clue]
 text = '''
-All levels start with one prexisting image and text clue.
-
-Additional clues can be unlocked 
+Assert that a level starts with one prexisting image and text clue.
 '''
