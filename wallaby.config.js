@@ -1,19 +1,37 @@
+const webpack = require('webpack');
 const wallabyWebpack = require('wallaby-webpack');
-const webpackPostprocessor = wallabyWebpack({});
+const path = require('path');
 
-module.exports = function () {
+module.exports = function (wallaby) {
+
+    const webpackConfiguration = {
+        module: {
+            rules: [
+                {
+                    test: /\.html$/,
+                    use: 'raw-loader',
+                },
+            ]
+        },
+        plugins: [
+            new webpack.DefinePlugin({
+                NODE_ENV: JSON.stringify('development'),
+            })
+        ],
+    };
 
     return {
         files: [
-            {pattern: 'src/**/*.ts', load: false},
-            {pattern: 'src/**/*.spec.ts', ignore: true}
+            { pattern: 'src/**/*.html', load: false },
+            { pattern: 'src/**/*.ts', load: false },
+            { pattern: 'src/**/*.spec.ts', load: false, ignore: true }
         ],
 
         tests: [
-            {pattern: 'src/**/*.spec.ts', load: false}
+            { pattern: 'src/**/*.spec.ts', load: false }
         ],
 
-        postprocessor: webpackPostprocessor,
+        postprocessor: wallabyWebpack(webpackConfiguration),
 
         setup: function () {
             window.__moduleBundler.loadTests();
