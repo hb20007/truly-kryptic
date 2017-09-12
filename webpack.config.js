@@ -1,7 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const process = require('process');
 
-let prod = -process.env.NODE_ENV === 'production';
+const prod = process.argv.indexOf('-p') !== -1;
 
 module.exports = {
     entry: './src/main.ts',
@@ -45,6 +47,8 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     plugins: [
+        // prod && 
+        new CopyWebpackPlugin([{ from: 'index.html', to: 'index.html' }]),
         new webpack.DefinePlugin({
             NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         }),
@@ -54,7 +58,7 @@ module.exports = {
             root('./src'), // location of your src
             { }
         )
-    ]
+    ].filter(Boolean),
 
 };
 
