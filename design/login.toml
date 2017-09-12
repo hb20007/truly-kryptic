@@ -1,0 +1,19 @@
+[SPC-login]
+text = '''
+Page with login form displayed in center.
+
+See [[SPC-landing-create_account]] for supported auth options
+
+The login form will also have the following links at the bottom:
+* Sign up - redirects to landing page
+* Forgot password
+'''
+
+[SPC-login-forgot_password]
+text = '''
+When clicked, the login form is hidden and a password reset
+widget is shown. 
+
+Single input field with submit button that allows
+email to be entered.
+'''

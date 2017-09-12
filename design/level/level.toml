@@ -1,0 +1,30 @@
+[SPC-level]
+text = '''
+The actual game where clues are displayed to the user and they have to 
+guess what the answer text is.
+'''
+
+[SPC-level-solution_input]
+text = '''
+A text input and a submit button that allow the user to check a solution.
+
+## Processing input
+
+remove chars matching [^A-Za-z0-9] then lowercase prior to submission
+
+~20 max chars
+'''
+
+[SPC-level-footer]
+text = '''
+The footer contains a facebook like button
+'''
+
+[SPC-level-notes]
+text = '''
+A persisted textarea field displayed on every level
+
+Allows arbirary text to be entered by the user
+
+Instantly persisted to the server when text is entered
+'''

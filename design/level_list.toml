@@ -1,0 +1,9 @@
+[SPC-level-list]
+text = '''
+Table that displays a list of all levels.
+
+Shows:
+* Name - (num + sublevel letter)
+* Solved By
+* Status - Completed / In Progress / Locked 
+'''

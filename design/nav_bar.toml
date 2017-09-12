@@ -1,0 +1,19 @@
+[SPC-nav_bar]
+text = '''
+The nav bar is always present at the top of the page and provides
+navigation to various pages depending on the login state of
+the user.
+
+### Links:
+
+Always Displayed
+* Getting Started
+* Hall of Fame
+
+Logged out
+* Sign in
+
+Logged in
+* Account Settings
+* Levels
+'''

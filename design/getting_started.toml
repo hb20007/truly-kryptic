@@ -1,0 +1,11 @@
+[SPC-getting_started]
+text = '''
+Instructions for playing the game
+
+* Background on puzzles
+* Where to get help
+* Tools needed
+* FAQ
+
+Source of page hard-coded as html template
+'''
