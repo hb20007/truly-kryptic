@@ -4,9 +4,9 @@ import { Component } from "@angular/core";
 @Component({
     selector: 'nav-bar',
     template: NavTpl,
-    styleUrls: [
-        './nav-bar.component.scss'
-    ]
+    // styleUrls: [
+    //     './nav-bar.component.scss'
+    // ]
 })
 
 export class NavbarComponent {

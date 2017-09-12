@@ -11,6 +11,10 @@ module.exports = function (wallaby) {
                     test: /\.html$/,
                     use: 'raw-loader',
                 },
+                {
+                    test: /\.scss$/,
+                    use: ['raw-loader', 'sass-loader'],
+                },
             ]
         },
         plugins: [
@@ -22,6 +26,7 @@ module.exports = function (wallaby) {
 
     return {
         files: [
+            { pattern: 'src/**/*.scss', load: false },
             { pattern: 'src/**/*.html', load: false },
             { pattern: 'src/**/*.ts', load: false },
             { pattern: 'src/**/*.spec.ts', load: false, ignore: true }
