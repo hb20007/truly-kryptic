@@ -1,4 +1,5 @@
 [SPC-landing]
+partof = 'REQ-tk_app'
 text = '''
 The purpose of the landing page is to get new users started as fast as possible.
 '''

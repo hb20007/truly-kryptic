@@ -1,4 +1,5 @@
 [SPC-level]
+partof = 'REQ-tk_app'
 text = '''
 The actual game where clues are displayed to the user and they have to 
 guess what the answer text is.

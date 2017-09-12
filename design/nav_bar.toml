@@ -1,4 +1,5 @@
 [SPC-nav_bar]
+partof = 'REQ-tk_app'
 text = '''
 The nav bar is always present at the top of the page and provides
 navigation to various pages depending on the login state of

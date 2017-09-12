@@ -1,4 +1,5 @@
 [SPC-account]
+partof = 'REQ-tk_app'
 text = '''
 Displays user account info and provides account
 related functionality.
