@@ -1,4 +1,5 @@
 [SPC-hof]
+partof = 'REQ-tk_app'
 text = '''
 A list of all users who completed the game.
 

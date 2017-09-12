@@ -1,4 +1,5 @@
 [SPC-login]
+partof = 'REQ-tk_app'
 text = '''
 Page with login form displayed in center.
 

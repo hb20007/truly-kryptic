@@ -1,4 +1,5 @@
 [SPC-getting_started]
+partof = 'REQ-tk_app'
 text = '''
 Instructions for playing the game
 
