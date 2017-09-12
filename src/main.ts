@@ -1,4 +1,4 @@
-import 'core-js/shim';
+import './app/required-libs'
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
