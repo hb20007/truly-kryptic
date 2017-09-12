@@ -8,10 +8,6 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
-            },
-            {
                 test: /\.tsx?$/,
                 use: [
                     {
@@ -32,7 +28,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ['to-string-loader', 'css-loader', 'sass-loader'],
+                use: ['raw-loader', 'sass-loader'],
             },
 
             {

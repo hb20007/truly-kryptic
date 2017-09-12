@@ -1,5 +1,5 @@
-import './required-libs'
-import { AppComponent } from './app.component';
+import '../../required-libs'
+import { AppComponent } from './app';
 
 describe('App Component', () => {
   it('exists', () => {
