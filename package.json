@@ -16,6 +16,12 @@
     "awesome-typescript-loader": "^3.2.3",
     "core-js": "^2.5.1",
     "css-loader": "^0.28.7",
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.4",
     "ng-router-loader": "^2.1.0",
     "ngc-webpack": "^3.2.2",
     "raw-loader": "^0.5.1",
@@ -31,7 +37,8 @@
     "zone.js": "^0.8.17"
   },
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "test": "karma start --single-run"
   },
   "repository": {
     "type": "git",
