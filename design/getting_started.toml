@@ -9,3 +9,8 @@ Instructions for playing the game
 
 Source of page hard-coded as html template
 '''
+
+[TST-getting_started]
+text = '''
+Navigate to the getting started page and verify that the title exists.
+'''

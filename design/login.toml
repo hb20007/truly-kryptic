@@ -9,6 +9,13 @@ The login form will also have the following links at the bottom:
 * Forgot password
 '''
 
+[TST-login]
+text = '''
+Assert that a user can login though all of the supported providers.
+
+Check that the nav bar changes on login.
+'''
+
 [SPC-login-forgot_password]
 text = '''
 When clicked, the login form is hidden and a password reset
@@ -16,4 +23,11 @@ widget is shown.
 
 Single input field with submit button that allows
 email to be entered.
+'''
+
+[TST-login-forgot_password]
+text = '''
+Assert that the forgot password link opens the forgot password dialog.
+
+Assert that a confirmation message is displayed when an email is submitted.
 '''

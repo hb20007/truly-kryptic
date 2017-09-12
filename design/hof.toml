@@ -6,3 +6,9 @@ Ordered by: time of completion
 
 Fields: see [[SPC-level-completion]] form
 '''
+
+[TST-hof]
+text = '''
+Though the database, provision several fake users then verify that their information is correct
+on the hall of fame.
+'''
