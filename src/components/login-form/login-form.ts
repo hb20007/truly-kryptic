@@ -1,11 +1,11 @@
-import * as LoginFormTpl from './sign-up-form.html';
+import * as LoginFormTpl from './login-form.html';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from "@angular/core";
 import * as firebase from 'firebase/app';
 
-// partof: #SPC-landing-sign_up
+// partof: #SPC-login
 @Component({
-    selector: 'sign-up-form',
+    selector: 'login-form',
     template: LoginFormTpl,
 })
 export class LoginFormComponent {
@@ -14,19 +14,11 @@ export class LoginFormComponent {
     constructor(private angularFireAuth: AngularFireAuth) { }
 
     emailLogin() {
-        this.angularFireAuth.auth.createUserWithEmailAndPassword(this.form.email, this.form.password)
+        this.angularFireAuth.auth.signInWithEmailAndPassword(this.form.email, this.form.password)
             .then((res) => {
                 console.log(res);
                 this.form.email = '';
                 this.form.password = '';
             });
-    }
-
-    googleLogin() {
-        this.angularFireAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    }
-
-    facebookLogin() {
-        this.angularFireAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
     }
 }
