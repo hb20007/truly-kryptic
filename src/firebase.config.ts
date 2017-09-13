@@ -1,5 +1,5 @@
 // Initialize Firebase
-export const config = {
+export const firebaseConfig = {
     apiKey: "AIzaSyApeURyJrMBvPKK8gafmF2QwVKR_QTudzg",
     authDomain: "truly-kryptic.firebaseapp.com",
     databaseURL: "https://truly-kryptic.firebaseio.com",
