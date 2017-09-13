@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { SignUpFormComponent } from './sign-up-form';
 import { AngularFireAuth } from 'angularfire2/auth';
 
+// partof: #TST-landing-sign_up
 describe('Sign up form', () => {
 
     beforeEach(() => {
