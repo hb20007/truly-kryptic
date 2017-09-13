@@ -9,7 +9,7 @@ text = '''
 Assert that the landing page is displayed under the default path.
 '''
 
-[SPC-landing-create_account]
+[SPC-landing-sign_up]
 text = '''
 At the center of the landing page, there will be a form for users to create a new account.
 
@@ -22,12 +22,19 @@ Supported authentication methods:
 Classic, Facebook, Google
 '''
 
-[TST-landing-create_account]
+[TST-landing-sign_up]
 text = '''
 Enter random account details into creation form and
 submit form.
 
 Expect confirmation message to appear.
+'''
+
+[TST-landing-sign_up-passwords_match]
+
+[TST-landing-sign_up-password_length]
+text = '''
+Passwords should have a min length of 8 characters.
 '''
 
 [SPC-landing-site_description]
