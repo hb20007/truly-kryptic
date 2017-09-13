@@ -11,6 +11,7 @@ import { LandingpageComponent } from "./components/landing-page/landing";
 import { firebaseConfig } from './firebase.config';
 import { SignUpFormComponent } from './components/sign-up-form/sign-up-form';
 import { ProviderAuthComponent } from './components/provider-auth/provider-auth';
+import { LoginFormComponent } from './components/login-form/login-form';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { ProviderAuthComponent } from './components/provider-auth/provider-auth'
     NavbarComponent,
     LandingpageComponent,
     SignUpFormComponent,
+    LoginFormComponent,
     ProviderAuthComponent,
   ],
   providers: [],
