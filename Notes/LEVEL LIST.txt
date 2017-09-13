@@ -1,0 +1,80 @@
+TUTORIAL
+
+1 tutorial1
+2 tutorial2
+3 house
+4 next
+
+All the levels are in the alpha directory
+
+WORLD
+
+1 game
+2 hallway
+3 knowledge
+4 elephant
+5 transport
+6 service 
+7 xtra
+8 powerful
+9 kettle
+10 time
+
+COUNTRY
+
+11 map
+12 saudiarabia
+13 bamboozled
+14 reason
+14b heart
+15 smog
+16 sent
+17 acquainted
+18 season
+19 america
+20 tent
+
+CITY
+
+21 level21
+22 meteors
+23 jackpot
+24 enigma
+24b ladybug
+24c heavenforbid
+24d calmdown
+24e robinhood
+25 water
+26 burjkhalifa
+27 enigmatic
+28 ignite
+29 langstonhughes
+30 manji
+
+TOWN
+
+31 level31
+31b earth
+32 round
+33 attack
+34 gelato
+35 ai
+36 2012 ... part 2: https://github.com/hb20007/Truly-Kryptic
+37 acinreug
+38 masterofgoogle
+39 castle ... part 2: https://www.youtube.com/watch?v=aaWYaJouy3w (the pic is http://prntscr.com/f1rj9t )
+40 paulvillard
+
+VILLAGE
+
+41 start ... part 2: https://en.lichess.org/VSUDQSl9
+42 emmawatson
+43 aether
+44 pride
+45 dolphin
+46 pizzicato
+47 temperature
+48 native
+49 searching
+50 sereneeternity
+cellardoor
