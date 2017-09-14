@@ -1,5 +1,5 @@
-import * as NavTpl from './nav.html';
-import * as NavSyl from './nav.scss';
+import * as NavTpl from './nav-bar.html';
+import * as NavSyl from './nav-bar.scss';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from "@angular/core";
 import 'rxjs/add/operator/map';
