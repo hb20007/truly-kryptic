@@ -1,14 +1,14 @@
-import * as LoginFormTpl from './login-form.html';
+import * as LoginTpl from './login.html';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from "@angular/core";
 import * as firebase from 'firebase/app';
 
 // partof: #SPC-login
 @Component({
-    selector: 'login-form',
-    template: LoginFormTpl,
+    selector: 'login',
+    template: LoginTpl,
 })
-export class LoginFormComponent {
+export class LoginComponent {
     form = { email: '', password: '' }
 
     constructor(private angularFireAuth: AngularFireAuth) { }

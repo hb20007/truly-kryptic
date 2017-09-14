@@ -12,11 +12,11 @@ import { LandingpageComponent } from "./components/landing/landing";
 import { firebaseConfig } from './firebase.config';
 import { SignUpFormComponent } from './components/sign-up-form/sign-up-form';
 import { ProviderAuthComponent } from './components/provider-auth/provider-auth';
-import { LoginFormComponent } from './components/login-form/login-form';
+import { LoginComponent } from './components/login/login';
 
 const appRoutes: Routes = [
     { path: '', component: LandingpageComponent },
-    { path: 'login', component: LoginFormComponent }
+    { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
@@ -35,7 +35,7 @@ const appRoutes: Routes = [
     NavbarComponent,
     LandingpageComponent,
     SignUpFormComponent,
-    LoginFormComponent,
+    LoginComponent,
     ProviderAuthComponent,
   ],
   providers: [],
