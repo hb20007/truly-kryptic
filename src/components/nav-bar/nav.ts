@@ -3,6 +3,8 @@ import * as NavSyl from './nav.scss';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from "@angular/core";
 import 'rxjs/add/operator/map';
+import {Observable} from "rxjs/Observable";
+import * as firebase from "firebase/app";
 
 @Component({
     selector: 'nav-bar',
@@ -13,10 +15,14 @@ import 'rxjs/add/operator/map';
 
 export class NavbarComponent {
 
-    constructor(private angularFireAuth: AngularFireAuth) {}
+    user: Observable<firebase.User>;
+
+    constructor(private angularFireAuth: AngularFireAuth) {
+        this.user = angularFireAuth.authState;
+    }
 
     getLoginState() {
-        return this.angularFireAuth.authState.subscribe();
+
     }
 
     toggleShrink() {
