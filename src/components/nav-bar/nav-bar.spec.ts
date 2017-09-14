@@ -1,5 +1,5 @@
 import '../../required-libs'
-import { NavbarComponent } from "./nav";
+import { NavbarComponent } from "./nav-bar";
 
 describe('Nav-bar Component', () => {
     it('exists', () => {

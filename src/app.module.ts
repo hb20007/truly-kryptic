@@ -7,8 +7,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { AppComponent } from './components/app/app';
-import { NavbarComponent } from "./components/nav-bar/nav";
-import { LandingpageComponent } from "./components/landing-page/landing";
+import { NavbarComponent } from "./components/nav-bar/nav-bar";
+import { LandingpageComponent } from "./components/landing/landing";
 import { firebaseConfig } from './firebase.config';
 import { SignUpFormComponent } from './components/sign-up-form/sign-up-form';
 import { ProviderAuthComponent } from './components/provider-auth/provider-auth';
@@ -22,8 +22,7 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(
-        appRoutes,
-        { enableTracing: true } // <-- debugging purposes only
+        appRoutes
     ),
     FormsModule,
     BrowserModule,
