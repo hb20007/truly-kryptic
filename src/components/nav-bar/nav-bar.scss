@@ -1,0 +1,44 @@
+nav {
+  height: 70px;
+  background: transparent; // Transparent initial setting
+  display: block;
+  position: fixed;
+  width: 100%;
+  z-index: 99999;
+  transition: all ease .5s;
+  top: 0 !important;
+}
+
+#logo {
+  color: #fff;
+  padding: 20px;
+  font-size: 18px;
+  transition: all ease .5s;
+}
+
+.menu {
+  color: #fff;
+  font-size: 18px;
+  display: inline-block;
+  float: right;
+  padding: 20px;
+  height: 30px;
+  transition: all ease .5s;
+}
+
+nav.shrink {
+  height: 40px;
+  transition: all ease .5s;
+  background: black; // Change background to black on scroll
+}
+
+nav.shrink #logo {
+  padding-top: 10px;
+  transition: all ease .5s;
+}
+
+nav.shrink .menu {
+  padding-top: 10px;
+  transition: all ease .5s;
+  height: 10px !important;
+}

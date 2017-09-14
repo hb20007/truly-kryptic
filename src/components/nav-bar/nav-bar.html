@@ -1,1 +1,9 @@
 <!-- implements: #SPC-nav_bar -->
+<nav [class.shrink]="toggleShrink()">
+    <div routerLink="/account" routerLinkActive="active" *ngIf="user | async" class="menu">ACC</div>
+    <div routerLink="/levels" routerLinkActive="active" *ngIf="user | async" class="menu">Levels</div>
+    <div routerLink="/login" routerLinkActive="active" *ngIf="!(user | async)" class="menu">Sign in</div>
+    <div routerLink="/hof" routerLinkActive="active" class="menu">Hall of Fame</div>
+    <div routerLink="/gettingstarted" routerLinkActive="active" class="menu">Getting started</div>
+    <div routerLink="/" routerLinkActive="active" id="logo">Logo</div>
+</nav>
