@@ -11,6 +11,7 @@
     "@angular/forms": "^4.3.6",
     "@angular/platform-browser": "^4.4.0-RC.0",
     "@angular/platform-browser-dynamic": "^4.4.0-RC.0",
+    "@angular/router": "^4.3.6",
     "@types/firebase": "^2.4.32",
     "@types/jasmine": "^2.5.54",
     "@types/reflect-metadata": "0.0.5",

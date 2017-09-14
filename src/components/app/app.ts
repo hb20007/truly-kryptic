@@ -6,6 +6,5 @@ import * as AppTpl from './app.html';
     template: AppTpl
 })
 export class AppComponent {
-
 }
 
