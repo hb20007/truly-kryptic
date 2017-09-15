@@ -30,7 +30,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ['raw-loader', 'resolve-url-loader', 'sass-loader'],
+                use: ['raw-loader', 'sass-loader'],
             },
 
             {
