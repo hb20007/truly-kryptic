@@ -1,5 +1,12 @@
 @import '../../variables.scss';
 
+.provider-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}
+
 @mixin provider($color) {
     color: map-get($colors, light);
     background: $color;
