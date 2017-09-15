@@ -1,14 +1,15 @@
 /* The primary color should cover about 60% of the space and create the overall unifying theme of the design.
-The 30% seconddary color should contrast with the 60% to create a visually striking effect.
+The 30% secondary color should contrast with the 60% to create a visually striking effect.
 The 10% is an ‘accent color’ (danger in our case), which should complement either your primary or secondary color.
 */
 $colors: (
         primary:    #303036,  // Jet
         secondary:  #1ae7ff,  // Spanish Sky Blue
         danger:     #fc5130,  // Ogre Odor
-        light:      #fffaff,  // White
-        dark:       #000000,   // Registration black
+        light:      #ebe6eb,  // Light Grey
+        dark:       #000000,   // Registration Black
 
         google_red: #dd4b39,
         facebook_blue: #3B5998
 );
+// Example use:  background: color($colors, primary)

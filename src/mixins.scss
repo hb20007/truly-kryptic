@@ -1,9 +1,21 @@
 @import 'variables.scss';
 
+$hover-displacement: 0.1em;
+
+@mixin hover-brighten-displace($background, $padding) {
+    background: $background;
+    padding: $padding;
+    &:hover {
+        background: lighten($background, 5%);
+        padding: $padding + $hover-displacement $padding $padding - $hover-displacement;
+    }
+}
+
 @mixin link() {
+    display: inline-block;
     font-size: inherit;
-    text-decoration: underline;
-    color: map-get($colors, secondary);
+    text-decoration: none;
+    color: map-get($colors, danger);
     background: none;
     border: none;
 
@@ -36,44 +48,62 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    margin-top: 3em;
   }
 
   .form-split-area {
       flex: 1;
-      padding: 6em 2em 2em 2em;
+      padding: 2em;
+
+      &:nth-child(1) {
+        border-right: 0.1em solid map-get($colors, light);
+      }
   }
 
   .form-container {
-    $input-border-width: 0.2em;
+    $input-border-width: 0.1em;
     $input-padding: 0.6em;
 
+    .form-error {
+        padding: 1em;
+        border: 0.1em solid map-get($colors, danger);
+    }
+
     .form-field {
-      padding: 0.7em;
+      padding: 0.7em 0;
       font-size: 1em;
     }
     
     .form-input {
-      width: 100%;
-      box-sizing: border-box;
-      font-size: 1.0em;
-      margin-top: 0.5em;
-      padding: $input-padding $input-padding ($input-padding - $input-border-width) $input-padding;
-      background: map-get($colors, light);
-      border:none;
-      border-bottom: $input-border-width solid map-get($colors, secondary);
+        color: map-get($colors, light);
+        background: none;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 1.0em;
+        margin-top: 0.5em;
+        padding: $input-padding $input-padding ($input-padding - $input-border-width) 0;
+        border: none;
+        border-bottom: $input-border-width solid map-get($colors, light);
     }
     
     .form-input-action {
         @include link();
         font-size: 1em;
-        padding: .5em 0;
+        padding: 0;
+        padding-top: 1em;
     }
 
     .form-action {
-        @include link();
-        font-size: 1.5em;
-        padding: 0.5em;
+        cursor: pointer;
+        color: map-get($colors, primary);
+        font-size: 1.2em;
+        margin-top: 1em;
         display: inline-block;
+        min-width: 6em;
+        border: none;
+        width: 100%;
+
+        @include hover-brighten-displace(map-get($colors, light), 0.6em);
     }
   }
 }

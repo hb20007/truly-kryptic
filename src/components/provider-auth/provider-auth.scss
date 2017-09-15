@@ -1,4 +1,5 @@
 @import '../../variables.scss';
+@import '../../mixins.scss';
 
 .provider-area {
     display: flex;
@@ -8,11 +9,10 @@
 }
 
 @mixin provider($color) {
-    color: map-get($colors, light);
+    color: map-get($colors, primary);
     background: $color;
-    padding: 1em;
-    font-size: 1.2em;
     border: none;
+    font-size: 1.2em;
     margin-bottom: 1em;
     width: 100%;
     text-align: left;
@@ -20,20 +20,16 @@
 
     .provider-name {
         font-weight: bold;
-        text-decoration: underline;
+        color: $color;
     }
 
     .fa {
         text-align: center;
         width: 2.3em;
+        color: $color;
     }
 
-    $hover-displacement: 0.1em;
-
-    &:hover {
-        padding: 1em + $hover-displacement 1em 1em - $hover-displacement 1em;
-        background: lighten($color, 5%);
-    }
+    @include hover-brighten-displace(map-get($colors, light), 1em);
 }
 
 .provider-google {

@@ -5,14 +5,17 @@
     <div class="form-split">
         <form class="form-split-area form-container" (ngSubmit)="emailLogin()" #loginForm="ngForm">
             <div class="form-field">
+                <div [hidden]="!submissionError" class="form-error">{{submissionError}}</div>
+            </div>
+            <div class="form-field">
                 <label class="form-label" for="loginEmail">Email Address</label><br>
-                <input class="form-input" type="text" [(ngModel)]="fields.email" name="email" #email="ngModel" id="loginEmail">
+                <input class="form-input" placeholder="..." type="text" [(ngModel)]="fields.email" name="email" #email="ngModel" id="loginEmail">
             </div>
             <div class="form-field">
                 <label class="form-label" for="loginPassword">Password</label><br>
-                <input class="form-input" type="password" [(ngModel)]="fields.password" name="password" #password="ngModel" id="loginPassword">
+                <input class="form-input" placeholder="..." type="password" [(ngModel)]="fields.password" name="password" #password="ngModel" id="loginPassword">
                 <div>
-                    <button class="form-input-action" type="submit">Reset Password</button>
+                    <a class="form-input-action" routerLink="/reset_password">Reset Password</a>
                 </div>
             </div>
 
