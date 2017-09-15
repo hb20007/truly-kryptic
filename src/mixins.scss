@@ -1,0 +1,69 @@
+@import 'variables.scss';
+
+@mixin link() {
+    font-size: inherit;
+    text-decoration: underline;
+    color: map-get($colors, secondary);
+    background: none;
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+@mixin centered-layout {
+    .title-centered {
+        font-size: 3em;
+        text-align: center;
+    }
+
+    .title-centered-subtext {
+        font-size: 1.2em;
+        text-align: center;
+        margin-top: 1em;
+
+    }
+
+    .title-centered-subtext-link {
+        @include link();        
+    }
+}
+
+@mixin form-large() {
+  .form-container {
+    padding-top: 3em;
+
+    $input-border-width: 0.2em;
+    $input-padding: 0.6em;
+
+    .form-field {
+      padding: 0.7em;
+      font-size: 1em;
+    }
+    
+    .form-input {
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 1.0em;
+      margin-top: 0.5em;
+      padding: $input-padding $input-padding ($input-padding - $input-border-width) $input-padding;
+      background: map-get($colors, light);
+      border:none;
+      border-bottom: $input-border-width solid map-get($colors, secondary);
+    }
+    
+    .form-input-action {
+        @include link();
+        font-size: 1em;
+        padding: .5em 0;
+    }
+
+    .form-action {
+        @include link();
+        font-size: 1.5em;
+        padding: 0.5em;
+        display: inline-block;
+    }
+  }
+}
