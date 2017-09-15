@@ -1,5 +1,11 @@
 @import 'variables.scss';
 
+
+@font-face {
+  font-family: HelveticaNeueW01-Thin;
+  src: url('/helvetica.woff');
+}
+
 /* You can add global styles to this file, and also import other style files */
 body {
   color: map-get($colors, light);
@@ -7,5 +13,10 @@ body {
   margin: 0 !important;
   background: map-get($colors, primary);
   font-family: 'Cabin', sans-serif;
+  font-family: HelveticaNeueW01-Thin,HelveticaNeueW02-Thin,HelveticaNeueW10-35Thin,sans-serif;
   height: 2000px;
+}
+
+button {
+  font-family: inherit;
 }
