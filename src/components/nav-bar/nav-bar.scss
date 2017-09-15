@@ -1,3 +1,5 @@
+@import '../../variables';
+
 nav {
   height: 70px;
   background: transparent; // Transparent initial setting
@@ -10,26 +12,37 @@ nav {
 }
 
 #logo {
-  color: #fff;
+  top: 0 !important;
   padding: 20px;
-  font-size: 18px;
+  height: 40px;
+  width: 200px;
   transition: all ease .5s;
 }
 
+#user {
+  font-size: 30px;
+}
+
 .menu {
-  color: #fff;
-  font-size: 18px;
+  color: map-get($colors, light);
+  font-size: 22px;
   display: inline-block;
   float: right;
   padding: 20px;
   height: 30px;
   transition: all ease .5s;
+  cursor: pointer;
+}
+
+.menu:hover  {
+  color: white;
+  text-shadow: 2px 2px 4px #ccc;
 }
 
 nav.shrink {
-  height: 40px;
+  height: 60px;
   transition: all ease .5s;
-  background: black; // Change background to black on scroll
+  background: map-get($colors, dark); // Change background to black on scroll
 }
 
 nav.shrink #logo {
@@ -38,7 +51,7 @@ nav.shrink #logo {
 }
 
 nav.shrink .menu {
-  padding-top: 10px;
+  padding-top: 17.5px;
   transition: all ease .5s;
   height: 10px !important;
 }
