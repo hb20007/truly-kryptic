@@ -1,0 +1,38 @@
+@import '../../variables.scss';
+
+@mixin provider($color) {
+    color: map-get($colors, light);
+    background: $color;
+    padding: 1em;
+    font-size: 1.2em;
+    border: none;
+    margin-bottom: 1em;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+
+    .provider-name {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    .fa {
+        text-align: center;
+        width: 2.3em;
+    }
+
+    $hover-displacement: 0.1em;
+
+    &:hover {
+        padding: 1em + $hover-displacement 1em 1em - $hover-displacement 1em;
+        background: lighten($color, 5%);
+    }
+}
+
+.provider-google {
+    @include provider(map-get($colors, google_red));
+}
+
+.provider-facebook {
+    @include provider(map-get($colors, facebook_blue));
+}

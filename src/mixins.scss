@@ -31,9 +31,19 @@
 }
 
 @mixin form-large() {
-  .form-container {
-    padding-top: 3em;
 
+  .form-split {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .form-split-area {
+      flex: 1;
+      padding: 2em;
+  }
+
+  .form-container {
     $input-border-width: 0.2em;
     $input-padding: 0.6em;
 
