@@ -1,20 +1,25 @@
-<div style="background: lightblue">
-<h2>Login</h2>
+<div>
+    <div class="title-centered">Sign In</div>
+    <div class="title-centered-subtext">Don't have an account? <a class="title-centered-subtext-link" routerLink="/">Create an account</a></div>
 
-<form (ngSubmit)="emailLogin()" #loginForm="ngForm">
-    <div>
-        <label for="loginEmail">Email Address</label><br>
-        <input type="text" [(ngModel)]="form.email" name="email" #email="ngModel" id="loginEmail">
-    </div>
-    <div>
-        <label for="loginPassword">Password</label><br>
-        <input type="password" [(ngModel)]="form.password" name="password" #password="ngModel" id="loginPassword">
-    </div>
-    <button type="submit">Login</button>
-</form>
-<br>
-<br>
+    <form class="form-container" (ngSubmit)="emailLogin()" #loginForm="ngForm">
+        <div class="form-field">
+            <label class="form-label" for="loginEmail">Email Address</label><br>
+            <input class="form-input" type="text" [(ngModel)]="fields.email" name="email" #email="ngModel" id="loginEmail">
+        </div>
+        <div class="form-field">
+            <label class="form-label" for="loginPassword">Password</label><br>
+            <input class="form-input" type="password" [(ngModel)]="fields.password" name="password" #password="ngModel" id="loginPassword">
+            <div>
+                <button class="form-input-action" type="submit">Reset Password</button>
+            </div>
+        </div>
 
-<provider-auth></provider-auth>
+        <button class="form-action" type="submit">Sign In</button>
+    </form>
+    <br>
+    <br>
+
+    <provider-auth></provider-auth>
 
 </div>

@@ -1,7 +1,11 @@
+@import 'variables.scss';
+
 /* You can add global styles to this file, and also import other style files */
 body {
+  color: map-get($colors, light);
   padding: 0 !important;
   margin: 0 !important;
-  background: #ccc;
+  background: map-get($colors, primary);
   font-family: 'Cabin', sans-serif;
+  height: 2000px;
 }
