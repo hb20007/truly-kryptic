@@ -1,0 +1,28 @@
+<div>
+    <div class="title-centered">Log In</div>
+    <div class="title-centered-subtext">Don't have an account? <a class="title-centered-subtext-link" routerLink="/">Create an account</a></div>
+
+    <div class="form-split">
+        <form class="form-split-area form-container" (ngSubmit)="emailLogin()" #loginForm="ngForm">
+            <div class="form-field">
+                <div [hidden]="!submissionError" class="form-error">{{submissionError}}</div>
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="loginEmail">Email Address</label><br>
+                <input class="form-input" placeholder="..." type="text" [(ngModel)]="fields.email" name="email" #email="ngModel" id="loginEmail">
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="loginPassword">Password</label><br>
+                <input class="form-input" placeholder="..." type="password" [(ngModel)]="fields.password" name="password" #password="ngModel" id="loginPassword">
+                <div>
+                    <a class="form-input-action" routerLink="/reset_password">Reset Password</a>
+                </div>
+            </div>
+
+            <button class="form-action" type="submit">Log In</button>
+        </form>
+        <provider-auth class="form-split-area"></provider-auth>
+    </div>
+
+
+</div>

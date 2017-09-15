@@ -6,6 +6,7 @@
  */
 
 import * as ProviderAuthTpl from './provider-auth.html';
+import * as ProviderAuthSyl from './provider-auth.scss';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from "@angular/core";
 import * as firebase from 'firebase/app';
@@ -13,6 +14,7 @@ import * as firebase from 'firebase/app';
 @Component({
     selector: 'provider-auth',
     template: ProviderAuthTpl,
+    styles: [ProviderAuthSyl],
 })
 export class ProviderAuthComponent {
     constructor(private angularFireAuth: AngularFireAuth) { }

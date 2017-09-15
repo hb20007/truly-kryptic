@@ -1,0 +1,41 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.provider-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}
+
+@mixin provider($color) {
+    color: map-get($colors, primary);
+    background: $color;
+    border: none;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+
+    .provider-name {
+        font-weight: bold;
+        color: $color;
+    }
+
+    .fa {
+        text-align: center;
+        width: 2.3em;
+        color: $color;
+    }
+
+    @include hover-brighten-displace(map-get($colors, light), 1em);
+}
+
+.provider-google {
+    @include provider(map-get($colors, google_red));
+}
+
+.provider-facebook {
+    @include provider(map-get($colors, facebook_blue));
+}
