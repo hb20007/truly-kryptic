@@ -13,7 +13,7 @@ WORLD
 2 hallway	Anagram words in source
 3 knowledge	Increase brightness, the word 'elephant' will appear
 4 elephant	Ceasar cipher, source shows the key (21) and the ciphertext.
-5 transport	Zoom out till you see the word service
+5 transport
 6 service 	Use T9 on the letters in the source
 7 xtra		Use Braille
 8 powerful	First and last letter of each word in source spell kettle

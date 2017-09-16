@@ -21,4 +21,5 @@ GETTING STARTED
 - You can solve each level by finding the secret word based on clues in the level title, picture and text.
 - Google is always a good idea. Make sure you look up any clues as this will often help you get closer to the answer.
 - Whenever you find a new word, try it out. If it's not the answer, it might contain another hint that will bring you closer to the answer
-- Some levels may require an image editor (e.g. Paint) or an audio editor (e.g. <a>Audacity</a>) to solve.
+- Some levels may require an image editor (e.g. Paint for Windows/Pixlr for Android/Snapseed for iOS) or an audio editor (e.g. Audacity for Windows, Lexis Audio Editor for Android, WavePad Audio Editor Free for iOS) to solve.
+NOTE: For the previous item, maybe recognize their device and display the relevant programs with their names as clickable links

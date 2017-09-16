@@ -1,5 +1,4 @@
 - Add Analytics
-- Add solution to tutorial 1
 - Google Mobile Friendly Test
 - w3 validation
 - resize very large images
@@ -7,5 +6,7 @@
 - European Union Directive 2009/136/EC says that websites must get consent from their visitors about information they intend to keep/store/retrieve on their computer/device. There is even a fine, up to £500,000 for those who don't comply.
 - Remove robots.txt and make sure all unwanted stuff have <meta name="robots" content="noindex, nofollow">
 - Maybe fix hyphens in level titles and main page
-- Put Kaprekar on VK
 - Send email to all ppl who finished game
+
+LEVELS
+- Replace tutorial, level 5,
