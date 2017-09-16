@@ -1,4 +1,5 @@
 import * as SignUpFormTpl from './sign-up-form.html';
+import * as SignUpFormSyl from './sign-up-form.scss';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from "@angular/core";
 import * as firebase from 'firebase/app';
@@ -7,26 +8,20 @@ import * as firebase from 'firebase/app';
 @Component({
     selector: 'sign-up-form',
     template: SignUpFormTpl,
+    styles: [SignUpFormSyl],
 })
 export class SignUpFormComponent {
-    form = { email: '', password: '' }
+    fields = { email: '', password: '' }
+    submissionError = '';
 
     constructor(private angularFireAuth: AngularFireAuth) { }
 
     emailSignUp() {
-        this.angularFireAuth.auth.createUserWithEmailAndPassword(this.form.email, this.form.password)
+        this.angularFireAuth.auth.createUserWithEmailAndPassword(this.fields.email, this.fields.password)
             .then((res) => {
                 console.log(res);
-                this.form.email = '';
-                this.form.password = '';
+                this.fields.email = '';
+                this.fields.password = '';
             });
-    }
-
-    googleSignUp() {
-        this.angularFireAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    }
-
-    facebookSignUp() {
-        this.angularFireAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
     }
 }
