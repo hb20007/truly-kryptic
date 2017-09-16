@@ -15,7 +15,7 @@ $hover-displacement: 0.1em;
     display: inline-block;
     font-size: inherit;
     text-decoration: none;
-    color: map-get($colors, danger);
+    color: map-get($colors, secondary);
     background: none;
     border: none;
 
@@ -54,6 +54,10 @@ $hover-displacement: 0.1em;
   .form-split-area {
       flex: 1;
       padding: 2em;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
 
       &:nth-child(1) {
         border-right: 0.1em solid map-get($colors, light);

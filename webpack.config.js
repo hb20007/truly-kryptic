@@ -49,7 +49,6 @@ module.exports = {
     plugins: [
         // prod && 
         new CopyWebpackPlugin([{ from: 'index.html', to: 'index.html' }]),
-        new CopyWebpackPlugin([{ from: 'src/assets/helvetica.woff', to: 'helvetica.woff' }]),
         new webpack.DefinePlugin({
             NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         }),

@@ -1,20 +1,26 @@
-<div style="background: orange">
-    <h2>Sign Up</h2>
+<provider-auth class=""></provider-auth>
 
-    <form (ngSubmit)="emailSignUp()" #signUpForm="ngForm">
-        <div>
-            <label for="signUpEmail">Email Address</label><br>
-            <input type="text" [(ngModel)]="form.email" name="email" #email="ngModel" id="signUpEmail">
-        </div>
-        <div>
-            <label for="signUpPassword">Password</label><br>
-            <input type="password" [(ngModel)]="form.password" name="password" #password="ngModel" id="signUpPassword">
-        </div>
-        <button type="submit">Sign Up</button>
-    </form>
-    <br>
-    <br>
-
-    <provider-auth></provider-auth>
-
+<div class="or-split">
+    <span class="or-text">OR</span>
 </div>
+
+<div class="title">Sign Up</div>
+<form class="form-container" (ngSubmit)="emailSignUp()" #signUpForm="ngForm">
+    <div class="form-field">
+        <div [hidden]="!submissionError" class="form-error">{{submissionError}}</div>
+    </div>
+    <div class="form-field">
+        <label class="form-label" for="signUpEmail">Email Address</label><br>
+        <input class="form-input" placeholder="..." type="text" [(ngModel)]="fields.email" name="email" #email="ngModel" id="signUpEmail">
+    </div>
+    <div class="form-field">
+        <label class="form-label" for="signUpPassword">Password</label><br>
+        <input class="form-input" placeholder="..." type="password" [(ngModel)]="fields.password" name="password" #password="ngModel"
+            id="signUpPassword">
+        <div>
+            <a class="form-input-action" routerLink="/reset_password">Reset Password</a>
+        </div>
+    </div>
+
+    <button class="form-action" type="submit">Sign Up</button>
+</form>
