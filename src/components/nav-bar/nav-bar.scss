@@ -1,6 +1,10 @@
 @import '../../variables';
 
 nav {
+  [routerLink] {
+    outline: none;
+  }
+
   height: 70px;
   background: transparent; // Transparent initial setting
   display: block;
@@ -12,6 +16,7 @@ nav {
 }
 
 #logo {
+  cursor: pointer;
   top: 0 !important;
   padding: 20px;
   height: 40px;
@@ -26,7 +31,6 @@ nav {
 .menu {
   color: map-get($colors, light);
   font-size: 22px;
-  display: inline-block;
   float: right;
   padding: 20px;
   height: 30px;
