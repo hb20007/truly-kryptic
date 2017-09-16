@@ -41,6 +41,7 @@ nav {
     position: absolute;
     background: map-get($colors, light);
     height: 0;
+    margin-top: 10px;
     width: 150px;
     transition: all ease .2s;
     overflow: hidden;
@@ -118,6 +119,7 @@ nav.shrink {
     background: map-get($colors, light);
     height: 0;
     width: 200px;
+    margin-top: 5px;
     transition: all ease .2s;
     overflow: hidden;
     font-size: 20px;
