@@ -35,8 +35,7 @@ nav {
 }
 
 .menu:hover  {
-  color: white;
-  text-shadow: 2px 2px 4px #ccc;
+  color: map-get($colors, secondary);
 }
 
 nav.shrink {
@@ -51,7 +50,7 @@ nav.shrink #logo {
 }
 
 nav.shrink .menu {
-  padding-top: 17.5px;
+  padding-top: 15px;
   transition: all ease .5s;
   height: 10px !important;
 }
