@@ -1,0 +1,23 @@
+@import "../../mixins.scss";
+
+.top-area-split {
+    display: flex;
+
+    .website-info {
+        padding-right: 4em;
+        flex: 3;
+        line-height: 3em;
+
+        .info-heading {
+            font-size: 2em;
+        }
+
+        .info-text {
+            margin-bottom: 2em;
+        }
+    }
+
+    .sign-up-form {
+        flex: 2;
+    }
+}

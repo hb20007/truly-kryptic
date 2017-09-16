@@ -55,6 +55,10 @@ $hover-displacement: 0.1em;
       flex: 1;
       padding: 2em;
 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
       &:nth-child(1) {
         border-right: 0.1em solid map-get($colors, light);
       }

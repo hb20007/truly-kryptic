@@ -1,0 +1,22 @@
+@import "../../mixins.scss";
+
+.title {
+    font-size: 2em;
+}
+
+.or-split {
+    text-align: center;
+    border-bottom: 0.05em solid map-get($colors, light);
+    height: 0.5em;
+    margin-top: 1em;
+    margin-bottom: 2em;
+
+    .or-text {
+        display: inline-block;
+        background: map-get($colors, primary);
+        padding: 0 0.3em;
+        font-size: 1em;
+    }
+}
+
+@include form-large();
