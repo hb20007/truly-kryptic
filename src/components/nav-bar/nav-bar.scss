@@ -53,7 +53,7 @@ nav {
     div {
       padding: 10px;
       &:hover {
-        color: map-get($colors, secondary);
+        color: darken(map-get($colors, secondary), 10%);
       }
     }
   }
@@ -129,7 +129,7 @@ nav.shrink {
     div {
       padding: 10px;
       &:hover {
-        color: map-get($colors, secondary);
+        color: darken(map-get($colors, secondary), 10%);
       }
     }
   }
