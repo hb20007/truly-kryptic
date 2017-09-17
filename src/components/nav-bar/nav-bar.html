@@ -15,7 +15,7 @@
        routerLink="/account" routerLinkActive="active" *ngIf="user | async">
         <div class="dropdown-menu">
             <div>Settings</div>
-            <div>Sign out</div>
+            <div (click)="signOut()">Sign out</div>
         </div>
     </i>
     <div routerLink="/levels" routerLinkActive="active" *ngIf="user | async" class="menu">Levels</div>
