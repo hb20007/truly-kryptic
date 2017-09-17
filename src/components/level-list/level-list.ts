@@ -1,18 +1,18 @@
-import * as LandingTpl from './landing.html';
-import * as LandingSyl from './landing.scss';
+import * as LevelListTpl from './level-list.html';
+import * as LevelListSyl from './level-list.scss';
 import { Component } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
-    selector: 'landing-page',
-    template: LandingTpl,
-    styles: [LandingSyl]
+    selector: 'level-list',
+    template: LevelListTpl,
+    styles: [LevelListSyl]
 })
 
-// partof: #SPC-landing
-export class LandingpageComponent {
+// Implements: #SPC-level-list
+export class LevelListComponent {
 
     user: Observable<firebase.User>;
 

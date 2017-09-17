@@ -8,7 +8,7 @@
             <div routerLink="/gettingstarted" routerLinkActive="active" class="burger-items">Getting started</div>
             <div routerLink="/hof" routerLinkActive="active" class="burger-items">Hall of Fame</div>
             <div routerLink="/login" routerLinkActive="active" *ngIf="!(user | async)" class="burger-items">Sign in</div>
-            <div routerLink="/levels" routerLinkActive="active" *ngIf="user | async" class="burger-items">Levels</div>
+            <div routerLink="/level-list" routerLinkActive="active" *ngIf="user | async" class="burger-items">Levels</div>
         </div>
     </div>
     <i class="fa fa-user-circle menu" aria-hidden="true" id="user"
@@ -18,7 +18,7 @@
             <div (click)="signOut()">Sign out</div>
         </div>
     </i>
-    <div routerLink="/levels" routerLinkActive="active" *ngIf="user | async" class="menu">Levels</div>
+    <div routerLink="/level-list" routerLinkActive="active" *ngIf="user | async" class="menu">Levels</div>
     <div routerLink="/login" routerLinkActive="active" *ngIf="!(user | async)" class="menu">Log In</div>
     <div routerLink="/hof" routerLinkActive="active" class="menu">Hall of Fame</div>
     <div routerLink="/gettingstarted" routerLinkActive="active" class="menu">Getting started</div>

@@ -42,6 +42,6 @@ export class LoginComponent {
     }
 
     onAuthSuccess() {
-        this.router.navigateByUrl('/levels');
+        this.router.navigateByUrl('/level-list');
     }
 }
