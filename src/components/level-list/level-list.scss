@@ -1,41 +1,51 @@
 @import "../../mixins.scss";
 
-.side-img-container {
-    position: fixed;
-    height: 100%;
+.title-centered {
+    font-size: 3em;
+    text-align: center;
+}
+
+.level-list-container {
     width: 100%;
-}
-.side-img {
-    position: fixed;
-    bottom: 0;
-    left: -20em;
-    z-index: -923;
-    opacity: 0.2;
+    margin: 2em 0;
 }
 
-.top-area-split {
+.headers {
     display: flex;
+    justify-content: space-around;
+    border-bottom: 0.1em solid map-get($colors, light);
+    padding-bottom: 0.5em;
+}
 
-    .website-info {
-        padding-right: 4em;
-        flex: 3;
-        line-height: 3em;
+.header-item {
+    font-size: 1.3em;
+}
 
-        .info-heading {
-            font-size: 2em;
+.level-item,
+.header-item {
+    flex: 4;
+    font-weight: bold;
 
-            .fa {
-                padding-right: 0.3em;
-            }
-        }
-
-        .info-text {
-            margin-bottom: 2em;
-            line-height: 2em;
-        }
+    &:nth-child(1) {
+        flex: 1;
+        text-align: center;
     }
 
-    .sign-up-form {
+    &:nth-child(4) {
         flex: 2;
     }
+}
+
+.level:nth-child(even) {
+    background: lighten(map-get($colors, primary), 5);
+}
+
+.sublevel {
+    display: flex;
+    justify-content: space-around;
+    padding: 1em 0;
+}
+
+.level-link {
+    @include link();
 }
