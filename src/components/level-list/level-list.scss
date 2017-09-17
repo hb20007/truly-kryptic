@@ -1,0 +1,55 @@
+@import "../../mixins.scss";
+
+.title-centered {
+    font-size: 3em;
+    text-align: center;
+}
+
+.level-list-container {
+    width: 100%;
+    margin: 2em 0;
+}
+
+.headers {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 0.1em solid map-get($colors, light);
+    padding-bottom: 0.5em;
+}
+
+.header-item {
+    font-size: 1.3em;
+}
+
+.level-item,
+.header-item {
+    flex: 4;
+    font-weight: bold;
+
+    &:nth-child(1) {
+        flex: 1;
+        text-align: center;
+    }
+
+    &:nth-child(3) {
+        text-align: center;
+    }
+
+    &:nth-child(4) {
+        flex: 2;
+    }
+}
+
+.level:nth-child(even) {
+    background: lighten(map-get($colors, primary), 5);
+}
+
+.sublevel {
+    display: flex;
+    justify-content: space-around;
+    padding: 1em 0;
+}
+
+.level-link {
+    @include link();
+}

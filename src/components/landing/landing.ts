@@ -11,6 +11,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
     styles: [LandingSyl]
 })
 
+// partof: #SPC-landing
 export class LandingpageComponent {
 
     user: Observable<firebase.User>;
