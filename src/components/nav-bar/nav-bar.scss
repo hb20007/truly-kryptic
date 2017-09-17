@@ -22,7 +22,6 @@ nav {
   height: 40px;
   width: 180px;
   transition: all ease .5s;
-  cursor: pointer;
 }
 
 #user {
@@ -47,7 +46,7 @@ nav {
     overflow: hidden;
     font-size: 20px;
     font-family: HelveticaNeueW01-Thin,HelveticaNeueW02-Thin,HelveticaNeueW10-35Thin,sans-serif;
-    font-weight: 600;
+    font-weight: 400;
     right: 0;
 
     div {
@@ -102,7 +101,7 @@ nav.shrink {
 
   &:hover {
     .burger-dropdown {
-      height: 135px;
+      height: 205px;
     }
   }
 
