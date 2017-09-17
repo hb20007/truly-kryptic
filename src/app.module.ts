@@ -13,17 +13,19 @@ import { firebaseConfig } from './firebase.config';
 import { SignUpFormComponent } from './components/sign-up-form/sign-up-form';
 import { ProviderAuthComponent } from './components/provider-auth/provider-auth';
 import { LoginComponent } from './components/login/login';
+import { LevelListComponent } from './components/level-list/level-list';
 
 const appRoutes: Routes = [
-    { path: '', component: LandingpageComponent },
-    { path: 'login', component: LoginComponent },
+  { path: '', component: LandingpageComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'level-list', component: LevelListComponent },
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(
-        appRoutes,
-        { useHash: true }
+      appRoutes,
+      { useHash: true }
     ),
     FormsModule,
     BrowserModule,
@@ -38,6 +40,7 @@ const appRoutes: Routes = [
     SignUpFormComponent,
     LoginComponent,
     ProviderAuthComponent,
+    LevelListComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,7 +3,8 @@ text = '''
 Table that displays a list of all levels.
 
 Shows:
-* Name - (num + sublevel letter)
+* Number (optional + sublevel letter)
+* Title - (num + sublevel letter)
 * Solved By
 * Status - Completed / In Progress / Locked 
 '''

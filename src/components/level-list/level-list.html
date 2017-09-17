@@ -1,0 +1,20 @@
+<div class="title-centered">Levels</div>
+
+
+<div class="level-list-container">
+    <div class="headers">
+        <div class="header-item">#</div>
+        <div class="header-item">Name</div>
+        <div class="header-item">Solved By</div>
+        <div class="header-item">Status</div>
+    </div>
+
+    <div *ngFor="let level of levels; index as levelIndex" class="level">
+        <div *ngFor="let sublevel of level; index as sublevelIndex" class="sublevel">
+            <div class="level-item">{{getLevelNumber(levelIndex, sublevelIndex, level.length)}}</div>
+            <div class="level-item"><a class="level-link" href="">{{sublevel.title}}</a></div>
+            <div class="level-item">0</div>
+            <div class="level-item">Status</div>
+        </div>
+    </div>
+</div>
