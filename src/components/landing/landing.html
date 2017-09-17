@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <div class="sign-up-form">
+    <div *ngIf="!(user | async)" class="sign-up-form">
         <sign-up-form></sign-up-form>
     </div>
 </div>
