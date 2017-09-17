@@ -1,2 +1,4 @@
 <!-- implements: #SPC-account -->
 <div>{{username}}</div>
+<div *ngIf="!(user | async)">Change password</div>
+<button class="delete">Delete account</button>
