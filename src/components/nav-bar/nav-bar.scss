@@ -20,41 +20,127 @@ nav {
   top: 0 !important;
   padding: 20px;
   height: 40px;
-  width: 200px;
+  width: 180px;
   transition: all ease .5s;
+  cursor: pointer;
 }
 
 #user {
   font-size: 30px;
+  font-weight: 400;
+  position: relative;
+
+  &:hover {
+    .dropdown-menu {
+      height: 85px;
+    }
+  }
+
+  .dropdown-menu {
+    color: map-get($colors, dark);
+    position: absolute;
+    background: map-get($colors, light);
+    height: 0;
+    margin-top: 10px;
+    width: 150px;
+    transition: all ease .2s;
+    overflow: hidden;
+    font-size: 20px;
+    font-family: HelveticaNeueW01-Thin,HelveticaNeueW02-Thin,HelveticaNeueW10-35Thin,sans-serif;
+    font-weight: 600;
+    right: 0;
+
+    div {
+      padding: 10px;
+      &:hover {
+        color: darken(map-get($colors, secondary), 10%);
+      }
+    }
+  }
 }
 
 .menu {
   color: map-get($colors, light);
   font-size: 22px;
+  display: none;
   float: right;
   padding: 20px;
   height: 30px;
   transition: all ease .5s;
   cursor: pointer;
-}
+  font-weight: 600;
 
-.menu:hover  {
-  color: map-get($colors, secondary);
+  &:hover {
+    color: map-get($colors, secondary);
+  }
 }
 
 nav.shrink {
   height: 60px;
   transition: all ease .5s;
   background: map-get($colors, dark); // Change background to black on scroll
+
+  .menu {
+    padding-top: 15px;
+    transition: all ease .5s;
+    height: 10px !important;
+  }
+
+  #logo, .burgermenu-container {
+    padding-top: 10px;
+    transition: all ease .5s;
+  }
 }
 
-nav.shrink #logo {
-  padding-top: 10px;
+.burgermenu-container {
+  cursor: pointer;
+  display: block;
+  float: right;
+  padding: 20px;
   transition: all ease .5s;
+  position: relative;
+
+  &:hover {
+    .burger-dropdown {
+      height: 135px;
+    }
+  }
+
+  .burgermenu {
+    width: 35px;
+    height: 5px;
+    background: map-get($colors, light);
+    margin: 6px 0;
+  }
+
+  .burger-dropdown {
+    color: map-get($colors, dark);
+    position: absolute;
+    background: map-get($colors, light);
+    height: 0;
+    width: 200px;
+    margin-top: 5px;
+    transition: all ease .2s;
+    overflow: hidden;
+    font-size: 20px;
+    font-weight: 600;
+    right: 0;
+
+    div {
+      padding: 10px;
+      &:hover {
+        color: darken(map-get($colors, secondary), 10%);
+      }
+    }
+  }
 }
 
-nav.shrink .menu {
-  padding-top: 15px;
-  transition: all ease .5s;
-  height: 10px !important;
+@media (min-width: 780px) {
+  .menu {
+    display: inline-block;
+  }
+
+  .burgermenu-container {
+    display: none;
+  }
 }
