@@ -16,7 +16,11 @@ export class LoginComponent {
     fields = { email: '', password: '' }
     submissionError = '';
 
-    constructor(private router: Router, private angularFireAuth: AngularFireAuth) { }
+    constructor(private router: Router, private angularFireAuth: AngularFireAuth) {
+        if (angularFireAuth.auth.currentUser) {
+            this.onAuthSuccess();
+        }
+    }
 
     emailLogin() {
         this.submissionError = '';
