@@ -21,7 +21,7 @@
 
             <button class="form-action" type="submit">Log In</button>
         </form>
-        <provider-auth class="form-split-area"></provider-auth>
+        <provider-auth (onAuthSuccess)="onAuthSuccess()" class="form-split-area"></provider-auth>
     </div>
 
 
