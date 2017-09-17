@@ -25,7 +25,7 @@ export class LoginComponent {
             .then(() => {
                 this.fields.email = '';
                 this.fields.password = '';
-                this.router.navigateByUrl('/levels');
+                this.onAuthSuccess();
             }).catch((err: any) => {
                 switch (err.code) {
                     case 'auth/invalid-email':
@@ -39,5 +39,9 @@ export class LoginComponent {
                 }
                 throw err;
             });
+    }
+
+    onAuthSuccess() {
+        this.router.navigateByUrl('/levels');
     }
 }
