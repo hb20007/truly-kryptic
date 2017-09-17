@@ -5,6 +5,7 @@
         <div class="burgermenu"></div>
         <div class="burgermenu"></div>
         <div class="burger-dropdown">
+            <div routerLink="/account" routerLinkActive="active" class="burger-items">Account settings</div>
             <div routerLink="/gettingstarted" routerLinkActive="active" class="burger-items">Getting started</div>
             <div routerLink="/hof" routerLinkActive="active" class="burger-items">Hall of Fame</div>
             <div routerLink="/login" routerLinkActive="active" *ngIf="!(user | async)" class="burger-items">Sign in</div>
@@ -14,7 +15,7 @@
     <i class="fa fa-user-circle menu" aria-hidden="true" id="user"
        routerLink="/account" routerLinkActive="active" *ngIf="user | async">
         <div class="dropdown-menu">
-            <div>Settings</div>
+            <div routerLink="/account" routerLinkActive="active">Settings</div>
             <div (click)="signOut()">Sign out</div>
         </div>
     </i>
