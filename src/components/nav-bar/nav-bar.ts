@@ -5,6 +5,7 @@ import { Component } from "@angular/core";
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs/Observable";
 import * as firebase from "firebase/app";
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'nav-bar',
@@ -17,12 +18,14 @@ export class NavbarComponent {
 
     user: Observable<firebase.User>;
 
-    constructor(private angularFireAuth: AngularFireAuth) {
+    constructor(private router: Router, private angularFireAuth: AngularFireAuth) {
         this.user = angularFireAuth.authState;
     }
 
-    getLoginState() {
-
+    signOut() {
+        this.angularFireAuth.auth.signOut().then(() => {
+            this.router.navigateByUrl('/');
+        });
     }
 
     toggleShrink() {
