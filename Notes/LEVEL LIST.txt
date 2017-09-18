@@ -23,13 +23,13 @@ WORLD
 COUNTRY
 
 11 map			Join the cities with lines, they intersect on Saudi Arabia
-12 saudiarabia	Answer in a cookie
+12 saudiarabia
 13 bamboozled	There are 6 Easter eggs with the names of the people who are quoted with the letters of the answer. People: Malala, Ali, Oppenheimer, MLK, Churchill, Chaplin.
 14 reason		The equation is the shape of a heart
 14b heart		Morse code
 15 smog			Again T9 but this time pick letters corresponding to numbers to make a word.
-16 sent			The other planets are easter eggs. They lead to pics with letters.
-17 acquainted	Each word is in a particular language eg. second word means answer in Afrikaans the last word which is the answer means season in Turkish. The pic is the tower of Babel.
+16 sent
+17 acquainted	Each word is in a particular language eg. second word means answer in Afrikaans the first word which is the answer means season in Finnish. The pic is the tower of Babel.
 18 season		You get teh number seven by summing all the letters. You get 49. so Write all words in 7x7 square. Vertically in the center you will see the word America.
 19 america		First letter of first logo name, second letter of second logo.. etc for the 4 logos.
 20 tent			Fill the crosswords with the answers to the levels, the gray squares are the answers. Answer is ultimate.
@@ -47,7 +47,7 @@ CITY
 25 water			Zoom onto tower, u find Burj Khalifa's coordinates
 26 burjkhalifa		Synonyms are easter eggs. You get pics. Overlay them to get answer.
 27 enigmatic		Source has numbers. Find numbers in these positions in pi. If u see something like 1&60 it means put the numbers beside each other to get a 2 digit number.
-28 ignite			The music is Escape by enrique. Press the escape key you see a picture which says "escape you for rainbows poems like quickly they are". If you rearrange the letters it's a quote by Hughes.
+28 ignite			The music is Escape by enrique. Press the escape key you see a picture which says "escape you for rainbows poems like quickly they are". If you rearrange it's a quote by Hughes.
 29 langstonhughes	Puzzle. Answer in my google drive.
 30 manji			Join the Cs. The letters within the outline anagram to embarrassed.
 
