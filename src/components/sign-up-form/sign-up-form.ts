@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
     styles: [SignUpFormSyl],
 })
 export class SignUpFormComponent {
-    fields = { email: '', password: '' }
+    fields = { email: '', password: '' };
     submissionError = '';
 
     constructor(private router: Router, private angularFireAuth: AngularFireAuth) { }
