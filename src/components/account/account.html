@@ -1,4 +1,24 @@
 <!-- implements: #SPC-account -->
-<div>{{username}}</div>
-<div *ngIf="!(user | async)">Change password</div>
-<button class="delete">Delete account</button>
+<form class="form-container" (ngSubmit)="logUserIn()" #signUpForm="ngForm">
+    <div class="form-field">
+        <div [hidden]="!submissionError" class="form-error">{{submissionError}}</div>
+    </div>
+    <div class="form-field">
+        <label class="form-label" for="oldPassword">Current password</label><br>
+        <input class="form-input" placeholder="..." type="password" [(ngModel)]="fields.currentPassword" name="old" #old="ngModel" id="oldPassword">
+    </div>
+    <div class="form-field">
+        <label class="form-label" for="password">New password</label><br>
+        <input class="form-input" placeholder="..." type="password" [(ngModel)]="fields.password" name="password" #password="ngModel" id="password">
+    </div>
+    <div class="form-field">
+        <label class="form-label" for="confirmPassword">Confirm password</label><br>
+        <input class="form-input" placeholder="..." type="password" [(ngModel)]="fields.confirmPassword" name="confirm" #confirm="ngModel"
+               id="confirmPassword">
+    </div>
+
+    <button class="form-action" type="submit">Change password</button>
+</form>
+<div *ngIf="!hasEmail">{{username}}</div>
+<div *ngIf="hasEmail">Email: {{email}}</div>
+<button class="acc-button" (click)="deleteUser()">Delete account</button>

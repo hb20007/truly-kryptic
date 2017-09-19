@@ -1,14 +1,4 @@
-@import '../../mixins';
+@import "../../mixins.scss";
 
-.delete {
-  cursor: pointer;
-  color: map-get($colors, primary);
-  font-size: 1.2em;
-  margin-top: 1em;
-  display: inline-block;
-  min-width: 6em;
-  border: none;
-  width: 25%;
-
-  @include hover-brighten-displace(map-get($colors, light), 0.6em);
-}
+@include centered-layout();
+@include form-large();
