@@ -23,17 +23,7 @@
             <div class="hint-number">Hint {{index + 1}}</div>
 
             <div class="hint-body">
-                <div *ngIf="!hint.triggers" class="hint-source">Given at start</div>
                 <div *ngIf="hint.triggers" class="hint-source">
-
-                    <div *ngIf="hint.triggers.length == 1" class="hint-source">
-                        Unlocked through partially correct answer:
-                    </div>
-
-                    <div *ngIf="hint.triggers.length > 1" class="hint-source">
-                        Unlocked through partially correct answers:
-                    </div>
-
                     <div class="hint-trigger" *ngFor="let trigger of hint.triggers">
                         {{trigger}}
                     </div>
