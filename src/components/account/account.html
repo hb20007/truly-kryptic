@@ -3,6 +3,8 @@
     <div class="form-field">
         <div [hidden]="!submissionError" class="form-error">{{submissionError}}</div>
     </div>
+    <div class="display" *ngIf="!hasEmail">{{username}}</div>
+    <div class="display" *ngIf="hasEmail">{{email}}</div>
     <div class="form-field">
         <label class="form-label" for="oldPassword">Current password</label><br>
         <input class="form-input" placeholder="..." type="password" [(ngModel)]="fields.currentPassword" name="old" #old="ngModel" id="oldPassword">
@@ -18,7 +20,13 @@
     </div>
 
     <button class="form-action" type="submit">Change password</button>
+    <div class="checkBox-container">
+        <div class="checkBox">
+            <input (change)="toggleDelete($event)" type="checkbox" value="None" id="checkbox" name="check"/>
+            <label for="checkbox"></label>
+        </div>
+        <div style="display: inline-block">I am aware that by deleting my account, all my progress will be
+            lost and my name will be removed from the Hall of Fame.</div>
+    </div>
+    <button [class.unclickable]="!clickable" class="form-action" (click)="deleteUser()">Delete account</button>
 </form>
-<div *ngIf="!hasEmail">{{username}}</div>
-<div *ngIf="hasEmail">Email: {{email}}</div>
-<button class="acc-button" (click)="deleteUser()">Delete account</button>
