@@ -14,16 +14,20 @@ import {Observable} from "rxjs/Observable";
 export class AccountComponent {
     fields = { currentPassword: '', password: '', confirmPassword: '' };
     submissionError = '';
-
     username: string;
     hasEmail: boolean;
     email: string;
+    clickable: boolean = false;
 
     constructor(private angularFireAuth: AngularFireAuth) {
         this.username = angularFireAuth.auth.currentUser.displayName;
         this.hasEmail = angularFireAuth.auth.currentUser.providerData[0].providerId == 'password';
         if (this.hasEmail)
             this.email = angularFireAuth.auth.currentUser.email;
+    }
+
+    toggleDelete(event) {
+        this.clickable = event.target.checked;
     }
 
     deleteUser() {

@@ -38,7 +38,7 @@ nav {
   .dropdown-menu {
     color: map-get($colors, dark);
     position: absolute;
-    background: map-get($colors, light);
+    background: lightgrey;
     height: 0;
     margin-top: 10px;
     width: 150px;
@@ -52,7 +52,7 @@ nav {
     div {
       padding: 10px;
       &:hover {
-        color: darken(map-get($colors, secondary), 10%);
+        background: darken(map-get($colors, secondary), 10%);
       }
     }
   }
@@ -89,6 +89,10 @@ nav.shrink {
     padding-top: 10px;
     transition: all ease .5s;
   }
+
+  #user {
+    padding-bottom: 30px;
+  }
 }
 
 .burgermenu-container {
@@ -115,7 +119,7 @@ nav.shrink {
   .burger-dropdown {
     color: map-get($colors, dark);
     position: absolute;
-    background: map-get($colors, light);
+    background: lightgrey;
     height: 0;
     width: 200px;
     margin-top: 5px;
@@ -128,7 +132,7 @@ nav.shrink {
     div {
       padding: 10px;
       &:hover {
-        color: darken(map-get($colors, secondary), 10%);
+        background: darken(map-get($colors, secondary), 10%);
       }
     }
   }
