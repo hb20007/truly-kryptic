@@ -1,26 +1,13 @@
-TUTORIAL
-
-1 tutorial1
-2 tutorial2
-3 house
-4 next
-
-All the levels are in the alpha directory
-
-WORLD
-
 1 game		A - 1, B - 2 etc. numbers are in source
 2 hallway	Anagram words in source
 3 knowledge	Increase brightness, the word 'elephant' will appear
 4 elephant	Ceasar cipher, source shows the key (21) and the ciphertext.
-5 transport
-6        	Use T9 on the letters in the source
+5 transport The answer is serene
+6 serene    Use T9 on the letters in the source
 7 xtra		Use Braille
 8 powerful	First and last letter of each word in source spell kettle
 9 kettle	Source says 2 : 4. Line 2 word 4 of Corner of the Sky.
 10 time		Answer is violin.
-
-COUNTRY
 
 11 map			Join the cities with lines, they intersect on Saudi Arabia
 12 saudiarabia
@@ -28,13 +15,11 @@ COUNTRY
 14 reason		The equation is the shape of a heart
 14b heart		Morse code
 15 smog			Again T9 but this time pick letters corresponding to numbers to make a word.
-16 sent
-17 acquainted	Each word is in a particular language eg. second word means answer in Afrikaans the first word which is the answer means season in Finnish. The pic is the tower of Babel.
+16 sent         The answer is guernica
+17 guernica 	Each word is in a particular language eg. second word means answer in Afrikaans the first word which is the answer means season in Finnish. The pic is the tower of Babel.
 18 season		You get teh number seven by summing all the letters. You get 49. so Write all words in 7x7 square. Vertically in the center you will see the word America.
 19 america		First letter of first logo name, second letter of second logo.. etc for the 4 logos.
 20 tent			Fill the crosswords with the answers to the levels, the gray squares are the answers. Answer is ultimate.
-
-CITY
 
 21 level21			Slow down audio. Extract from reading of Do not go gentle... The word meteors is muffled or something.
 22 meteors			Sum of odd numbers in each number. You get 777.
@@ -51,8 +36,6 @@ CITY
 29 langstonhughes	Puzzle. Answer in my google drive.
 30 manji			Join the Cs. The letters within the outline anagram to embarrassed.
 
-TOWN
-
 31 level31			2nd letter from heart, 3rd etc... they form the word earth
 31b earth			POUND + ` = Round cuz it's the thing in the R
 32 round			Put vowels between the consonants in the right places.
@@ -64,8 +47,6 @@ TOWN
 38 masterofgoogle	
 39 castle			Pic of youtube. https://www.youtube.com/watch?v=aaWYaJouy3w (the pic in the vid is is http://prntscr.com/f1rj9t )		Every person discovered a type of EM radiation. The answer is the guy who discovered gamma rays.
 40 paulvillard		Join 4s and 0s in pic. It's an m. Type mcdonalds. You get "Take into account the leading graphemes" and a pic of a McDonalds logo in a particular place. Overlay it on the letters. Then take the first letter of each number to get the word softens.
-
-VILLAGE
 
 41 start 			QR code leads to https://en.lichess.org/VSUDQSl9 Evergreen then lebanon then half of Emma Watson's face. The other tree is the norfolk island pine on their flag and leads to the other half of her face.
 42 emmawatson		Viking runes. Spells out I sung of chaos and eternal night. Leads to Paradise Lost. Then the source is a book cipher.
