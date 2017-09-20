@@ -1,66 +1,115 @@
 @import "../../mixins.scss";
 
+.level-area {
+    padding: 0 20%;
+    margin-bottom: 4em;
+}
+
 .level-number-title {
     display: flex;
     font-size: 3em;
     text-align: center;
 
-    .level-number {
-        flex: 1;
+    .level-title {
+        padding: 0 1em;
+        .level-number {
+            font-size: 0.7em;
+        }
     }
+
 
     .level-next,
     .level-prev {
-        flex: 2;
-        @include link();
+        flex: 4;
+        & a {
+            @include link();
+        }
+    }
+
+    .level-prev {
+        text-align: right;
+    }
+    .level-next {
+        text-align: left;
     }
 }
 
-// .level-list-container {
-//     width: 100%;
-//     margin: 2em 0;
-// }
+.hint-area {
+    margin-top: 2em;
 
-// .headers {
-//     display: flex;
-//     justify-content: space-around;
-//     border-bottom: 0.1em solid map-get($colors, light);
-//     padding-bottom: 0.5em;
-// }
+    .hint {
+        margin-bottom: 2em;
+        display: flex;
 
-// .header-item {
-//     font-size: 1.3em;
-// }
+        .hint-number {
+            background: lighten(map-get($colors, primary), 5);
+            padding: 0.5em;
+            text-orientation: sideways;
+            writing-mode: vertical-lr;
+        }
 
-// .level-item,
-// .header-item {
-//     flex: 4;
-//     font-weight: bold;
+        .hint-trigger {
+            margin-bottom: 0.2em;
+            font-weight: bold;
+        }
 
-//     &:nth-child(1) {
-//         flex: 1;
-//         text-align: center;
-//     }
+        .hint-body {
+            flex: 1;
+            padding: 0 1em;
 
-//     &:nth-child(3) {
-//         text-align: center;
-//     }
+            .hint-source {
+                margin-bottom: 1em;
+            }
+        }
 
-//     &:nth-child(4) {
-//         flex: 2;
-//     }
-// }
+        .hint-image {
+            img {
+                cursor: pointer;
+                padding: 0;
+                width: 100%;
+            }
+        }
 
-// .level:nth-child(even) {
-//     background: lighten(map-get($colors, primary), 5);
-// }
+        .hint-text {
+            font-size: 2em;
+        }
+    }
+}
 
-// .sublevel {
-//     display: flex;
-//     justify-content: space-around;
-//     padding: 1em 0;
-// }
+.submit-answer-form {
+    background: rgba(0, 0,0, 0.7);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1em;
+    text-align: center;
 
-// .level-link {
-//     @include link();
-// }
+    input,
+    button {
+        padding: 0.8em;
+        margin: 0;
+        border: none;
+        box-sizing: border-box;
+        font-family: inherit;
+        font-size: 1em;
+        outline: none;
+    }
+
+    input {
+        margin-right: 1em;
+        color: map-get($colors, light);
+        background: map-get($colors, primary);
+        border: 0.05em solid rgba(map-get($colors, secondary), 0.3);
+
+        &:focus {
+            border: 0.05em solid rgba(map-get($colors, secondary), 0.6);
+        }
+    }
+
+    button {
+        background: map-get($colors, light);
+        font-weight: bold;
+    }
+}
