@@ -6,7 +6,7 @@ import * as firebase from "firebase/app";
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as levels from '../../../Notes/levels.json';
 import { getLevelNumber } from '../../shared';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'level',
@@ -16,15 +16,29 @@ import { ActivatedRoute } from '@angular/router';
 // Implements: #SPC-level
 export class LevelComponent implements OnInit {
 
-    prevLevelLink: Observable<String | undefined>;
-    nextLevelLink: Observable<String | undefined>;
+    imgHintDir = '/img/hints/';
+    fields = { answer: '' };
 
-    level: Observable<Level & { levelNumber: String }>;
+    prevLevelLink: Observable<string | undefined>;
+    nextLevelLink: Observable<string | undefined>;
+
+    openPrevLevel: Function;
+    openNextLevel: Function;
+
+    level: Observable<Level>;
     levelNumber: Observable<String>;
 
     levelIndices: Observable<{ levelIndex: number, sublevelIndex: number }>
 
-    constructor(private route: ActivatedRoute) { }
+    constructor(private route: ActivatedRoute, private router: Router) { }
+
+    onKey(keyCode) {
+        if (keyCode == '37') {
+            this.openPrevLevel && this.openPrevLevel();
+        } else if (keyCode == '39') {
+            this.openNextLevel && this.openNextLevel();
+        }
+    }
 
     ngOnInit() {
         this.levelIndices = this.route.paramMap.map(params => ({
@@ -57,5 +71,8 @@ export class LevelComponent implements OnInit {
                 return `/level/${nextLevelIndex}/${nextSublevelIndex}`;
             }
         });
+
+        this.nextLevelLink.subscribe(url => this.openNextLevel = url && (() => this.router.navigateByUrl(url)));
+        this.prevLevelLink.subscribe(url => this.openPrevLevel = url && (() => this.router.navigateByUrl(url)));
     }
 }
