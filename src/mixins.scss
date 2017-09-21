@@ -22,6 +22,11 @@ $hover-displacement: 0.1em;
     &:hover {
         cursor: pointer;
     }
+
+    &[disabled] {
+        cursor: default;
+        color: lighten(map-get($colors, primary), 10);
+    }
 }
 
 @mixin centered-layout {

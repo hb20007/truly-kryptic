@@ -1,11 +1,11 @@
-[SPC-level-clue]
+[SPC-level-hint]
 text = '''
 All levels start with one prexisting image and text clue.
 
 Additional clues can be unlocked 
 '''
 
-[TST-level-clue]
+[TST-level-hint]
 text = '''
 Assert that a level starts with one prexisting image and text clue.
 '''

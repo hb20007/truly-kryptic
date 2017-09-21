@@ -7,6 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as levels from '../../../Notes/levels.json';
 import { getLevelNumber } from '../../shared';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: 'level',
@@ -30,7 +31,7 @@ export class LevelComponent implements OnInit {
 
     levelIndices: Observable<{ levelIndex: number, sublevelIndex: number }>
 
-    constructor(private route: ActivatedRoute, private router: Router) { }
+    constructor(private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) { }
 
     onKey(keyCode) {
         if (keyCode == '37') {
@@ -38,6 +39,10 @@ export class LevelComponent implements OnInit {
         } else if (keyCode == '39') {
             this.openNextLevel && this.openNextLevel();
         }
+    }
+
+    getBackgroundUrl(image) {
+        return this.sanitizer.bypassSecurityTrustStyle(`url("${this.imgHintDir + image}")`);
     }
 
     ngOnInit() {

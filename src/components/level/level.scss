@@ -1,26 +1,27 @@
 @import "../../mixins.scss";
 
 .level-area {
-    padding: 0 20%;
+    // padding: 0 20%;
     margin-bottom: 4em;
 }
 
-.level-number-title {
+.level-top-bar {
     display: flex;
-    font-size: 3em;
-    text-align: center;
+    justify-content: space-between;
+}
+
+.level-nav-title {
+    display: flex;
+    font-size: 2em;
+    // text-align: center;
+    justify-content: flex-start;
 
     .level-title {
         padding: 0 1em;
-        .level-number {
-            font-size: 0.7em;
-        }
     }
-
 
     .level-next,
     .level-prev {
-        flex: 4;
         & a {
             @include link();
         }
@@ -32,6 +33,11 @@
     .level-next {
         text-align: left;
     }
+}
+
+.level-number {
+    font-size: 2em;
+    // line-height: 3em;
 }
 
 .hint-area {
@@ -55,23 +61,26 @@
 
         .hint-body {
             flex: 1;
-            padding: 0 1em;
+            padding-left: 1em;
+            background: lighten(map-get($colors, primary), 1);
 
-            .hint-source {
+            .hint-triggers {
                 margin-bottom: 1em;
+                margin-top: 1em;
             }
         }
 
         .hint-image {
-            img {
-                cursor: pointer;
-                padding: 0;
-                width: 100%;
-            }
+            width: 100%;
+            height: 30em;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left top;
         }
 
         .hint-text {
             font-size: 2em;
+            padding: 0.5em;
         }
     }
 }
