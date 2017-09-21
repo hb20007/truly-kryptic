@@ -22,7 +22,7 @@ module.exports = {
                     {
                         loader: 'ngc-webpack',
                         options: {
-                            disable: !prod,
+                            disable: true // !prod,
                         }
                     },
                 ],

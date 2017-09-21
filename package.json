@@ -51,10 +51,11 @@
     "postinstall": "webdriver-manager update",
     "start": "webpack-dev-server",
     "test": "karma start --single-run",
-    "build": "webpack",
+    "build": "webpack -p",
     "serve-prod": "http-server dist/ -a localhost -p 9090",
     "webd": "webdriver-manager start",
-    "e2e": "protractor protractor.conf.js"
+    "e2e": "protractor protractor.conf.js",
+    "deploy": "rm dist/ -rf; npm run build; firebase deploy --project truly-kryptic"
   },
   "repository": {
     "type": "git",
