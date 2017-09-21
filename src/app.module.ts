@@ -13,11 +13,13 @@ import { firebaseConfig } from './firebase.config';
 import { SignUpFormComponent } from './components/sign-up-form/sign-up-form';
 import { ProviderAuthComponent } from './components/provider-auth/provider-auth';
 import { LoginComponent } from './components/login/login';
+import { AccountComponent } from "./components/account/account";
 import { LevelListComponent } from './components/level-list/level-list';
 
 const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'account', component: AccountComponent},
   { path: 'level-list', component: LevelListComponent },
 ];
 
@@ -39,6 +41,7 @@ const appRoutes: Routes = [
     LandingpageComponent,
     SignUpFormComponent,
     LoginComponent,
+    AccountComponent,
     ProviderAuthComponent,
     LevelListComponent,
   ],

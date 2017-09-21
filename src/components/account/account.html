@@ -1,0 +1,47 @@
+<!-- implements: #SPC-account -->
+<div class="title">My Account</div>
+<div class="display" *ngIf="!hasEmail">{{username}}</div>
+<div class="display email" *ngIf="hasEmail">{{email}}</div>
+<form class="form-container" (ngSubmit)="logUserIn()" #signUpForm="ngForm">
+    <div class="form-field">
+        <div [hidden]="!submissionError" class="form-error">{{submissionError}}</div>
+    </div>
+    <div class="section-container">
+        <div class="acc-section-one">
+            <div class="display">Change password</div>
+            <div class="form-field">
+                <label class="form-label" for="oldPassword">Current password</label><br>
+                <input class="form-input" placeholder="..." type="password" [(ngModel)]="fields.currentPassword" name="old" #old="ngModel" id="oldPassword">
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="password">New password</label><br>
+                <input class="form-input" placeholder="..." type="password" [(ngModel)]="fields.password" name="password" #password="ngModel" id="password">
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="confirmPassword">Confirm password</label><br>
+                <input class="form-input" placeholder="..." type="password" [(ngModel)]="fields.confirmPassword" name="confirm" #confirm="ngModel"
+                       id="confirmPassword">
+            </div>
+            <button class="form-action" type="submit">Change password</button>
+        </div>
+
+        <div class="acc-section-two">
+            <div class="display">Delete account</div>
+            <div style="padding-top: 10px">You are about to delete your account!</div>
+            <div>Please consider the following before doing so:</div>
+            <div class="checkBox-container">
+                <ul>
+                    <li>Cannot be undone</li>
+                    <li>All progress will be lost</li>
+                    <li>Account removed from Hall of Fame</li>
+                </ul>
+                <div class="checkBox">
+                    <input (change)="toggleDelete($event)" type="checkbox" value="None" id="checkbox" name="check"/>
+                    <label for="checkbox"></label>
+                </div>
+                <label for="checkbox" class="agree">I understand</label>
+            </div>
+            <button [class.unclickable]="!clickable" class="form-action" (click)="deleteUser()">Delete account</button>
+        </div>
+    </div>
+</form>
