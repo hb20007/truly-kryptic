@@ -1,20 +1,16 @@
 <div (window:keydown)="onKey($event.keyCode)" class="level-area">
 
-    <div class="level-number-title">
-        <div class="level-prev">
-            <a *ngIf="prevLevelLink | async" [routerLink]="prevLevelLink | async">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-    </a>
+    <div class="level-top-bar">
+        <div class="level-nav-title">
+            <div class="level-prev">
+                <a [attr.disabled]="!(prevLevelLink | async) || null" [routerLink]="prevLevelLink | async"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+            </div>
+            <div class="level-title">{{(level | async).title}}</div>
+            <div class="level-next">
+                <a [attr.disabled]="!(nextLevelLink | async) || null" [routerLink]="nextLevelLink | async"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            </div>
         </div>
-        <div class="level-title">
-            {{(level | async).title}}
-            <div class="level-number">Level {{levelNumber | async}}</div>
-        </div>
-        <div class="level-next">
-            <a *ngIf="nextLevelLink | async" [routerLink]="nextLevelLink | async">
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-    </a>
-        </div>
+        <div class="level-number">Level {{levelNumber | async}}</div>
     </div>
 
 
@@ -23,7 +19,7 @@
             <div class="hint-number">Hint {{index + 1}}</div>
 
             <div class="hint-body">
-                <div *ngIf="hint.triggers" class="hint-source">
+                <div *ngIf="hint.triggers" class="hint-triggers">
                     <div class="hint-trigger" *ngFor="let trigger of hint.triggers">
                         {{trigger}}
                     </div>
@@ -33,8 +29,10 @@
                     <div class="hint-unlocked-by">Unlocked by Answer(s)</div>
                 </div> -->
 
-                <div class="hint-text" *ngIf="hint.text">"{{hint.text}}"</div>
-                <div class="hint-image" *ngIf="hint.image"><img [src]="imgHintDir + hint.image" alt="Image Hint"> </div>
+                <div class="hint-text" *ngIf="hint.text">{{hint.text}}</div>
+                <div class="hint-image" *ngIf="hint.image" [style.background-image]="getBackgroundUrl(hint.image)">
+                    <!-- <img [src]=" + hint.image" alt="Image Hint"> -->
+                </div>
             </div>
         </div>
     </div>
