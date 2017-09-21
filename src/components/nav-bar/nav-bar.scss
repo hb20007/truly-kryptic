@@ -138,7 +138,7 @@ nav.shrink {
   }
 }
 
-@media (min-width: $min-pixels) {
+@media (min-width: $min-desktop-pixels) {
   .menu {
     display: inline-block;
   }
