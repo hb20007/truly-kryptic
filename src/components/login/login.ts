@@ -2,8 +2,6 @@ import * as LoginTpl from './login.html';
 import * as LoginSyl from './login.scss';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from "@angular/core";
-import * as firebase from 'firebase/app';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 // partof: #SPC-login
@@ -13,7 +11,7 @@ import { Router } from '@angular/router';
     styles: [LoginSyl],
 })
 export class LoginComponent {
-    fields = { email: '', password: '' }
+    fields = { email: '', password: '' };
     submissionError = '';
 
     constructor(private router: Router, private angularFireAuth: AngularFireAuth) {

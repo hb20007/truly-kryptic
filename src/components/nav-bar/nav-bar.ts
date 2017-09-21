@@ -29,6 +29,6 @@ export class NavbarComponent {
     }
 
     toggleShrink() {
-        return window.pageYOffset > 100;
+        return window.pageYOffset > 25;
     }
 }

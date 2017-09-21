@@ -22,7 +22,6 @@ nav {
   height: 40px;
   width: 180px;
   transition: all ease .5s;
-  cursor: pointer;
 }
 
 #user {
@@ -32,14 +31,14 @@ nav {
 
   &:hover {
     .dropdown-menu {
-      height: 85px;
+      height: initial;
     }
   }
 
   .dropdown-menu {
     color: map-get($colors, dark);
     position: absolute;
-    background: map-get($colors, light);
+    background: lightgrey;
     height: 0;
     margin-top: 10px;
     width: 150px;
@@ -47,13 +46,13 @@ nav {
     overflow: hidden;
     font-size: 20px;
     font-family: HelveticaNeueW01-Thin,HelveticaNeueW02-Thin,HelveticaNeueW10-35Thin,sans-serif;
-    font-weight: 600;
+    font-weight: 400;
     right: 0;
 
     div {
       padding: 10px;
       &:hover {
-        color: darken(map-get($colors, secondary), 10%);
+        background: darken(map-get($colors, secondary), 10%);
       }
     }
   }
@@ -90,6 +89,10 @@ nav.shrink {
     padding-top: 10px;
     transition: all ease .5s;
   }
+
+  #user {
+    padding-bottom: 30px;
+  }
 }
 
 .burgermenu-container {
@@ -102,7 +105,7 @@ nav.shrink {
 
   &:hover {
     .burger-dropdown {
-      height: 135px;
+      height: initial;
     }
   }
 
@@ -116,7 +119,7 @@ nav.shrink {
   .burger-dropdown {
     color: map-get($colors, dark);
     position: absolute;
-    background: map-get($colors, light);
+    background: lightgrey;
     height: 0;
     width: 200px;
     margin-top: 5px;
@@ -129,13 +132,13 @@ nav.shrink {
     div {
       padding: 10px;
       &:hover {
-        color: darken(map-get($colors, secondary), 10%);
+        background: darken(map-get($colors, secondary), 10%);
       }
     }
   }
 }
 
-@media (min-width: 780px) {
+@media (min-width: $min-desktop-pixels) {
   .menu {
     display: inline-block;
   }
