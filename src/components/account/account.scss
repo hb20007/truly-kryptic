@@ -100,7 +100,7 @@ li {
   }
 }
 
-@media (min-width: $min-pixels) {
+@media (min-width: $min-desktop-pixels) {
   .email {
     padding-left: 0;
   }
