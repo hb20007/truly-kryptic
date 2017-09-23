@@ -10,8 +10,8 @@
 10 time		Answer is violin.
 
 11 map			Join the cities with lines, they intersect on Saudi Arabia
-12 saudiarabia
-13 bamboozled	There are 6 Easter eggs with the names of the people who are quoted with the letters of the answer. People: Malala, Ali, Oppenheimer, MLK, Churchill, Chaplin.
+12 saudiarabia  Solve nonogram to get apple
+13 apple    	There are 6 Easter eggs with the names of the people who are quoted with the letters of the answer. People: Malala, Ali, Oppenheimer, MLK, Churchill, Chaplin.
 14 reason		The equation is the shape of a heart
 14b heart		Morse code
 15 smog			Again T9 but this time pick letters corresponding to numbers to make a word.
@@ -30,8 +30,8 @@
 24d calmdown
 24e robinhood
 25 water			Zoom onto tower, u find Burj Khalifa's coordinates
-26 burjkhalifa		Synonyms are easter eggs. You get pics. Overlay them to get answer.
-27 enigmatic		Source has numbers. Find numbers in these positions in pi. If u see something like 1&60 it means put the numbers beside each other to get a 2 digit number.
+26 burjkhalifa		Answer is pupil
+27 pupil     		Source has numbers. Find numbers in these positions in pi. If u see something like 1&60 it means put the numbers beside each other to get a 2 digit number.
 28 ignite			The music is Escape by enrique. Press the escape key you see a picture which says "escape you for rainbows poems like quickly they are". If you rearrange it's a quote by Hughes.
 29 langstonhughes	Puzzle. Answer in my google drive.
 30 manji			Join the Cs. The letters within the outline anagram to embarrassed.
@@ -42,9 +42,9 @@
 33 attack			Morse code chart.
 34 gelato			Symbols are faith, and hope. Missing is love.
 35 ai				0*20^3+5*20^2+0+2
-36 2012 			
+36 2012 			Ans is what a wonderful world
 37 acinreug			IPA for a quote in Lolita. Type lolita to get "Who was the real life Lolita?". You get florencehorner which leads u to florencesallyhorner. Then Do you know another famous person with the name Florence? florencenightingale is an easter egg which leads to florencejoyner then flojo then song her daughter sang is gravity then leads u to gravitropism. Then what is the original name of the uni named after the guy who introduced potato to greece? othonianuniverity then it leads u to panathinaikos.
-38 masterofgoogle	
+38 masterofgoogle	Sonnet 116
 39 castle			Pic of youtube. https://www.youtube.com/watch?v=aaWYaJouy3w (the pic in the vid is is http://prntscr.com/f1rj9t )		Every person discovered a type of EM radiation. The answer is the guy who discovered gamma rays.
 40 paulvillard		Join 4s and 0s in pic. It's an m. Type mcdonalds. You get "Take into account the leading graphemes" and a pic of a McDonalds logo in a particular place. Overlay it on the letters. Then take the first letter of each number to get the word softens.
 

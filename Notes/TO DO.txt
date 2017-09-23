@@ -8,12 +8,12 @@
 - Maybe fix hyphens in level titles and main page
 - Send email to all ppl who finished game
 
-LEVELS
-- Replace tutorial (or maybe no tutorial, just provide some extra hints/answers for first level(s); they can type help. Have a hint tell them to read the Getting started), 
-- 12, 26, 36, 38, 49
+Upload level list to gdrive
 
-Level idea: Another T9 level but this time it's like *|1|5|3|# *|1|2|6|8|7 1|3|6|5|6|9|7
-Another idea: sonnet.txt
-Another idea: wonderful world. Pics. Music to your eyes.
-Japan words Matching puzzle with precise dots that lead to Japanese multiplication
-A nonogram
+49 Japan words Matching puzzle with precise dots that lead to Japanese multiplication.
+1. Kawaii - the quality of cuteness in Japanese culture
+2. Hikikomori - Japanese
+3.
+4.
+5.
+6.
