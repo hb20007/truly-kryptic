@@ -41,7 +41,7 @@
         <div class="form-field">
             <div [hidden]="!submissionError" class="form-error">{{submissionError}}</div>
         </div>
-        <input class="form-input" autocomplete="off" type="text" [(ngModel)]="fields.answer" name="text" #answer="ngModel" id="answer">
+        <input class="form-input" [class.wrong-answer]="answeredWrong" (keydown)="answeredWrong = false; true" (focus)="answeredWrong = false; true" autocomplete="off" type="text" [(ngModel)]="fields.answer" name="text" #answer="ngModel" id="answer">
         <button type="submit">Submit Answer</button>
     </form>
 </div>

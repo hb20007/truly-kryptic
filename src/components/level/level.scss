@@ -116,6 +116,10 @@
         &:focus {
             border: 0.05em solid rgba(map-get($colors, secondary), 0.6);
         }
+
+        &.wrong-answer {
+            background: rgba(map-get($colors, danger), 0.6);
+        }
     }
 
     button {
