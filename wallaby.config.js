@@ -26,15 +26,15 @@ module.exports = function (wallaby) {
 
     return {
         files: [
-            'node_modules/core-js/client/shim.min.js',
+            { pattern: 'node_modules/core-js/client/shim.min.js', instrument: false },
             // Zone.js dependencies
-            'node_modules/zone.js/dist/zone.js',
-            'node_modules/zone.js/dist/long-stack-trace-zone.js',
-            'node_modules/zone.js/dist/async-test.js',
-            'node_modules/zone.js/dist/fake-async-test.js',
-            'node_modules/zone.js/dist/sync-test.js',
-            'node_modules/zone.js/dist/proxy.js',
-            'node_modules/zone.js/dist/jasmine-patch.js',
+            { pattern: 'node_modules/zone.js/dist/zone.js', instrument: false },
+            { pattern: 'node_modules/zone.js/dist/long-stack-trace-zone.js', instrument: false },
+            { pattern: 'node_modules/zone.js/dist/async-test.js', instrument: false },
+            { pattern: 'node_modules/zone.js/dist/fake-async-test.js', instrument: false },
+            { pattern: 'node_modules/zone.js/dist/sync-test.js', instrument: false },
+            { pattern: 'node_modules/zone.js/dist/proxy.js', instrument: false },
+            { pattern: 'node_modules/zone.js/dist/jasmine-patch.js', instrument: false },
 
             { pattern: 'Notes/**/*.json', load: false },
             { pattern: 'src/**/*.scss', load: false },

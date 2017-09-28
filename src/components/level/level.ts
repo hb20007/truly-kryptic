@@ -9,6 +9,7 @@ import { getLevelNumber } from '../../shared';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import "rxjs/add/operator/combineLatest";
 
 @Component({
     selector: 'level',
@@ -32,6 +33,8 @@ export class LevelComponent implements OnInit {
 
     guesses: FirebaseListObservable<string[]>;
     levelAnswers: string[];
+
+    hints: Observable<Hint[]>;
 
     answeredWrong: boolean;
 
@@ -118,6 +121,19 @@ export class LevelComponent implements OnInit {
             this.guesses = this.db.list(guessesDbPath);
         });
 
-        this.level.subscribe(level => this.levelAnswers = level.answers)
+        this.level.subscribe(level => this.levelAnswers = level.answers);
+
+        this.hints = this.level.combineLatest(this.guesses).map(([level, guesses]) =>
+            level.hints.filter(hint => {
+
+                const activeTriggers = (hint.triggers || [])
+                    .filter(tr => guesses.some(guess => this.fmtGuessOrAnswer(guess) == this.fmtGuessOrAnswer(tr)));
+
+                if (!hint.triggers || activeTriggers) {
+                    return { ...hint, triggers: activeTriggers };
+                } else {
+                    return undefined;
+                }
+            }).filter(Boolean));
     }
 }

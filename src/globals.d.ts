@@ -10,4 +10,4 @@ declare interface Level {
     answers: Array<string>;
 }
 
-declare type Hint = { image: String } | { text: String } | { audio: String };
+declare type Hint = ({ image: String } | { text: String } | { audio: String }) & { triggers: string[] };
