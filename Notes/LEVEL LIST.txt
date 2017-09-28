@@ -1,40 +1,25 @@
-TUTORIAL
-
-1 tutorial1
-2 tutorial2
-3 house
-4 next
-
-All the levels are in the alpha directory
-
-WORLD
-
 1 game		A - 1, B - 2 etc. numbers are in source
 2 hallway	Anagram words in source
 3 knowledge	Increase brightness, the word 'elephant' will appear
 4 elephant	Ceasar cipher, source shows the key (21) and the ciphertext.
-5 transport
-6        	Use T9 on the letters in the source
+5 transport The answer is serene
+6 serene    Use T9 on the letters in the source
 7 xtra		Use Braille
 8 powerful	First and last letter of each word in source spell kettle
 9 kettle	Source says 2 : 4. Line 2 word 4 of Corner of the Sky.
 10 time		Answer is violin.
 
-COUNTRY
-
 11 map			Join the cities with lines, they intersect on Saudi Arabia
-12 saudiarabia	Answer in a cookie
-13 bamboozled	There are 6 Easter eggs with the names of the people who are quoted with the letters of the answer. People: Malala, Ali, Oppenheimer, MLK, Churchill, Chaplin.
+12 saudiarabia  Solve nonogram to get apple
+13 apple    	There are 6 Easter eggs with the names of the people who are quoted with the letters of the answer. People: Malala, Ali, Oppenheimer, MLK, Churchill, Chaplin.
 14 reason		The equation is the shape of a heart
 14b heart		Morse code
 15 smog			Again T9 but this time pick letters corresponding to numbers to make a word.
-16 sent			The other planets are easter eggs. They lead to pics with letters.
-17 acquainted	Each word is in a particular language eg. second word means answer in Afrikaans the last word which is the answer means season in Turkish. The pic is the tower of Babel.
+16 sent         The answer is guernica
+17 guernica 	Each word is in a particular language eg. second word means answer in Afrikaans the first word which is the answer means season in Finnish. The pic is the tower of Babel.
 18 season		You get teh number seven by summing all the letters. You get 49. so Write all words in 7x7 square. Vertically in the center you will see the word America.
 19 america		First letter of first logo name, second letter of second logo.. etc for the 4 logos.
 20 tent			Fill the crosswords with the answers to the levels, the gray squares are the answers. Answer is ultimate.
-
-CITY
 
 21 level21			Slow down audio. Extract from reading of Do not go gentle... The word meteors is muffled or something.
 22 meteors			Sum of odd numbers in each number. You get 777.
@@ -45,13 +30,11 @@ CITY
 24d calmdown
 24e robinhood
 25 water			Zoom onto tower, u find Burj Khalifa's coordinates
-26 burjkhalifa		Synonyms are easter eggs. You get pics. Overlay them to get answer.
-27 enigmatic		Source has numbers. Find numbers in these positions in pi. If u see something like 1&60 it means put the numbers beside each other to get a 2 digit number.
-28 ignite			The music is Escape by enrique. Press the escape key you see a picture which says "escape you for rainbows poems like quickly they are". If you rearrange the letters it's a quote by Hughes.
+26 burjkhalifa		Answer is pupil
+27 pupil     		Source has numbers. Find numbers in these positions in pi. If u see something like 1&60 it means put the numbers beside each other to get a 2 digit number.
+28 ignite			The music is Escape by enrique. Press the escape key you see a picture which says "escape you for rainbows poems like quickly they are". If you rearrange it's a quote by Hughes.
 29 langstonhughes	Puzzle. Answer in my google drive.
 30 manji			Join the Cs. The letters within the outline anagram to embarrassed.
-
-TOWN
 
 31 level31			2nd letter from heart, 3rd etc... they form the word earth
 31b earth			POUND + ` = Round cuz it's the thing in the R
@@ -59,22 +42,20 @@ TOWN
 33 attack			Morse code chart.
 34 gelato			Symbols are faith, and hope. Missing is love.
 35 ai				0*20^3+5*20^2+0+2
-36 2012 			Put the image in the stegangographic website provided with password guernica. part 2: https://github.com/hb20007/Truly-Kryptic   Type queenofhearts u get a hint that the ans. is the name of the painting backwards.
+36 2012 			Ans is what a wonderful world
 37 acinreug			IPA for a quote in Lolita. Type lolita to get "Who was the real life Lolita?". You get florencehorner which leads u to florencesallyhorner. Then Do you know another famous person with the name Florence? florencenightingale is an easter egg which leads to florencejoyner then flojo then song her daughter sang is gravity then leads u to gravitropism. Then what is the original name of the uni named after the guy who introduced potato to greece? othonianuniverity then it leads u to panathinaikos.
-38 masterofgoogle	Hex of color is 204659. The word in the pic is aaongv. a+2 = c etc.
-39 castle			Pic of youtube. https://www.youtube.com/watch?v=aaWYaJouy3w (the pic is http://prntscr.com/f1rj9t )		Every person in the story discovered a type of EM radiation. The answer is the guy who discovered gamma rays.
+38 masterofgoogle	Sonnet 116
+39 castle			Pic of youtube. https://www.youtube.com/watch?v=aaWYaJouy3w (the pic in the vid is is http://prntscr.com/f1rj9t )		Every person discovered a type of EM radiation. The answer is the guy who discovered gamma rays.
 40 paulvillard		Join 4s and 0s in pic. It's an m. Type mcdonalds. You get "Take into account the leading graphemes" and a pic of a McDonalds logo in a particular place. Overlay it on the letters. Then take the first letter of each number to get the word softens.
-
-VILLAGE
 
 41 start 			QR code leads to https://en.lichess.org/VSUDQSl9 Evergreen then lebanon then half of Emma Watson's face. The other tree is the norfolk island pine on their flag and leads to the other half of her face.
 42 emmawatson		Viking runes. Spells out I sung of chaos and eternal night. Leads to Paradise Lost. Then the source is a book cipher.
 43 aether			The numbers are a perfect square. The magic number is Kaprekar's constant. kaprekarsconstant tells u to search for his fb profile. You will find 5 numbers across his fb page. The numbers are ASCII. You get letters in pride.
 44 pride			They gave TED talks. Each person's name is an easter egg eg. "Eleventh word" for Blaine. You get the words in order: thought grew minutes people music publicly. Each word is an easter egg. They provide the taxonomy for dolphins.
-45 dolphin			Logos: apple, beats, lg, nvidia. Then many logos in the same image. Monster nike snapchat. Every one is an easter egg and u get 4 vertical letters for each. Source has one more. Also the previous pictures had 2 more. In the end You arrange them to get pizzicato so there are 9 of them in total.
+45 dolphin			Logos: apple, beats, lg, nvidia. Then many logos in the same image. Monster nike snapchat. Every one is an easter egg and u get 4 vertical letters for each. Source has one more. Also the previous pictures had 2 more. In the end you arrange them to get pizzicato so there are 9 of them in total.
 46 pizzicato		zetafunction, eulersformula, celsius (leads to temperature) 
 47 temperature		you get a chemical reaction and u need to find the product. It's sodium ethyl xanthate (sex) so sex leads u to the pic of a protein. It's called sonichedgehog. Hint is: AATGCTACTATTGTTGAA. The single-letter data-base codes (SLC) of the amino acids spell out native.
 48 native			The names of the dwarves in the paragraph make an arrow pointing to the word searching.
-49 searching		One of the symbols is a distortion of the word "serene". In the image metadata in camera model you have "Answer is s******eternity"
-50 sereneeternity	The third person is Dvorak. That's all that matters. Map the letters on a Dvorak Keyboards (punctuation included) you get Type cellardoor....
+49 searching		Matching puzzle with precise dots that lead to Japanese multiplication.
+50 252          	The third person is Dvorak. That's all that matters. Map the letters on a Dvorak Keyboards (punctuation included) you get Type cellardoor....
 cellardoor

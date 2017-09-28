@@ -7,6 +7,3 @@
 - Remove robots.txt and make sure all unwanted stuff have <meta name="robots" content="noindex, nofollow">
 - Maybe fix hyphens in level titles and main page
 - Send email to all ppl who finished game
-
-LEVELS
-- Replace tutorial, level 5,
