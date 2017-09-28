@@ -8,6 +8,7 @@ import * as levels from '../../../Notes/levels.json';
 import { getLevelNumber } from '../../shared';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
     selector: 'level',
@@ -29,9 +30,15 @@ export class LevelComponent implements OnInit {
     level: Observable<Level>;
     levelNumber: Observable<String>;
 
+    guesses: FirebaseListObservable<string[]>;
+    levelAnswers: string[];
+
+    answeredWrong: boolean;
+
     levelIndices: Observable<{ levelIndex: number, sublevelIndex: number }>
 
-    constructor(private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) { }
+    constructor(private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer,
+        private db: AngularFireDatabase, private angularFireAuth: AngularFireAuth) { }
 
     onKey(keyCode) {
         if (keyCode == '37') {
@@ -39,6 +46,31 @@ export class LevelComponent implements OnInit {
         } else if (keyCode == '39') {
             this.openNextLevel && this.openNextLevel();
         }
+    }
+
+    submitAnswer() {
+        this.answeredWrong = false;
+
+        const guess = this.fields.answer.trim();
+        if (guess) {
+            this.guesses.push(guess);
+        }
+
+        const correct = this.levelAnswers.find(levelAnswer => this.fmtGuessOrAnswer(guess) == this.fmtGuessOrAnswer(levelAnswer));
+
+        if (correct) {
+            if (this.openNextLevel) {
+                this.openNextLevel();
+            } else {
+                // todo, go to hall of fame form
+            }
+        } else {
+            this.answeredWrong = true;
+        }
+    }
+
+    fmtGuessOrAnswer(text) {
+        return text.replace(/[^A-Za-z0-9]/g, '').toLocaleLowerCase();
     }
 
     getBackgroundUrl(image) {
@@ -79,5 +111,13 @@ export class LevelComponent implements OnInit {
 
         this.nextLevelLink.subscribe(url => this.openNextLevel = url && (() => this.router.navigateByUrl(url)));
         this.prevLevelLink.subscribe(url => this.openPrevLevel = url && (() => this.router.navigateByUrl(url)));
+
+        this.levelIndices.subscribe(({ levelIndex, sublevelIndex }) => {
+            const userId = this.angularFireAuth.auth.currentUser.uid.toString();
+            const guessesDbPath = `${userId}/${levelIndex}/${sublevelIndex}/guesses`;
+            this.guesses = this.db.list(guessesDbPath);
+        });
+
+        this.level.subscribe(level => this.levelAnswers = level.answers)
     }
 }
