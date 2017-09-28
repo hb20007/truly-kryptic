@@ -22,7 +22,7 @@ module.exports = {
                     {
                         loader: 'ngc-webpack',
                         options: {
-                            disable: !prod,
+                            disable: true // !prod,
                         }
                     },
                 ],
@@ -49,6 +49,7 @@ module.exports = {
     plugins: [
         // prod && 
         new CopyWebpackPlugin([{ from: 'index.html', to: 'index.html' }]),
+        new CopyWebpackPlugin([{ from: 'img', to: 'img' }]),
         new webpack.DefinePlugin({
             NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         }),

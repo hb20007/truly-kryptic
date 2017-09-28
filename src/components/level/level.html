@@ -1,0 +1,42 @@
+<div (window:keydown)="onKey($event.keyCode)" class="level-area">
+
+    <div class="level-top-bar">
+        <div class="level-nav-title">
+            <div class="level-prev">
+                <a [attr.disabled]="!(prevLevelLink | async) || null" [routerLink]="prevLevelLink | async"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+            </div>
+            <div class="level-title">{{(level | async).title}}</div>
+            <div class="level-next">
+                <a [attr.disabled]="!(nextLevelLink | async) || null" [routerLink]="nextLevelLink | async"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            </div>
+        </div>
+        <div class="level-number">Level {{levelNumber | async}}</div>
+    </div>
+
+
+    <div class="hint-area">
+        <div *ngFor="let hint of (hints | async); index as index" class="hint">
+            <div class="hint-number">Hint {{index + 1}}</div>
+
+            <div class="hint-body">
+                <div *ngIf="hint.triggers" class="hint-triggers">
+                    <div class="hint-trigger" *ngFor="let trigger of hint.triggers">
+                        {{trigger}}
+                    </div>
+                </div>
+
+                <div class="hint-text" *ngIf="hint.text">{{hint.text}}</div>
+                <div class="hint-image" *ngIf="hint.image" [style.background-image]="getBackgroundUrl(hint.image)">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form class="submit-answer-form" (ngSubmit)="submitAnswer()" #answerForm="ngForm">
+        <div class="form-field">
+            <div [hidden]="!submissionError" class="form-error">{{submissionError}}</div>
+        </div>
+        <input class="form-input" [class.wrong-answer]="answeredWrong" (keydown)="answeredWrong = false; true" (focus)="answeredWrong = false; true" autocomplete="off" type="text" [(ngModel)]="fields.answer" name="text" #answer="ngModel" id="answer">
+        <button type="submit">Submit Answer</button>
+    </form>
+</div>

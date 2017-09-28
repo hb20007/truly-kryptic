@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as levels from '../../../Notes/levels.json';
+import { getLevelNumber } from '../../shared';
 
 @Component({
     selector: 'level-list',
@@ -14,15 +15,6 @@ import * as levels from '../../../Notes/levels.json';
 
 // Implements: #SPC-level-list
 export class LevelListComponent {
-
-    levels: Array<Array<Level>>;
-
-    constructor() {
-        this.levels = levels;
-    }
-
-    getLevelNumber(levelIndex: number, sublevelIndex: number, totalSublevels: number) {
-        let alphabet = 'abcdefghijklmnopqrstuvwxyz';
-        return (levelIndex + 1) + (totalSublevels > 1 ? alphabet[sublevelIndex] : '');
-    }
+    levels: Array<Array<Level>> = levels;
+    getLevelNumber = getLevelNumber;
 }
