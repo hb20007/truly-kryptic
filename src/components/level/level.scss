@@ -1,0 +1,129 @@
+@import "../../mixins.scss";
+
+.level-area {
+    // padding: 0 20%;
+    margin-bottom: 4em;
+}
+
+.level-top-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.level-nav-title {
+    display: flex;
+    font-size: 2em;
+    // text-align: center;
+    justify-content: flex-start;
+
+    .level-title {
+        padding: 0 1em;
+    }
+
+    .level-next,
+    .level-prev {
+        & a {
+            @include link();
+        }
+    }
+
+    .level-prev {
+        text-align: right;
+    }
+    .level-next {
+        text-align: left;
+    }
+}
+
+.level-number {
+    font-size: 2em;
+}
+
+.hint-area {
+    margin-top: 2em;
+
+    .hint {
+        margin-bottom: 2em;
+        display: flex;
+
+        .hint-number {
+            background: lighten(map-get($colors, primary), 5);
+            padding: 0.5em;
+            text-orientation: sideways;
+            writing-mode: vertical-lr;
+            line-height: 2em;
+            width: 2em;
+        }
+
+        .hint-trigger {
+            margin-bottom: 0.2em;
+            font-weight: bold;
+        }
+
+        .hint-body {
+            flex: 1;
+            padding-left: 1em;
+            background: lighten(map-get($colors, primary), 1);
+
+            .hint-triggers {
+                margin-bottom: 1em;
+                margin-top: 1em;
+            }
+        }
+
+        .hint-image {
+            width: 100%;
+            height: 30em;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left top;
+        }
+
+        .hint-text {
+            font-size: 2em;
+            padding: 0.5em;
+        }
+    }
+}
+
+.submit-answer-form {
+    background: rgba(0, 0,0, 0.7);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1em;
+    text-align: center;
+
+    input,
+    button {
+        padding: 0.8em;
+        margin: 0;
+        border: none;
+        box-sizing: border-box;
+        font-family: inherit;
+        font-size: 1em;
+        outline: none;
+    }
+
+    input {
+        margin-right: 1em;
+        color: map-get($colors, light);
+        background: map-get($colors, primary);
+        border: 0.05em solid rgba(map-get($colors, secondary), 0.3);
+
+        &:focus {
+            border: 0.05em solid rgba(map-get($colors, secondary), 0.6);
+        }
+
+        &.wrong-answer {
+            background: rgba(map-get($colors, danger), 0.6);
+        }
+    }
+
+    button {
+        background: map-get($colors, light);
+        font-weight: bold;
+    }
+}

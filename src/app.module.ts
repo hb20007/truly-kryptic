@@ -15,12 +15,14 @@ import { ProviderAuthComponent } from './components/provider-auth/provider-auth'
 import { LoginComponent } from './components/login/login';
 import { AccountComponent } from "./components/account/account";
 import { LevelListComponent } from './components/level-list/level-list';
+import { LevelComponent } from './components/level/level';
 
 const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'account', component: AccountComponent},
   { path: 'level-list', component: LevelListComponent },
+  { path: 'level/:level_id/:sublevel_id', component: LevelComponent },
 ];
 
 @NgModule({
@@ -44,6 +46,7 @@ const appRoutes: Routes = [
     AccountComponent,
     ProviderAuthComponent,
     LevelListComponent,
+    LevelComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
