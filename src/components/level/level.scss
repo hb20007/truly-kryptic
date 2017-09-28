@@ -37,7 +37,6 @@
 
 .level-number {
     font-size: 2em;
-    // line-height: 3em;
 }
 
 .hint-area {
@@ -52,6 +51,8 @@
             padding: 0.5em;
             text-orientation: sideways;
             writing-mode: vertical-lr;
+            line-height: 2em;
+            width: 2em;
         }
 
         .hint-trigger {
