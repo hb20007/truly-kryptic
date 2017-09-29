@@ -128,18 +128,17 @@ export class LevelComponent implements OnInit {
                     guesses.push(guess);
                 }
                 return guesses;
-            }));
+            }, []));
 
             this.hints = this.uniqueGuesses.combineLatest(this.level).map(([guesses, level]) => {
                 return level.hints.map(hint => {
-                    const activeTriggers = guesses
-                        .filter(guess => hint.triggers &&
-                            hint.triggers.some(tr => this.fmtGuessOrAnswer(guess) == this.fmtGuessOrAnswer(tr)), []);
+                    const activeTriggers = (hint.triggers || [])
+                        .map(tr => 
+                            guesses.find(guess => this.fmtGuessOrAnswer(guess) == this.fmtGuessOrAnswer(tr)))
+                        .filter(Boolean);
 
                     if (!hint.triggers || activeTriggers.length > 0) {
                         return { ...hint, triggers: activeTriggers };
-                    } else {
-                        return undefined;
                     }
                 }).filter(Boolean)
             });
