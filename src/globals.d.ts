@@ -10,4 +10,10 @@ declare interface Level {
     answers: Array<string>;
 }
 
+declare interface hofUser {
+    name: String;
+    country: String;
+    comment: String;
+}
+
 declare type Hint = ({ image: String } | { text: String } | { audio: String }) & { triggers: string[] };
