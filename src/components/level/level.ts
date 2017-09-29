@@ -8,8 +8,10 @@ import * as levels from '../../../Notes/levels.json';
 import { getLevelNumber } from '../../shared';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import "rxjs/add/operator/combineLatest";
+
+export type LevelIndices = { levelIndex: number; sublevelIndex: number };
 
 @Component({
     selector: 'level',
@@ -18,6 +20,10 @@ import "rxjs/add/operator/combineLatest";
 })
 // Implements: #SPC-level
 export class LevelComponent implements OnInit {
+    nextLevelIndices: Observable<LevelIndices>;
+    prevLevelIndices: Observable<LevelIndices>;
+
+    canGotoNextLevel: boolean;
 
     imgHintDir = '/img/hints/';
     fields = { answer: '' };
@@ -35,6 +41,8 @@ export class LevelComponent implements OnInit {
     uniqueGuesses: Observable<string[]>;
     levelAnswers: string[];
 
+    nextLevelUnlocked: FirebaseObjectObservable<boolean>;
+
     hints: Observable<Hint[]>;
 
     answeredWrong: boolean;
@@ -48,7 +56,7 @@ export class LevelComponent implements OnInit {
         if (keyCode == '37') {
             this.openPrevLevel && this.openPrevLevel();
         } else if (keyCode == '39') {
-            this.openNextLevel && this.openNextLevel();
+            this.canGotoNextLevel && this.openNextLevel();
         }
     }
 
@@ -64,6 +72,8 @@ export class LevelComponent implements OnInit {
 
         if (correct) {
             if (this.openNextLevel) {
+                this.fields.answer = "";
+                this.nextLevelUnlocked.set(true);
                 this.openNextLevel();
             } else {
                 // todo, go to hall of fame form
@@ -81,9 +91,7 @@ export class LevelComponent implements OnInit {
         return this.sanitizer.bypassSecurityTrustStyle(`url("${this.imgHintDir + image}")`);
     }
 
-
     ngOnInit() {
-
         this.levelIndices = this.route.paramMap.map(params => ({
             levelIndex: Number(params.get('level_id')),
             sublevelIndex: Number(params.get('sublevel_id')),
@@ -94,34 +102,44 @@ export class LevelComponent implements OnInit {
         this.levelNumber = this.levelIndices.map(({ levelIndex, sublevelIndex }) =>
             getLevelNumber(levelIndex, sublevelIndex, levels[levelIndex].length));
 
-        this.prevLevelLink = this.levelIndices.map(({ levelIndex, sublevelIndex }) => {
+        this.prevLevelIndices = this.levelIndices.map(({ levelIndex, sublevelIndex }) => {
             let prevLevelIndex = sublevelIndex == 0 ? levelIndex - 1 : levelIndex;
             if (prevLevelIndex < 0) {
                 return undefined;
             } else {
                 let prevSublevelIndex = sublevelIndex == 0 ? levels[prevLevelIndex].length - 1 : sublevelIndex - 1;
-                return `/level/${prevLevelIndex}/${prevSublevelIndex}`;
+                return { levelIndex: prevLevelIndex, sublevelIndex: prevSublevelIndex };
             }
         });
+        this.prevLevelLink = this.prevLevelIndices.map(indices => indices && `/level/${indices.levelIndex}/${indices.sublevelIndex}`);
 
-        this.nextLevelLink = this.levelIndices.map(({ levelIndex, sublevelIndex }) => {
+        this.nextLevelIndices = this.levelIndices.map(({ levelIndex, sublevelIndex }) => {
             let maxSublevel = levels[levelIndex].length - 1;
             let nextLevelIndex = sublevelIndex == maxSublevel ? levelIndex + 1 : levelIndex;
             if (nextLevelIndex < 0) {
                 return undefined;
             } else {
                 let nextSublevelIndex = sublevelIndex == maxSublevel ? 0 : sublevelIndex + 1;
-                return `/level/${nextLevelIndex}/${nextSublevelIndex}`;
+                return { levelIndex: nextLevelIndex, sublevelIndex: nextSublevelIndex };
             }
         });
+        this.nextLevelIndices.subscribe(({ levelIndex, sublevelIndex }) => {
+            this.nextLevelUnlocked =
+                this.db.object([this.angularFireAuth.auth.currentUser.uid.toString(), levelIndex, sublevelIndex, 'unlocked'].join('/'));
+
+            this.nextLevelUnlocked.subscribe((unlocked: any) => {
+                this.canGotoNextLevel = unlocked.$value == true;
+            });
+        });
+
+        this.nextLevelLink = this.nextLevelIndices.map(indices => indices && `/level/${indices.levelIndex}/${indices.sublevelIndex}`);
 
         this.nextLevelLink.subscribe(url => this.openNextLevel = url && (() => this.router.navigateByUrl(url)));
         this.prevLevelLink.subscribe(url => this.openPrevLevel = url && (() => this.router.navigateByUrl(url)));
 
         this.levelIndices.subscribe(({ levelIndex, sublevelIndex }) => {
-            const userId = this.angularFireAuth.auth.currentUser.uid.toString();
-            const guessesDbPath = `${userId}/${levelIndex}/${sublevelIndex}/guesses`;
-            this.guesses = this.db.list(guessesDbPath);
+            const levelDbPath = [this.angularFireAuth.auth.currentUser.uid.toString(), levelIndex, sublevelIndex].join('/');
+            this.guesses = this.db.list(levelDbPath + '/guesses');
 
             this.uniqueGuesses = this.guesses.map(guesses => guesses.map(g => g.$value.trim()).reduce((guesses, guess) => {
                 if (guesses.indexOf(guess) === -1) {
@@ -133,7 +151,7 @@ export class LevelComponent implements OnInit {
             this.hints = this.uniqueGuesses.combineLatest(this.level).map(([guesses, level]) => {
                 return level.hints.map(hint => {
                     const activeTriggers = (hint.triggers || [])
-                        .map(tr => 
+                        .map(tr =>
                             guesses.find(guess => this.fmtGuessOrAnswer(guess) == this.fmtGuessOrAnswer(tr)))
                         .filter(Boolean);
 
