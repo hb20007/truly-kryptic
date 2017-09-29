@@ -1,0 +1,20 @@
+<div class="title-centered">Hall of Fame</div>
+
+
+<div class="hof-container">
+    <div class="headers">
+        <div class="header-item">#</div>
+        <div class="header-item">Name</div>
+        <div class="header-item">Country</div>
+        <div class="header-item">Comment</div>
+    </div>
+
+    <div *ngFor="let user of hofUsers; index as userIndex" class="hof">
+        <div class="user-info">
+            <div [class.gold]="userIndex == 0" [class.silver]="userIndex == 1" [class.bronze]="userIndex == 2" class="info-item">{{userIndex+1}}</div>
+            <div class="info-item">{{user.name}}</div>
+            <div class="info-item">{{user.country}}</div>
+            <div class="info-item">{{user.comment}}</div>
+        </div>
+    </div>
+</div>
