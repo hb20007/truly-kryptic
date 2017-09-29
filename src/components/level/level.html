@@ -22,7 +22,7 @@
             <div class="hint-body">
                 <div *ngIf="hint.triggers.length > 0" class="hint-triggers">
                     <div class="hint-unlockedby">
-                        Unlocked by:
+                        Unlocked by Guess:
                     </div>
                     <div class="hint-trigger" *ngFor="let trigger of hint.triggers">
                         {{trigger}}
@@ -48,4 +48,13 @@
             autocomplete="off" type="text" [(ngModel)]="fields.answer" name="text" #answer="ngModel" id="answer">
         <button type="submit">Submit Answer</button>
     </form>
+
+    <!-- Implements: #SPC-level-guesses -->
+    <div class="previous-guesses">
+        <div class="title">
+            Previous Guesses:
+        </div>
+
+        <span *ngFor="let guess of (uniqueGuesses | async)" class="guess"> {{guess}} </span>  
+    </div>
 </div>

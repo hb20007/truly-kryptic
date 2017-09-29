@@ -32,6 +32,7 @@ export class LevelComponent implements OnInit {
     levelNumber: Observable<String>;
 
     guesses: FirebaseListObservable<string[]>;
+    uniqueGuesses: Observable<string[]>;
     levelAnswers: string[];
 
     hints: Observable<Hint[]>;
@@ -39,6 +40,9 @@ export class LevelComponent implements OnInit {
     answeredWrong: boolean;
 
     levelIndices: Observable<{ levelIndex: number, sublevelIndex: number }>
+
+    constructor(private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer,
+        private db: AngularFireDatabase, private angularFireAuth: AngularFireAuth) { }
 
     onKey(keyCode) {
         if (keyCode == '37') {
@@ -78,8 +82,7 @@ export class LevelComponent implements OnInit {
     }
 
 
-    constructor(private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer,
-        private db: AngularFireDatabase, private angularFireAuth: AngularFireAuth) {
+    ngOnInit() {
 
         this.levelIndices = this.route.paramMap.map(params => ({
             levelIndex: Number(params.get('level_id')),
@@ -120,18 +123,18 @@ export class LevelComponent implements OnInit {
             const guessesDbPath = `${userId}/${levelIndex}/${sublevelIndex}/guesses`;
             this.guesses = this.db.list(guessesDbPath);
 
-            this.hints = this.guesses.combineLatest(this.level).map(([guesses, level]) => {
+            this.uniqueGuesses = this.guesses.map(guesses => guesses.map(g => g.$value.trim()).reduce((guesses, guess) => {
+                if (guesses.indexOf(guess) === -1) {
+                    guesses.push(guess);
+                }
+                return guesses;
+            }));
+
+            this.hints = this.uniqueGuesses.combineLatest(this.level).map(([guesses, level]) => {
                 return level.hints.map(hint => {
                     const activeTriggers = guesses
-                        .map(g => g.$value.trim())
-                        .reduce((guesses, guess) => {
-                            const valid = hint.triggers &&
-                                hint.triggers.some(tr => this.fmtGuessOrAnswer(guess) == this.fmtGuessOrAnswer(tr));
-                            if (valid && guesses.indexOf(guess) === -1) {
-                                guesses.push(guess);
-                            }
-                            return guesses;
-                        }, []);
+                        .filter(guess => hint.triggers &&
+                            hint.triggers.some(tr => this.fmtGuessOrAnswer(guess) == this.fmtGuessOrAnswer(tr)), []);
 
                     if (!hint.triggers || activeTriggers.length > 0) {
                         return { ...hint, triggers: activeTriggers };
