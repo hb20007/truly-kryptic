@@ -1,21 +1,3 @@
-LANDING PAGE
-
-Potentially use this picture as a background somewhere but with the light cyan: https://pixabay.com/en/human-silhouette-the-door-to-hell-1725041/
-
-
-Simple Concept (ICON: http://fontawesome.io/icon/simplybuilt/ )
-- Find the secret word in order to proceed to the next level.
-
-50 Challenging Levels (ICON: http://fontawesome.io/icon/puzzle-piece/ )
-- Experience the thrill of completing levels designed to stimulate your brain.
-
-Hall of Fame (ICON: http://fontawesome.io/icon/list-ol/ )
-- Only a few will be able to complete the game and have their name featured in the <a>Hall of Fame</a>.
-
-Free Forever (ICON: http://fontawesome.io/icon/child/ )
-- No paid features, no ads. Pure fun.
-
-
 GETTING STARTED
 
 - You can solve each level by finding the secret word based on clues in the level title, picture and text.
