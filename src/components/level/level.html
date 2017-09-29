@@ -27,8 +27,12 @@
                 </div>
 
                 <div class="hint-text" *ngIf="hint.text">{{hint.text}}</div>
-                <div class="hint-image" *ngIf="hint.image" [style.background-image]="getBackgroundUrl(hint.image)">
-                </div>
+                <div class="hint-image" *ngIf="hint.image" [style.background-image]="getBackgroundUrl(hint.image)"></div>
+
+                <audio controls="controls" class="hint-audio" *ngIf="hint.audio">
+                    Your browser does not support the <code>audio</code> element.
+                    <source [src]="imgHintDir + hint.audio" type="audio/mp3">
+                </audio>
             </div>
         </div>
     </div>
@@ -37,7 +41,8 @@
         <div class="form-field">
             <div [hidden]="!submissionError" class="form-error">{{submissionError}}</div>
         </div>
-        <input class="form-input" [class.wrong-answer]="answeredWrong" (keydown)="answeredWrong = false; true" (focus)="answeredWrong = false; true" autocomplete="off" type="text" [(ngModel)]="fields.answer" name="text" #answer="ngModel" id="answer">
+        <input class="form-input" [class.wrong-answer]="answeredWrong" (keydown)="answeredWrong = false; true" (focus)="answeredWrong = false; true"
+            autocomplete="off" type="text" [(ngModel)]="fields.answer" name="text" #answer="ngModel" id="answer">
         <button type="submit">Submit Answer</button>
     </form>
 </div>
