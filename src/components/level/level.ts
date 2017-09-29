@@ -73,7 +73,7 @@ export class LevelComponent implements OnInit {
     }
 
     fmtGuessOrAnswer(text) {
-        return text.replace(/[^A-Za-z0-9]/g, '').toLocaleLowerCase();
+        return (text || "").replace(/[^A-Za-z0-9]/g, '').toLocaleLowerCase();
     }
 
     getBackgroundUrl(image) {
@@ -123,17 +123,25 @@ export class LevelComponent implements OnInit {
 
         this.level.subscribe(level => this.levelAnswers = level.answers);
 
-        this.hints = this.level.combineLatest(this.guesses).map(([level, guesses]) =>
-            level.hints.filter(hint => {
+        this.hints = this.guesses.combineLatest(this.level).map(([guesses, level]) => {
+            return level.hints.map(hint => {
+                const activeTriggers = guesses
+                    .map(g => g.$value.trim())
+                    .reduce((guesses, guess) => {
+                        const valid = hint.triggers &&
+                            hint.triggers.some(tr => this.fmtGuessOrAnswer(guess) == this.fmtGuessOrAnswer(tr));
+                        if (valid && guesses.indexOf(guess) === -1) {
+                            guesses.push(guess);
+                        }
+                        return guesses;
+                    }, []);
 
-                const activeTriggers = (hint.triggers || [])
-                    .filter(tr => guesses.some(guess => this.fmtGuessOrAnswer(guess) == this.fmtGuessOrAnswer(tr)));
-
-                if (!hint.triggers || activeTriggers) {
+                if (!hint.triggers || activeTriggers.length > 0) {
                     return { ...hint, triggers: activeTriggers };
                 } else {
                     return undefined;
                 }
-            }).filter(Boolean));
+            }).filter(Boolean)
+        });
     }
 }

@@ -15,16 +15,15 @@ module.exports = {
                     {
                         loader: 'awesome-typescript-loader',
                         options: {
-                            transpileOnly: true,
                             useCache: prod,
                         }
                     },
-                    {
-                        loader: 'ngc-webpack',
-                        options: {
-                            disable: true // !prod,
-                        }
-                    },
+                    // {
+                    //     loader: 'ngc-webpack',
+                    //     options: {
+                    //         disable: true // !prod,
+                    //     }
+                    // },
                 ],
                 exclude: /node_modules/
             },
