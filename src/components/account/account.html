@@ -1,13 +1,13 @@
 <!-- implements: #SPC-account -->
-<div class="title">My Account</div>
-<div class="display" *ngIf="!hasEmail">{{username}}</div>
-<div class="display email" *ngIf="hasEmail">{{email}}</div>
+<div class="title-centered">My Account</div>
+<div class="user-credentials display" *ngIf="!hasEmail">{{username}}</div>
+<div class="user-credentials display email" *ngIf="hasEmail">{{email}}</div>
 <form class="form-container" (ngSubmit)="logUserIn()" #signUpForm="ngForm">
     <div class="form-field">
         <div [hidden]="!submissionError" class="form-error">{{submissionError}}</div>
     </div>
     <div class="section-container">
-        <div class="acc-section-one">
+        <div *ngIf="hasEmail" class="acc-section-one">
             <div class="display">Change password</div>
             <div class="form-field">
                 <label class="form-label" for="oldPassword">Current password</label><br>
@@ -31,9 +31,9 @@
             <div>Please consider the following before doing so:</div>
             <div class="checkBox-container">
                 <ul>
-                    <li>Cannot be undone</li>
-                    <li>All progress will be lost</li>
-                    <li>Account removed from Hall of Fame</li>
+                    <li>This cannot be undone.</li>
+                    <li>All your progress will be lost.</li>
+                    <li>Your account will be removed from the Hall of Fame.</li>
                 </ul>
                 <div class="checkBox">
                     <input (change)="toggleDelete($event)" type="checkbox" value="None" id="checkbox" name="check"/>
