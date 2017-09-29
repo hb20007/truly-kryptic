@@ -49,7 +49,7 @@
   },
   "scripts": {
     "postinstall": "webdriver-manager update",
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --devtool inline-source-map",
     "test": "karma start --single-run",
     "build": "webpack -p",
     "serve-prod": "http-server dist/ -a localhost -p 9090",
