@@ -55,6 +55,11 @@
             width: 2em;
         }
 
+        .hint-unlockedby {
+            font-size: 1.2em;
+            margin-bottom: 0.2em;
+        }
+
         .hint-trigger {
             margin-bottom: 0.2em;
             font-weight: bold;
@@ -65,8 +70,8 @@
             padding-left: 1em;
 
             .hint-triggers {
-                margin-bottom: 1em;
-                margin-top: 1em;
+                // margin-bottom: 1em;
+                // margin-top: 1em;
             }
         }
 
@@ -81,7 +86,7 @@
 
         .hint-text {
             font-size: 2em;
-            padding: 0.5em;
+            padding: 0.5em 0;
         }
     }
 }
