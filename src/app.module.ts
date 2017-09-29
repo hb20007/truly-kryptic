@@ -17,11 +17,13 @@ import { AccountComponent } from "./components/account/account";
 import { LevelListComponent } from './components/level-list/level-list';
 import { LevelComponent } from './components/level/level';
 import { HallOfFameComponent } from "./components/hof/hof";
+import { GettingStartedComponent } from './components/getting-started/getting-started';
 
 const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'account', component: AccountComponent },
+  { path: 'getting-started', component: GettingStartedComponent },
   { path: 'level-list', component: LevelListComponent },
   { path: 'level/:level_id/:sublevel_id', component: LevelComponent },
   { path: 'hof', component: HallOfFameComponent }
@@ -49,7 +51,8 @@ const appRoutes: Routes = [
     ProviderAuthComponent,
     LevelListComponent,
     LevelComponent,
-    HallOfFameComponent
+    HallOfFameComponent,
+    GettingStartedComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
