@@ -40,9 +40,6 @@ export class LevelComponent implements OnInit {
 
     levelIndices: Observable<{ levelIndex: number, sublevelIndex: number }>
 
-    constructor(private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer,
-        private db: AngularFireDatabase, private angularFireAuth: AngularFireAuth) { }
-
     onKey(keyCode) {
         if (keyCode == '37') {
             this.openPrevLevel && this.openPrevLevel();
@@ -80,7 +77,10 @@ export class LevelComponent implements OnInit {
         return this.sanitizer.bypassSecurityTrustStyle(`url("${this.imgHintDir + image}")`);
     }
 
-    ngOnInit() {
+
+    constructor(private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer,
+        private db: AngularFireDatabase, private angularFireAuth: AngularFireAuth) {
+
         this.levelIndices = this.route.paramMap.map(params => ({
             levelIndex: Number(params.get('level_id')),
             sublevelIndex: Number(params.get('sublevel_id')),
@@ -119,29 +119,29 @@ export class LevelComponent implements OnInit {
             const userId = this.angularFireAuth.auth.currentUser.uid.toString();
             const guessesDbPath = `${userId}/${levelIndex}/${sublevelIndex}/guesses`;
             this.guesses = this.db.list(guessesDbPath);
+
+            this.hints = this.guesses.combineLatest(this.level).map(([guesses, level]) => {
+                return level.hints.map(hint => {
+                    const activeTriggers = guesses
+                        .map(g => g.$value.trim())
+                        .reduce((guesses, guess) => {
+                            const valid = hint.triggers &&
+                                hint.triggers.some(tr => this.fmtGuessOrAnswer(guess) == this.fmtGuessOrAnswer(tr));
+                            if (valid && guesses.indexOf(guess) === -1) {
+                                guesses.push(guess);
+                            }
+                            return guesses;
+                        }, []);
+
+                    if (!hint.triggers || activeTriggers.length > 0) {
+                        return { ...hint, triggers: activeTriggers };
+                    } else {
+                        return undefined;
+                    }
+                }).filter(Boolean)
+            });
         });
 
         this.level.subscribe(level => this.levelAnswers = level.answers);
-
-        this.hints = this.guesses.combineLatest(this.level).map(([guesses, level]) => {
-            return level.hints.map(hint => {
-                const activeTriggers = guesses
-                    .map(g => g.$value.trim())
-                    .reduce((guesses, guess) => {
-                        const valid = hint.triggers &&
-                            hint.triggers.some(tr => this.fmtGuessOrAnswer(guess) == this.fmtGuessOrAnswer(tr));
-                        if (valid && guesses.indexOf(guess) === -1) {
-                            guesses.push(guess);
-                        }
-                        return guesses;
-                    }, []);
-
-                if (!hint.triggers || activeTriggers.length > 0) {
-                    return { ...hint, triggers: activeTriggers };
-                } else {
-                    return undefined;
-                }
-            }).filter(Boolean)
-        });
     }
 }
