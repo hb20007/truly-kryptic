@@ -32,6 +32,7 @@ export class LevelComponent implements OnInit {
     levelNumber: Observable<String>;
 
     guesses: FirebaseListObservable<string[]>;
+    uniqueGuesses: Observable<string[]>;
     levelAnswers: string[];
 
     hints: Observable<Hint[]>;
@@ -73,14 +74,16 @@ export class LevelComponent implements OnInit {
     }
 
     fmtGuessOrAnswer(text) {
-        return text.replace(/[^A-Za-z0-9]/g, '').toLocaleLowerCase();
+        return (text || "").replace(/[^A-Za-z0-9]/g, '').toLocaleLowerCase();
     }
 
     getBackgroundUrl(image) {
         return this.sanitizer.bypassSecurityTrustStyle(`url("${this.imgHintDir + image}")`);
     }
 
+
     ngOnInit() {
+
         this.levelIndices = this.route.paramMap.map(params => ({
             levelIndex: Number(params.get('level_id')),
             sublevelIndex: Number(params.get('sublevel_id')),
@@ -119,21 +122,28 @@ export class LevelComponent implements OnInit {
             const userId = this.angularFireAuth.auth.currentUser.uid.toString();
             const guessesDbPath = `${userId}/${levelIndex}/${sublevelIndex}/guesses`;
             this.guesses = this.db.list(guessesDbPath);
+
+            this.uniqueGuesses = this.guesses.map(guesses => guesses.map(g => g.$value.trim()).reduce((guesses, guess) => {
+                if (guesses.indexOf(guess) === -1) {
+                    guesses.push(guess);
+                }
+                return guesses;
+            }, []));
+
+            this.hints = this.uniqueGuesses.combineLatest(this.level).map(([guesses, level]) => {
+                return level.hints.map(hint => {
+                    const activeTriggers = (hint.triggers || [])
+                        .map(tr => 
+                            guesses.find(guess => this.fmtGuessOrAnswer(guess) == this.fmtGuessOrAnswer(tr)))
+                        .filter(Boolean);
+
+                    if (!hint.triggers || activeTriggers.length > 0) {
+                        return { ...hint, triggers: activeTriggers };
+                    }
+                }).filter(Boolean)
+            });
         });
 
         this.level.subscribe(level => this.levelAnswers = level.answers);
-
-        this.hints = this.level.combineLatest(this.guesses).map(([level, guesses]) =>
-            level.hints.filter(hint => {
-
-                const activeTriggers = (hint.triggers || [])
-                    .filter(tr => guesses.some(guess => this.fmtGuessOrAnswer(guess) == this.fmtGuessOrAnswer(tr)));
-
-                if (!hint.triggers || activeTriggers) {
-                    return { ...hint, triggers: activeTriggers };
-                } else {
-                    return undefined;
-                }
-            }).filter(Boolean));
     }
 }
