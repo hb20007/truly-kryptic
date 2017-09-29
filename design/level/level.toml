@@ -53,18 +53,7 @@ text = '''
 Assert that the facebook like button loads correctly
 '''
 
-[SPC-level-notes]
+[SPC-level-guesses]
 text = '''
-A persisted textarea field displayed on every level
-
-Allows arbirary text to be entered by the user
-
-Instantly persisted to the server when text is entered
-'''
-
-[TST-level-notes]
-text = '''
-Navigate to a level and enter some text in the note input.
-
-Refresh the page and assert that the text is persisted.
+Display previous guesses for the level.
 '''
