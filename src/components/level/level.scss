@@ -92,14 +92,15 @@
 }
 
 .submit-answer-form {
-    background: rgba(0, 0,0, 0.7);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 1em;
-    text-align: center;
+    // background: rgba(0, 0,0, 0.7);
+    // position: fixed;
+    // bottom: 0;
+    // left: 0;
+    // width: 100%;
+    // box-sizing: border-box;
+    // padding: 1em;
+    margin-bottom: 1em;
+    // text-align: center;
 
     input,
     button {
@@ -130,5 +131,20 @@
     button {
         background: map-get($colors, light);
         font-weight: bold;
+    }
+}
+
+.previous-guesses {
+    .title {
+        font-size: 1.2em;
+        margin-bottom: 0.5em;
+    }
+
+    .guess {
+        background: lighten(map-get($colors, primary), 5);
+        padding: .3em;
+        display: inline-block;
+        margin-right: 1em;
+        margin-bottom: 1em;
     }
 }
