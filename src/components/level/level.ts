@@ -72,9 +72,10 @@ export class LevelComponent implements OnInit {
 
         if (correct) {
             if (this.openNextLevel) {
-                this.fields.answer = "";
+                // this.fields.answer = "";
+                // this.openNextLevel();
                 this.nextLevelUnlocked.set(true);
-                this.openNextLevel();
+
             } else {
                 // todo, go to hall of fame form
             }

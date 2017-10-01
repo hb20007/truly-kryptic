@@ -8,4 +8,4 @@
 
 
 AFTER DEV IS COMPLETE
-- Send email to all ppl who finished game & designer.
+- Send email to all ppl who finished game.
