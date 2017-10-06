@@ -4,7 +4,6 @@ import { Component } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as levels from '../../../Notes/levels.json';
 import { getLevelNumber } from '../../shared';
 
 @Component({
@@ -15,6 +14,6 @@ import { getLevelNumber } from '../../shared';
 
 // Implements: #SPC-level-list
 export class LevelListComponent {
-    levels: Array<Array<Level>> = levels;
+    // levels: Array<Array<Level>> = levels;
     getLevelNumber = getLevelNumber;
 }
