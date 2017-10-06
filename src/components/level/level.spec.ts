@@ -9,16 +9,16 @@ import { RouterLinkStubDirective } from '../../test-utils';
 
 describe('Landing-page Component', () => {
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            declarations: [LevelComponent, RouterLinkStubDirective],
-            providers: [
-                { provide: ActivatedRoute, useValue: {} },
-                { provide: Router, useValue: {} },
-                { provide: DomSanitizer, useValue: {} },
-                { provide: AngularFireDatabase, useValue: {} },
-                { provide: AngularFireAuth, useValue: {} },
-            ],
-        }).compileComponents();
+        // TestBed.configureTestingModule({
+        //     declarations: [LevelComponent, RouterLinkStubDirective],
+        //     providers: [
+        //         { provide: ActivatedRoute, useValue: {} },
+        //         { provide: Router, useValue: {} },
+        //         { provide: DomSanitizer, useValue: {} },
+        //         { provide: AngularFireDatabase, useValue: {} },
+        //         { provide: AngularFireAuth, useValue: {} },
+        //     ],
+        // }).compileComponents();
     });
 
     it('works', () => {

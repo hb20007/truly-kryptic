@@ -4,12 +4,15 @@ import { Component, OnInit } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as levels from '../../../Notes/levels.json';
+// import * as levels from '../../../Notes/levels.json';
 import { getLevelNumber } from '../../shared';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import "rxjs/add/operator/combineLatest";
+
+
+let levels = [];
 
 export type LevelIndices = { levelIndex: number; sublevelIndex: number };
 
