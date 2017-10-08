@@ -54,6 +54,8 @@
     "serve-prod": "http-server dist/ -a localhost -p 8080",
     "webd": "webdriver-manager start",
     "e2e": "protractor protractor.conf.js",
+    "webd-docker": "docker run --name chromedriver --net=host -p 4444:4444 -d robcherry/docker-chromedriver:latest",
+    "e2e-travis": "npm run webd-docker && npm run build; npm run serve-prod & npm run e2e",
     "deploy": "rm dist/ -rf; npm run build; firebase deploy --project truly-kryptic"
   },
   "repository": {
