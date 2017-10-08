@@ -15,7 +15,7 @@ module.exports = {
                     {
                         loader: 'awesome-typescript-loader',
                         options: {
-                            useCache: prod,
+                            // useCache: prod,
                         }
                     },
                     // {
