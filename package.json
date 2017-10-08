@@ -12,7 +12,6 @@
     "@angular/platform-browser": "^4.4.0-RC.0",
     "@angular/platform-browser-dynamic": "^4.4.0-RC.0",
     "@angular/router": "^4.3.6",
-    "@types/firebase": "^2.4.32",
     "@types/jasmine": "^2.5.54",
     "@types/reflect-metadata": "0.0.5",
     "@types/zone.js": "^0.5.12",
@@ -49,10 +48,10 @@
   },
   "scripts": {
     "postinstall": "webdriver-manager update",
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server -d",
     "test": "karma start --single-run",
     "build": "webpack -p",
-    "serve-prod": "http-server dist/ -a localhost -p 9090",
+    "serve-prod": "http-server dist/ -a localhost -p 8080",
     "webd": "webdriver-manager start",
     "e2e": "protractor protractor.conf.js",
     "deploy": "rm dist/ -rf; npm run build; firebase deploy --project truly-kryptic"
