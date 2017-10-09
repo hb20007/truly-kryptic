@@ -11,9 +11,9 @@ declare interface Level {
     answers: Array<string>;
 }
 
-declare interface hofUser {
-    name: String;
-    country: String;
+declare interface HofUser {
+    nickname: String;
+    datetime: Date;
     comment: String;
 }
 
