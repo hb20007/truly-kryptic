@@ -1,9 +1,9 @@
 import '../../required-libs'
-import { LandingpageComponent } from "./landing";
+import { ResetPasswordComponent } from "./reset-password";
 
 describe('Landing-page Component', () => {
     it('exists', () => {
-        expect(LandingpageComponent).toBeDefined();
+        expect(ResetPasswordComponent).toBeDefined();
 
         // todo - actual tests
     })
