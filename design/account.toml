@@ -20,16 +20,6 @@ text = '''
 Verify that the correct username is displayed for various account types.
 '''
 
-[SPC-account-auth_provider_info]
-text = '''
-Additional information like email or facebook account name.
-'''
-
-[TST-account-auth_provider_info]
-text = '''
-For every auth provider type, verify that the correct information is displayed.
-'''
-
 [SPC-account-delete]
 text = '''
 Deletes the account remove all data related to it from the site.
@@ -40,8 +30,15 @@ about the user being removed from the hall of fame.
 
 [TST-account-delete]
 text = '''
-
-Create an Google account (so we don't need confirmation) though the create account form and immediately delete it.
-
 Expect delete confirmation message to be present.
+'''
+
+[SPC-account-change_password]
+text = '''
+For email authentication, a change password form allows password to be modified.
+'''
+
+[TST-account-change_password]
+text = '''
+Test changing password
 '''

@@ -30,13 +30,6 @@ submit form.
 Expect confirmation message to appear.
 '''
 
-[TST-landing-sign_up-passwords_match]
-
-[TST-landing-sign_up-password_length]
-text = '''
-Passwords should have a min length of 8 characters.
-'''
-
 [SPC-landing-site_description]
 text = '''
 Below the create account form, there will text providing background information on
