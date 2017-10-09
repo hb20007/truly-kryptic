@@ -35,6 +35,7 @@ li {
   }
   .acc-section-two {
     margin-top: 20px;
+    margin-bottom: 2em;
     padding: 0 20px 0 20px;
   }
 }
@@ -102,7 +103,8 @@ li {
   }
 }
 
-@media (min-width: $min-desktop-pixels) {
+// @media  {
+@media #{$large-up} {
   .email {
     padding-left: 0;
   }
@@ -127,5 +129,15 @@ li {
       padding: 0;
       margin: 0 0 0 20px;
     }
+  }
+}
+
+@media #{$medium-only} {
+  .form-input {
+    width: 50% !important;
+  }
+
+  .form-action[type=submit] {
+    display: block !important;
   }
 }

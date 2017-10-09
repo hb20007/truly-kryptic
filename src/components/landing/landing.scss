@@ -1,4 +1,5 @@
 @import "../../mixins.scss";
+@import '../../screens.scss';
 
 .side-img-container {
     position: fixed;
@@ -15,9 +16,15 @@
 
 .top-area-split {
     display: flex;
+    flex-direction: column;   
+
+    @media #{$large-up} {
+        flex-direction: row;   
+    }
 
     .website-info {
         padding-right: 4em;
+        padding-bottom: 2em;
         flex: 3;
         line-height: 3em;
 
