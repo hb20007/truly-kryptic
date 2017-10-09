@@ -3,3 +3,4 @@ dist
 node_modules
 firebase-debug.log
 .awcache
+level-secrets.json
