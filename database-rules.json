@@ -1,15 +1,16 @@
 {
     "rules": {
-        "levels": {
-            "$level_id": {
-                "$sublevel_id": {
-                    "hints": {
-                        "$hint": {
-                            ".read": "true"
-                        }
-                    }
-                }
+        "level-secrets": {
+            "$key": {
+                ".read": "true"
             }
+        },
+        "guesses": {
+
+        },
+        "hall-of-fame": {
+            ".read": true,
+            "$uid": { "nickname": {},  },
         },
         "users": {
             "$uid": {
@@ -26,10 +27,6 @@
                     }
                 }
             }
-        },
-        "$uid": {
-            ".read": "true",
-            ".write": "true"
         }
     }
 }
