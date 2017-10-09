@@ -50,7 +50,7 @@
   },
   "scripts": {
     "postinstall": "webdriver-manager update",
-    "start": "FIREBASE_PROJECT='truly-kryptic-dev' webpack-dev-server -d",
+    "start": "FIREBASE_PROJECT='truly-kryptic-dev' webpack-dev-server -d --host 0.0.0.0",
     "test": "FIREBASE_PROJECT='truly-kryptic-dev' karma start --single-run",
     "build": "webpack -p",
     "serve-prod": "http-server dist/ -a localhost -p 8080",
