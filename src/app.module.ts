@@ -18,6 +18,7 @@ import { LevelListComponent } from './components/level-list/level-list';
 import { LevelComponent } from './components/level/level';
 import { HallOfFameComponent } from "./components/hof/hof";
 import { GettingStartedComponent } from './components/getting-started/getting-started';
+import { ResetPasswordComponent } from './components/reset-password/reset-password';
 
 const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
   { path: 'getting-started', component: GettingStartedComponent },
   { path: 'level-list', component: LevelListComponent },
   { path: 'level/:level_id/:sublevel_id', component: LevelComponent },
-  { path: 'hof', component: HallOfFameComponent }
+  { path: 'hof', component: HallOfFameComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
 ];
 
 @NgModule({
@@ -52,7 +54,8 @@ const appRoutes: Routes = [
     LevelListComponent,
     LevelComponent,
     HallOfFameComponent,
-    GettingStartedComponent
+    GettingStartedComponent,
+    ResetPasswordComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
