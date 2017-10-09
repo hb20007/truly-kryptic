@@ -1,5 +1,8 @@
 # Truly Kryptic
 
-[![Build Status](https://travis-ci.org/hb20007/truly-kryptic.svg?branch=master)](https://travis-ci.org/hb20007/truly-kryptic)
+A competetive puzzle game with a ranking system.
 
-The official Truly Kryptic application.
+|Environment|Deployed To|Branch|Build Status|
+|-|-|-|-|
+|Production|https://truly-kryptic.firebaseapp.com|Master|[![Build Status](https://travis-ci.org/hb20007/truly-kryptic.svg?branch=master)](https://travis-ci.org/hb20007/truly-kryptic)|
+|Development|https://truly-kryptic-dev.firebaseapp.com|Stable|[![Build Status](https://travis-ci.org/hb20007/truly-kryptic.svg?branch=stable)](https://travis-ci.org/hb20007/truly-kryptic)
