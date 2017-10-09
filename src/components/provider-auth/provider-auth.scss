@@ -8,8 +8,14 @@
     font-size: 1.2em;
     margin-bottom: 1em;
     width: 100%;
+    box-sizing: border-box;
     text-align: left;
     cursor: pointer;
+
+    @media #{$medium-only} {
+        // margin: 0 0.5em;
+        width: 49%;
+    }
 
     .provider-name {
         font-weight: bold;

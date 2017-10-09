@@ -1,17 +1,19 @@
-@import 'variables.scss';
+@import "variables.scss";
+@import "screens.scss";
 
 $hover-displacement: 0.1em;
 
 @mixin hover-brighten-displace($background, $padding) {
     background: $background;
     padding: $padding;
+
     &:hover {
         background: lighten($background, 5%);
-        padding: $padding + $hover-displacement $padding $padding - $hover-displacement;
+        padding: ($padding + $hover-displacement) $padding ($padding - $hover-displacement);
     }
 }
 
-@mixin link() {
+@mixin link {
     display: inline-block;
     font-size: inherit;
     text-decoration: none;
@@ -39,81 +41,94 @@ $hover-displacement: 0.1em;
         font-size: 1.2em;
         text-align: center;
         margin-top: 1em;
-
     }
 
     .title-centered-subtext-link {
-        @include link();        
+        @include link;
     }
 }
 
-@mixin form-large() {
-
-  .form-split {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    margin-top: 3em;
-  }
-
-  .form-split-area {
-      flex: 1;
-      padding: 2em;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-
-      &:nth-child(1) {
-        border-right: 0.1em solid map-get($colors, light);
-      }
-  }
-
-  .form-container {
-    $input-border-width: 0.1em;
-    $input-padding: 0.6em;
-
-    .form-error {
-        padding: 1em;
-        border: 0.1em solid map-get($colors, danger);
-    }
-
-    .form-field {
-      padding: 0.7em 0;
-      font-size: 1em;
-    }
-    
-    .form-input {
-        color: map-get($colors, light);
-        background: none;
+@mixin form-large {
+    .form-split {
         width: 100%;
-        box-sizing: border-box;
-        font-size: 1.0em;
-        margin-top: 0.5em;
-        padding: $input-padding $input-padding ($input-padding - $input-border-width) 0;
-        border: none;
-        border-bottom: $input-border-width solid map-get($colors, light);
-    }
-    
-    .form-input-action {
-        @include link();
-        font-size: 1em;
-        padding: 0;
-        padding-top: 1em;
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 3em;
+        margin-bottom: 0;
+
+        @media #{$large-up} {
+            flex-direction: row;
+        }
     }
 
-    .form-action {
-        cursor: pointer;
-        color: map-get($colors, primary);
-        font-size: 1.2em;
-        font-weight: 600;
-        margin-top: 1em;
-        display: inline-block;
-        min-width: 6em;
-        border: none;
-        width: 100%;
+    .form-split-area {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
 
-        @include hover-brighten-displace(map-get($colors, light), 0.6em);
+        @media #{$large-up} {
+            padding: 2em;
+
+            &:nth-child(1) {
+                border-right: 0.1em solid map-get($colors, light);
+            }
+        }
     }
-  }
+
+    provider-auth.form-split-area {
+        @media #{$medium-only} {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    .form-container {
+        $input-border-width: 0.1em;
+        $input-padding: 0.6em;
+
+        .form-error {
+            padding: 1em;
+            border: 0.1em solid map-get($colors, danger);
+        }
+
+        .form-field {
+            padding: 0.7em 0;
+            font-size: 1em;
+        }
+
+        .form-input {
+            color: map-get($colors, light);
+            background: none;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 1.0em;
+            margin-top: 0.5em;
+            padding: $input-padding $input-padding ($input-padding - $input-border-width) 0;
+            border: none;
+            border-bottom: $input-border-width solid map-get($colors, light);
+        }
+
+        .form-input-action {
+            @include link;
+
+            font-size: 1em;
+            padding: 0;
+            padding-top: 1em;
+        }
+
+        .form-action {
+            cursor: pointer;
+            color: map-get($colors, primary);
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-top: 1em;
+            display: inline-block;
+            min-width: 6em;
+            border: none;
+            width: 100%;
+
+            @include hover-brighten-displace(map-get($colors, light), 0.6em);
+        }
+    }
 }
