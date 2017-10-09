@@ -58,5 +58,11 @@ describe('Navigation', function () {
                 "/",
             ]);
         });
+
+        // Implements: #TST-hof
+        it('can open the hall of fame and users will be displayed', () => {
+            browser.get('#/hof');
+            browser.wait(() => $('.hof').isPresent());
+        });
     });
 });

@@ -5,23 +5,43 @@
                 ".read": "true"
             }
         },
-        "guesses": {
-
+        "levels": {
+            ".read": true
         },
         "hall-of-fame": {
             ".read": true,
-            "$uid": { "nickname": {},  },
+            "$uid": {
+                ".indexOn": [
+                    "datetime"
+                ],
+                ".write": "!data.exists() && $uid === auth.uid && root.child('users/' + $uid + '/' + newData.child('last-level-index').val() + '/' + newData.child('last-sublevel-index').val() + '/answer').exists()",
+                ".validate": "newData.hasChildren(['nickname', 'comment', 'datetime'])",
+                "nickname": {
+                    ".validate": "newData.isString() && newData.val().length >= 5"
+                },
+                "comment": {
+                    ".validate": "newData.isString() && newData.val().length >= 1"
+                },
+                "datetime": {
+                    ".validate": "newData.val() + 10000 >= now && newData.val() - 10000 <= now"
+                },
+                "last-level-index": {
+                    ".validate": "root.child('levels/' + newData.val()).exists() && !root.child('levels/' + (newData.val() + 1)).exists()"
+                },
+                "last-sublevel-index": {
+                    ".validate": "root.child('levels/' + newData.parent().child('last-level-index').val() + '/' + newData.val()).exists() && !root.child('levels/' + newData.parent().child('last-level-index').val() + '/' + (newData.val() + 1)).exists()"
+                }
+            }
         },
         "users": {
             "$uid": {
+                ".read": "$uid === auth.uid",
                 "$level_id": {
                     "$sublevel_id": {
                         "answer": {
-                            ".read": "$uid === auth.uid",
-                            ".write": "$uid === auth.uid && root.child('levels/' + $level_id + '/' + $sublevel_id + '/answers/' + newData.val()).exists()"
+                            ".write": "$uid === auth.uid && root.child('level-secrets/' + $level_id + '-' + $sublevel_id + '-' + newData.val()).val() == true"
                         },
                         "guesses": {
-                            ".read": "$uid === auth.uid",
                             ".write": "$uid === auth.uid"
                         }
                     }
