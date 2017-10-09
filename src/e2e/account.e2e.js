@@ -8,6 +8,18 @@ describe('Account', () => {
             logout();
             login(testEmail, testPassword);
         });
+
+        // Implements: #TST-login-reset_password
+        it('allows password to be reset', () => {
+            let testEmail = signUp().testEmail;
+            logout();
+            browser.get('/#/reset-password');
+
+            $('#resetEmail').sendKeys(testEmail);
+            $('button[type=submit]').click();
+
+            browser.wait(() => $('.form-error').getText().then(t => t == 'Password reset link sent'));
+        });
     });
 
     // Implements: #TST-account
