@@ -49,15 +49,17 @@
   },
   "scripts": {
     "postinstall": "webdriver-manager update",
-    "start": "webpack-dev-server -d",
+    "start": "FIREBASE_PROJECT='truly-kryptic-dev' webpack-dev-server -d",
     "test": "karma start --single-run",
     "build": "webpack -p",
     "serve-prod": "http-server dist/ -a localhost -p 8080",
     "webd": "webdriver-manager start",
     "e2e": "protractor protractor.conf.js",
     "webd-docker": "docker run --net=host -e CHROMEDRIVER_URL_BASE='/wd/hub' -p 4444:4444 -d robcherry/docker-chromedriver:latest",
-    "e2e-travis": "npm run webd-docker && npm run build; npm run serve-prod & npm run e2e",
-    "deploy": "rm dist/ -rf; npm run build; firebase deploy --project truly-kryptic"
+    "e2e-travis": "export FIREBASE_PROJECT='truly-kryptic-dev'; npm run webd-docker && npm run build; npm run serve-prod & npm run e2e",
+
+    "deploy-dev": "export FIREBASE_PROJECT='truly-kryptic-dev'; rm dist/ -rf; npm run build; firebase deploy --project truly-kryptic-dev --token \"$FIREBASE_TOKEN\"",
+    "deploy-prod": "export FIREBASE_PROJECT='truly-kryptic'; rm dist/ -rf; npm run build; firebase deploy --project truly-kryptic --token \"$FIREBASE_TOKEN\""
   },
   "repository": {
     "type": "git",

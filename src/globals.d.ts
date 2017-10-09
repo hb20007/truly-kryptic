@@ -1,4 +1,5 @@
 declare const NODE_ENV;
+declare const FIREBASE_PROJECT;
 
 declare module "*.html";
 declare module "*.scss";

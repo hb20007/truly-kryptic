@@ -1,0 +1,35 @@
+{
+    "rules": {
+        "levels": {
+            "$level_id": {
+                "$sublevel_id": {
+                    "hints": {
+                        "$hint": {
+                            ".read": "true"
+                        }
+                    }
+                }
+            }
+        },
+        "users": {
+            "$uid": {
+                "$level_id": {
+                    "$sublevel_id": {
+                        "answer": {
+                            ".read": "$uid === auth.uid",
+                            ".write": "$uid === auth.uid && root.child('levels/' + $level_id + '/' + $sublevel_id + '/answers/' + newData.val()).exists()"
+                        },
+                        "guesses": {
+                            ".read": "$uid === auth.uid",
+                            ".write": "$uid === auth.uid"
+                        }
+                    }
+                }
+            }
+        },
+        "$uid": {
+            ".read": "true",
+            ".write": "true"
+        }
+    }
+}
