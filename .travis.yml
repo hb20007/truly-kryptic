@@ -10,6 +10,7 @@ services:
 
 install:
   - npm install
+  - npm install -g firebase-tools
 
 script:
   - npm test
