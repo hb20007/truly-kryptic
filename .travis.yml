@@ -14,3 +14,6 @@ install:
 script:
   - npm test
   - npm run e2e-travis 
+  - BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+  - if [ "$BRANCH" == "stable" ]; then npm run deploy-dev; fi
+  - if [ "$BRANCH" == "master" ]; then npm run deploy-prod; fi

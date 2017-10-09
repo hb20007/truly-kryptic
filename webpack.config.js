@@ -5,6 +5,11 @@ const process = require('process');
 
 const prod = process.argv.indexOf('-p') !== -1;
 
+if (!process.env.FIREBASE_PROJECT) {
+    console.error('FIREBASE_PROJECT env var not set');
+    process.exit(1);
+}
+
 module.exports = {
     entry: './src/main.ts',
     module: {
@@ -51,6 +56,7 @@ module.exports = {
         new CopyWebpackPlugin([{ from: 'img', to: 'img' }]),
         new webpack.DefinePlugin({
             NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+            FIREBASE_PROJECT: JSON.stringify(process.env.FIREBASE_PROJECT),
         }),
         new webpack.ContextReplacementPlugin(
             // The (\\|\/) piece accounts for path separators in *nix and Windows
