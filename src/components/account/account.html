@@ -1,31 +1,42 @@
 <!-- implements: #SPC-account -->
 <div class="title-centered">My Account</div>
+<!-- Implements: #SPC-account-title -->
 <div class="user-credentials display" *ngIf="!hasEmail">{{username}}</div>
 <div class="user-credentials display email" *ngIf="hasEmail">{{email}}</div>
-<form class="form-container" (ngSubmit)="logUserIn()" #signUpForm="ngForm">
-    <div class="form-field">
-        <div [hidden]="!submissionError" class="form-error">{{submissionError}}</div>
-    </div>
-    <div class="section-container">
-        <div *ngIf="hasEmail" class="acc-section-one">
+<div class="section-container">
+    <div *ngIf="hasEmail" class="acc-section-one">
+        <form class="form-container" (ngSubmit)="reauthAndChangePass()" #signUpForm="ngForm">
+            <div class="form-field">
+                <div [hidden]="!changePasswordSubmissionError" class="form-error">{{changePasswordSubmissionError}}</div>
+            </div>
             <div class="display">Change password</div>
             <div class="form-field">
-                <label class="form-label" for="oldPassword">Current password</label><br>
-                <input class="form-input" placeholder="..." type="password" [(ngModel)]="fields.currentPassword" name="old" #old="ngModel" id="oldPassword">
+                <label class="form-label" for="oldPassword">Current password</label>
+                <br>
+                <input class="form-input" placeholder="..." type="password" [(ngModel)]="fields.currentPassword" name="old" #old="ngModel"
+                    id="oldPassword">
             </div>
             <div class="form-field">
-                <label class="form-label" for="password">New password</label><br>
-                <input class="form-input" placeholder="..." type="password" [(ngModel)]="fields.password" name="password" #password="ngModel" id="password">
+                <label class="form-label" for="password">New password</label>
+                <br>
+                <input class="form-input" placeholder="..." type="password" [(ngModel)]="fields.password" name="password" #password="ngModel"
+                    id="password">
             </div>
             <div class="form-field">
-                <label class="form-label" for="confirmPassword">Confirm password</label><br>
+                <label class="form-label" for="confirmPassword">Confirm password</label>
+                <br>
                 <input class="form-input" placeholder="..." type="password" [(ngModel)]="fields.confirmPassword" name="confirm" #confirm="ngModel"
-                       id="confirmPassword">
+                    id="confirmPassword">
             </div>
             <button class="form-action" type="submit">Change password</button>
-        </div>
+        </form>
+    </div>
 
-        <div class="acc-section-two">
+    <div class="acc-section-two">
+        <form class="form-container" (ngSubmit)="reauthAndDeleteUser()" #deleteForm="ngForm">
+            <div class="form-field">
+                <div [hidden]="!deleteAccountSubmissionError" class="form-error">{{deleteAccountSubmissionError}}</div>
+            </div>
             <div class="display">Delete account</div>
             <div style="padding-top: 10px">You are about to delete your account!</div>
             <div>Please consider the following before doing so:</div>
@@ -36,12 +47,15 @@
                     <li>Your account will be removed from the Hall of Fame.</li>
                 </ul>
                 <div class="checkBox">
-                    <input (change)="toggleDelete($event)" type="checkbox" value="None" id="checkbox" name="check"/>
+                    <input [(ngModel)]="deleteFields.verify" type="checkbox" value="None" id="checkbox" name="check" />
                     <label for="checkbox"></label>
                 </div>
                 <label for="checkbox" class="agree">I understand</label>
             </div>
-            <button [class.unclickable]="!clickable" class="form-action" (click)="deleteUser()">Delete account</button>
-        </div>
+            <label class="form-label" for="currentDeletePassword">Current password</label>
+            <br>
+            <input class="form-input" placeholder="..." type="password" [(ngModel)]="deleteFields.password" name="password" id="currentDeletePassword">
+            <button [class.unclickable]="!deleteFields.verify" class="form-action" type="submit">Delete account</button>
+        </form>
     </div>
-</form>
+</div>

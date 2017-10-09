@@ -20,9 +20,15 @@ describe('Navigation', function () {
             ]);
         });
 
-        // Implements: #TST-landing
         it('starts at home page when logged out', () => {
-            expect($('nav-bar').isPresent()).toBe(true);
+            // Implements: #TST-landing
+            expect($('landing-page').isPresent()).toBe(true);
+
+            // Implements: #TST-landing-site_description
+            expect($('.website-info').isPresent()).toBe(true);
+
+            // Implements: #TST-landing-sign_up
+            expect($('sign-up-form').isPresent()).toBe(true);
         });
 
         // Implements: #TST-getting_started

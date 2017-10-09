@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from "@angular/core";
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs/Observable";
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'account',
@@ -13,30 +14,58 @@ import {Observable} from "rxjs/Observable";
 
 export class AccountComponent {
     fields = { currentPassword: '', password: '', confirmPassword: '' };
-    submissionError = '';
+
+    deleteFields = { verify: false, password: '' };
+
+    changePasswordSubmissionError = '';
+    deleteAccountSubmissionError = '';
+
     username: string;
     hasEmail: boolean;
     email: string;
-    clickable: boolean = false;
 
-    constructor(private angularFireAuth: AngularFireAuth) {
+    constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
         this.username = angularFireAuth.auth.currentUser.displayName;
         this.hasEmail = angularFireAuth.auth.currentUser.providerData[0].providerId == 'password';
         if (this.hasEmail)
             this.email = angularFireAuth.auth.currentUser.email;
     }
 
-    toggleDelete(event) {
-        this.clickable = event.target.checked;
+    reauthAndDeleteUser() {
+        if (this.deleteFields.verify) {
+            if (this.deleteFields.password == '')
+                this.deleteAccountSubmissionError = 'Please enter your current password'; 
+            else {
+                this.angularFireAuth.auth.signInWithEmailAndPassword(this.email, this.deleteFields.password)
+                    .then(() => {
+                        this.deleteFields.password = '';
+                        this.deleteUser();
+                        this.router.navigateByUrl('/');
+                    }).catch((err: any) => {
+                    switch (err.code) {
+                        case 'auth/wrong-password':
+                            this.deleteAccountSubmissionError = 'Wrong Password';
+                            break;
+                        default:
+                            this.deleteAccountSubmissionError = 'Unknown Error';
+                    }
+                    throw err;
+                });
+            }
+        }
     }
 
+    // Implements: #SPC-account-delete
     deleteUser() {
         this.angularFireAuth.auth.currentUser.delete();
     }
 
-    logUserIn() {
+    reauthAndChangePass() {
         if (this.fields.currentPassword == '' || this.fields.confirmPassword == '' || this.fields.password == '')
-            this.submissionError = 'Please fill in the required fields';
+            this.changePasswordSubmissionError = 'Please fill in the required fields';
+        else if (this.fields.confirmPassword != this.fields.password) {
+            this.changePasswordSubmissionError = 'Passwords do not match';
+        }
         else {
             this.angularFireAuth.auth.signInWithEmailAndPassword(this.email, this.fields.currentPassword)
                 .then(() => {
@@ -45,16 +74,17 @@ export class AccountComponent {
                 }).catch((err: any) => {
                 switch (err.code) {
                     case 'auth/wrong-password':
-                        this.submissionError = 'Wrong Password';
+                        this.changePasswordSubmissionError = 'Wrong Password';
                         break;
                     default:
-                        this.submissionError = 'Unknown Error';
+                        this.changePasswordSubmissionError = 'Unknown Error';
                 }
                 throw err;
             });
         }
     }
 
+    // Implements: #SPC-account-change_password
     changePass() {
         if (this.fields.password == this.fields.confirmPassword) {
             this.angularFireAuth.auth.currentUser.updatePassword(this.fields.password)
@@ -65,18 +95,18 @@ export class AccountComponent {
                 }).catch((err: any) => {
                 switch (err.code) {
                     case 'auth/weak-password':
-                        this.submissionError = 'Weak Password';
+                        this.changePasswordSubmissionError = 'Weak Password';
                         break;
                     default:
-                        this.submissionError = 'Unknown Error';
+                        this.changePasswordSubmissionError = 'Unknown Error';
                 }
                 throw err;
             });
         }
-        else this.submissionError = 'Passwords do not match';
+        else this.changePasswordSubmissionError = 'Passwords do not match';
     }
 
     onAuthSuccess() {
-        this.submissionError = 'Password changed successfully';
+        this.changePasswordSubmissionError = 'Password changed successfully';
     }
 }
