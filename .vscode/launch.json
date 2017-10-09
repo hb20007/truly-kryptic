@@ -11,6 +11,15 @@
                 "*.js",
                 "**/*.js"
             ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Run Protractor",
+            "program": "${workspaceFolder}/node_modules/.bin/protractor",
+            "args": [
+                "${workspaceFolder}/protractor.conf.js"
+            ]
         }
     ]
 }

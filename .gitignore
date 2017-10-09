@@ -1,5 +1,5 @@
 .idea
 dist
 node_modules
-firebase_debug.log
+firebase-debug.log
 .awcache
