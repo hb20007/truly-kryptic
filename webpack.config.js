@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const process = require('process');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const prod = process.argv.indexOf('-p') !== -1;
 
@@ -51,8 +52,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     plugins: [
-        // prod && 
-        new CopyWebpackPlugin([{ from: 'index.html', to: 'index.html' }]),
+        new HtmlWebpackPlugin({ template: './index.html', hash: true }),
         new CopyWebpackPlugin([{ from: 'img', to: 'img' }]),
         new webpack.DefinePlugin({
             NODE_ENV: JSON.stringify(process.env.NODE_ENV),
