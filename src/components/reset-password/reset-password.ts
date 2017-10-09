@@ -4,6 +4,7 @@ import { Component } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'reset-password',
@@ -14,9 +15,18 @@ import { AngularFireAuth } from 'angularfire2/auth';
 // partof: #SPC-login-reset_password
 export class ResetPasswordComponent {
 
-    // user: Observable<firebase.User>;
+    fields = { email: '' };
+    submissionError = '';
 
-    // constructor(private angularFireAuth: AngularFireAuth) {
-    //     this.user = angularFireAuth.authState;
-    // }
+    constructor(private router: Router, private angularFireAuth: AngularFireAuth) { }
+
+    sendResetLink() {
+        if (!this.fields.email) {
+            this.submissionError = 'Please enter an email address';
+        } else {
+            this.angularFireAuth.auth.sendPasswordResetEmail(this.fields.email).then(() => {
+                this.submissionError = 'Password reset link sent';
+            });
+        }
+    }
 }
