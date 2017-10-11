@@ -61,6 +61,7 @@ export class LevelComponent implements OnInit {
 
         this.indices.subscribe(() => {
             this.fields.answer = '';
+            this.inputFocused = false;
         });
 
         if (!isTouchDevice()) {
