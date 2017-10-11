@@ -43,16 +43,6 @@ text = '''
 Assert a logged in user can navigate to the level page though the level list.
 '''
 
-[SPC-level-footer]
-text = '''
-The footer contains a facebook like button
-'''
-
-[TST-level-footer]
-text = '''
-Assert that the facebook like button loads correctly
-'''
-
 [SPC-level-guesses]
 text = '''
 Display previous guesses for the level.

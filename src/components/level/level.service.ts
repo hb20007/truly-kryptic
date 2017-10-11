@@ -21,30 +21,35 @@ export class LevelService {
         return ['users', this.userId, levelIndex, sublevelIndex].join('/');
     }
 
-    prevSublevelInd(levels: Level[][], { levelIndex, sublevelIndex }: LevelIndices) {
-        let prevLevelIndex = sublevelIndex == 0 ? levelIndex - 1 : levelIndex;
-        if (prevLevelIndex < 0) {
-            return undefined;
-        } else {
-            let prevSublevelIndex = sublevelIndex == 0 ? levels[prevLevelIndex].length - 1 : sublevelIndex - 1;
-            return { levelIndex: prevLevelIndex, sublevelIndex: prevSublevelIndex };
-        }
+    prevSublevelInd(indices: Observable<LevelIndices>) {
+        return indices.combineLatest(this.db.list('/levels')).map(([{ levelIndex, sublevelIndex }, levels]) => {
+            let prevLevelIndex = sublevelIndex == 0 ? levelIndex - 1 : levelIndex;
+            if (prevLevelIndex < 0) {
+                return undefined;
+            } else {
+                let prevSublevelIndex = sublevelIndex == 0 ? levels[prevLevelIndex].length - 1 : sublevelIndex - 1;
+                return { levelIndex: prevLevelIndex, sublevelIndex: prevSublevelIndex };
+            }
+        });
     }
 
-    nextSublevelInd(levels: Level[][], { levelIndex, sublevelIndex }: LevelIndices) {
-        let maxSublevel = levels[levelIndex].length - 1;
-        let nextLevelIndex = sublevelIndex == maxSublevel ? levelIndex + 1 : levelIndex;
-        if (nextLevelIndex > levels.length - 1) {
-            return undefined;
-        } else {
-            let nextSublevelIndex = sublevelIndex == maxSublevel ? 0 : sublevelIndex + 1;
-            return { levelIndex: nextLevelIndex, sublevelIndex: nextSublevelIndex };
-        }
+    nextSublevelInd(indices: Observable<LevelIndices>) {
+        return indices.combineLatest(this.db.list('/levels')).map(([{ levelIndex, sublevelIndex }, levels]) => {
+            let maxSublevel = levels[levelIndex].length - 1;
+            let nextLevelIndex = sublevelIndex == maxSublevel ? levelIndex + 1 : levelIndex;
+            if (nextLevelIndex > levels.length - 1) {
+                return undefined;
+            } else {
+                let nextSublevelIndex = sublevelIndex == maxSublevel ? 0 : sublevelIndex + 1;
+                return { levelIndex: nextLevelIndex, sublevelIndex: nextSublevelIndex };
+            }
+        });
     }
 
     levelGuesses(indices: Observable<LevelIndices>): Observable<Guess[]> {
-        return indices.map(indices => this.db.list(this.userLevelPath(indices) + '/guesses')
-            .map(guesses => uniqBy(guesses, g => normalizeGuess(g.value)))).mergeAll(1);
+        return indices.mergeMap(indices =>
+            this.db.list(this.userLevelPath(indices) + '/guesses')
+                .map(guesses => uniqBy(guesses, g => normalizeGuess(g.value))));
     }
 
     levelHints(indices: Observable<LevelIndices>) {
@@ -66,8 +71,8 @@ export class LevelService {
 
     levelAnswer(indices: Observable<LevelIndices>) {
         return indices
-            .map(indices => this.db.object(this.userLevelPath(indices) + '/answer')
-                .map(answer => answer.$value)).mergeAll(1);
+            .mergeMap(indices => this.db.object(this.userLevelPath(indices) + '/answer')
+                .map(answer => answer.$value));
     }
 
     levelSummaries() {
@@ -105,8 +110,11 @@ export class LevelService {
                         let isAnswer = v === true;
                         let unlocksHint = typeof v === 'object' ? v : false;
 
-                        return this.db.list(this.userLevelPath(indices) + '/guesses').push({ value: guess, isAnswer, unlocksHint })
-                            .then(() => v);
+                        return Promise.all([
+                            this.db.list(this.userLevelPath(indices) + '/guesses')
+                                .push({ value: guess, isAnswer, unlocksHint }),
+                            isAnswer && this.db.object(this.userLevelPath(indices) + '/answer').set(guess),
+                        ]).then(() => v);
                     });
             });
         }

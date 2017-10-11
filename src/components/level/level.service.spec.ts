@@ -30,24 +30,25 @@ describe('Landing-page Component', () => {
     });
 
     it('gets the correct prev and next sublevel', () => {
+        db.list.and.returnValue(Observable.of(levelsBasic()));
 
-        expect(levelService.prevSublevelInd(levelsBasic(), { levelIndex: 0, sublevelIndex: 0 }))
-            .toEqual(undefined);
+        levelService.prevSublevelInd(Observable.of({ levelIndex: 0, sublevelIndex: 0 }))
+            .subscribe(indices => expect(indices).toEqual(undefined));
 
-        expect(levelService.prevSublevelInd(levelsBasic(), { levelIndex: 0, sublevelIndex: 1 }))
-            .toEqual({ levelIndex: 0, sublevelIndex: 0 });
+        levelService.prevSublevelInd(Observable.of({ levelIndex: 0, sublevelIndex: 1 }))
+            .subscribe(indices => expect(indices).toEqual({ levelIndex: 0, sublevelIndex: 0 }));
 
-        expect(levelService.prevSublevelInd(levelsBasic(), { levelIndex: 1, sublevelIndex: 1 }))
-            .toEqual({ levelIndex: 1, sublevelIndex: 0 });
+        levelService.prevSublevelInd(Observable.of({ levelIndex: 1, sublevelIndex: 1 }))
+            .subscribe(indices => expect(indices).toEqual({ levelIndex: 1, sublevelIndex: 0 }));
 
-        expect(levelService.nextSublevelInd(levelsBasic(), { levelIndex: 0, sublevelIndex: 0 }))
-            .toEqual({ levelIndex: 1, sublevelIndex: 0 });
+        levelService.nextSublevelInd(Observable.of({ levelIndex: 1, sublevelIndex: 0 }))
+            .subscribe(indices => expect(indices).toEqual({ levelIndex: 1, sublevelIndex: 1 }));
 
-        expect(levelService.nextSublevelInd(levelsBasic(), { levelIndex: 1, sublevelIndex: 0 }))
-            .toEqual({ levelIndex: 1, sublevelIndex: 1 });
+        levelService.nextSublevelInd(Observable.of({ levelIndex: 1, sublevelIndex: 0 }))
+            .subscribe(indices => expect(indices).toEqual({ levelIndex: 1, sublevelIndex: 1 }));
 
-        expect(levelService.nextSublevelInd(levelsBasic(), { levelIndex: 1, sublevelIndex: 1 }))
-            .toEqual(undefined);
+        levelService.nextSublevelInd(Observable.of({ levelIndex: 1, sublevelIndex: 1 }))
+            .subscribe(indices => expect(indices).toEqual(undefined));
     });
 
     it('retrieves guesses', () => {
