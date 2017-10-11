@@ -43,19 +43,8 @@ export class LevelService {
     }
 
     levelGuesses(indices: Observable<LevelIndices>): Observable<Guess[]> {
-        return indices
-            .map(indices => this.db.object(this.userLevelPath(indices) + '/guesses')
-                .map(guesses => {
-                    return Object.keys(guesses || {})
-                        .filter(g => g && g[0] != '$')
-                        .map(guess => {
-                            let unlockedByGuess = guesses[guess];
-                            let isAnswer = unlockedByGuess === true;
-                            let unlocksHint = typeof unlockedByGuess === 'object' ? unlockedByGuess : undefined;
-
-                            return { value: guess, isAnswer, unlocksHint };
-                        });
-                })).mergeAll(1);
+        return indices.map(indices => this.db.list(this.userLevelPath(indices) + '/guesses')
+            .map(guesses => uniqBy(guesses, g => normalizeGuess(g.value)))).mergeAll(1);
     }
 
     levelHints(indices: Observable<LevelIndices>) {
@@ -63,7 +52,7 @@ export class LevelService {
             .map(([indices, guesses, levels]) => {
                 let defaultHints = levels[indices.levelIndex][indices.sublevelIndex].hints;
 
-                let uniqueWithHints = uniqBy(guesses.filter(g => g.unlocksHint !== undefined), g => normalizeGuess(g.value));
+                let uniqueWithHints = guesses.filter(g => g.unlocksHint);
 
                 let guessesByHintValue = groupBy(uniqueWithHints, g => JSON.stringify(g.unlocksHint));
                 let unlockedHints = Object.keys(guessesByHintValue).map(hint => ({
@@ -113,7 +102,10 @@ export class LevelService {
                 return this.db.object(path).$ref.once('value')
                     .then(v => v.val())
                     .then(v => {
-                        return this.db.object(this.userLevelPath(indices) + '/guesses/' + guess).set(v || false)
+                        let isAnswer = v === true;
+                        let unlocksHint = typeof v === 'object' ? v : false;
+
+                        return this.db.list(this.userLevelPath(indices) + '/guesses').push({ value: guess, isAnswer, unlocksHint })
                             .then(() => v);
                     });
             });

@@ -62,6 +62,10 @@ export class LevelComponent implements OnInit {
         return this.sanitizer.bypassSecurityTrustStyle(`url("${this.imgHintDir + image}")`);
     }
 
+    onKey() {
+
+    }
+
     submitAnswer() {
         this.levelService.submitAnswer(this.fields.answer, this.indices).then(secret => {
             if (secret) {
