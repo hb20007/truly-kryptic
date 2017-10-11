@@ -19,10 +19,7 @@ module.exports = {
                 test: /\.tsx?$/,
                 use: [
                     {
-                        loader: 'awesome-typescript-loader',
-                        options: {
-                            // useCache: prod,
-                        }
+                        loader: 'ts-loader',
                     },
                     // {
                     //     loader: 'ngc-webpack',

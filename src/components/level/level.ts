@@ -1,16 +1,15 @@
 import * as LevelTpl from './level.html';
 import * as LevelSyl from './level.scss';
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ElementRef, Renderer } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from 'angularfire2/auth';
 // import * as levels from '../../../Notes/levels.json';
-import { getLevelNumber } from '../../shared';
+import { getLevelNumber, isTouchDevice } from '../../shared';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-import "rxjs/add/operator/combineLatest";
-
+import { LevelService } from './level.service';
 
 let levels = [];
 
@@ -24,13 +23,82 @@ export type LevelIndices = { levelIndex: number; sublevelIndex: number };
 // Implements: #SPC-level
 export class LevelComponent implements OnInit {
 
-    constructor() {
+    submissionStatus: 'correct-answer' | 'correct-hint' | 'wrong' | undefined;
 
-    }
+    imgHintDir = '/img/hints/';
+    fields = { answer: '' };
+
+    indices: Observable<LevelIndices>;
+
+    basicInfo: Observable<BasicLevelInfo>;
+
+    hints: Observable<Hint[]>;
+    guesses: Observable<Guess[]>;
+
+    constructor(private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer,
+        private levelService: LevelService, private renderer: Renderer) { }
 
     ngOnInit() {
+        this.indices = this.route.paramMap.map(params => ({
+            levelIndex: Number(params.get('level_id')),
+            sublevelIndex: Number(params.get('sublevel_id')),
+        }));
+
+        this.guesses = this.levelService.levelGuesses(this.indices);
+
+        this.basicInfo = this.levelService.basicLevelInfo(this.indices);
+        this.hints = this.levelService.levelHints(this.indices);
+
+        if (!isTouchDevice()) {
+            this.focusInput();
+        }
     }
 
+    focusInput() {
+        this.renderer.invokeElementMethod(document.querySelector('#answer'), 'focus', []);
+    }
+
+    getBackgroundUrl(image) {
+        return this.sanitizer.bypassSecurityTrustStyle(`url("${this.imgHintDir + image}")`);
+    }
+
+    submitAnswer() {
+        this.levelService.submitAnswer(this.fields.answer, this.indices).then(secret => {
+            if (secret) {
+                this.fields.answer = '';
+
+                if (typeof secret == 'object') {
+                    this.submissionStatus = 'correct-hint';
+                } else if (secret === true) {
+                    this.submissionStatus = 'correct-answer';
+                }
+            } else {
+                this.submissionStatus = 'wrong';
+            }
+        });
+    }
+    //     this.answeredWrong = false;
+
+    //     const guess = this.fields.answer.trim();
+    //     if (guess) {
+    //         this.guesses.push(guess);
+    //     }
+
+    //     const correct = this.levelAnswers.find(levelAnswer => this.fmtGuessOrAnswer(guess) == this.fmtGuessOrAnswer(levelAnswer));
+
+    //     if (correct) {
+    //         if (this.openNextLevel) {
+    //             // this.fields.answer = "";
+    //             // this.openNextLevel();
+    //             this.nextLevelUnlocked.set(true);
+
+    //         } else {
+    //             // todo, go to hall of fame form
+    //         }
+    //     } else {
+    //         this.answeredWrong = true;
+    //     }
+    // }
 }
 
 // export class LevelComponent implements OnInit {

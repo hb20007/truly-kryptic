@@ -32,4 +32,8 @@ declare interface LevelSummary {
     sublevelIndex: Number,
 }
 
+declare interface BasicLevelInfo { title: String, levelNumber: String }
+
+declare type LevelIndices = { levelIndex: number; sublevelIndex: number };
+
 declare type Hint = ({ image: String } | { text: String } | { audio: String }) & { triggers?: string[] };

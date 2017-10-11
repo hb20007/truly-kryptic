@@ -6,8 +6,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 
-import "rxjs/add/observable/of";
-import "rxjs/add/operator/map";
 
 describe('Landing-page Component', () => {
 
@@ -59,9 +57,11 @@ describe('Landing-page Component', () => {
     });
 
     it('retrieves both default and unlocked hints', () => {
+        db.list.and.returnValue(Observable.of(levelsBasic()));
+
         spyOn(levelService, 'levelGuesses').and.returnValue(Observable.of(levelGuesses()));
 
-        levelService.levelHints(levelsBasic(), indices).subscribe(hints => {
+        levelService.levelHints(indices).subscribe(hints => {
             expect(hints).toEqual([
                 { image: 'anagram.png' },
                 { text: 'low end keg' },
@@ -96,5 +96,15 @@ describe('Landing-page Component', () => {
             expect(summaries.length).toBe(3);
         });
     });
-});
 
+    it('correctly formats level info', () => {
+        db.list.and.returnValue(Observable.of(levelsBasic()));
+
+        levelService.basicLevelInfo(indices).subscribe(info => {
+            expect(info).toEqual({
+                levelNumber: '2a',
+                title: "Anna Graham",
+            });
+        });
+    });
+});
