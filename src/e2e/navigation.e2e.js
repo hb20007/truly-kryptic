@@ -1,6 +1,5 @@
-let { baseUrl } = require('./shared');
 let uniq = require('lodash/uniq');
-let { getNavBarLinks, signUp } = require('./shared');
+let { baseUrl , getNavBarLinks, signUp } = require('./shared');
 
 // Implements: #TST-nav_bar
 describe('Navigation', function () {

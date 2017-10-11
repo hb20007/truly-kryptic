@@ -15,3 +15,8 @@ Provision fake levels and fake user completions/attempts of those levels.
 
 Assert that a certain number of levels are displayed and the tables fields are correct for the test user.
 '''
+
+[TST-level-list-totals]
+text = '''
+Data for how many users solve a level is displayed
+'''

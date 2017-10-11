@@ -12,7 +12,7 @@ import "rxjs/add/operator/map";
 describe('Landing-page Component', () => {
 
     let levelService: LevelService;
-    let db = { object: jasmine.createSpy('object') };
+    let db = { object: jasmine.createSpy('object'), list: jasmine.createSpy('list') };
 
     let indices = Observable.of({ levelIndex: 1, sublevelIndex: 0 });
 
@@ -77,6 +77,23 @@ describe('Landing-page Component', () => {
 
         levelService.levelAnswer(indices).subscribe(answer => {
             expect(answer).toBe('asdf');
+        });
+    });
+
+    it('correctly formats level summaries', () => {
+        db.list.and.returnValue(Observable.of(levelsBasic()));
+
+        levelService.levelSummaries().subscribe(summaries => {
+            expect(summaries[0]).toEqual({
+                levelNumber: '1',
+                title: "Change numbers to...",
+                solvedTotal: 0,
+                solvedCurrentUser: false,
+                levelIndex: 0,
+                sublevelIndex: 0,
+            });
+
+            expect(summaries.length).toBe(3);
         });
     });
 });

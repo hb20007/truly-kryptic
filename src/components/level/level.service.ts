@@ -7,7 +7,8 @@ import { AngularFireDatabase } from "angularfire2/database";
 import * as groupBy from "lodash/groupBy";
 import * as mapKeys from "lodash/mapKeys";
 import * as uniqBy from "lodash/uniqBy";
-import { normalizeGuess } from "../../shared";
+import * as flatten from "lodash/flatten";
+import { normalizeGuess, getLevelNumber } from "../../shared";
 
 export type LevelIndices = { levelIndex: number; sublevelIndex: number };
 
@@ -81,5 +82,19 @@ export class LevelService {
         return indices
             .map(indices => this.db.object(this.userLevelPath(indices) + '/answer')
                 .map(answer => answer.$value)).mergeAll();
+    }
+
+    levelSummaries() {
+        return this.db.list('/levels')
+            .map(levels => flatten(levels
+                .map((sublevels, levelIndex) => sublevels
+                    .map((sublevel, sublevelIndex) => ({
+                        levelNumber: getLevelNumber(levelIndex, sublevelIndex, sublevels.length),
+                        title: sublevel.title,
+                        solvedTotal: 0,
+                        solvedCurrentUser: false,
+                        levelIndex,
+                        sublevelIndex,
+                    })))));
     }
 }
