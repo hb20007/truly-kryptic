@@ -21,23 +21,6 @@ text = '''
 Assert that the solution input box is displayed
 '''
 
-[TST-level-solution_input-additional_clues]
-partof =  'SPC-level-clue'
-text = '''
-Assert that additional clues are displayed when a partially correct solution
-is entered.
-'''
-
-[TST-level-solution_input-wrong_submission]
-text = '''
-Assert that a wrong solution message is displayed
-'''
-
-[TST-level-solution_input-correct_submission]
-text = '''
-Assert that the user progresses to the next level when they enter a correct solution
-'''
-
 [TST-level]
 text = '''
 Assert a logged in user can navigate to the level page though the level list.
@@ -47,3 +30,5 @@ Assert a logged in user can navigate to the level page though the level list.
 text = '''
 Display previous guesses for the level.
 '''
+
+[TST-level-guesses]

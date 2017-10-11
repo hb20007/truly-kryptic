@@ -5,7 +5,7 @@ describe('Level List', () => {
         signUp();
     });
 
-    fit('shows levels', () => {
+    it('shows levels', () => {
         browser.wait(() => $('.level-item').isPresent());
     });
 
