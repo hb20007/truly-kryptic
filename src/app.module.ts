@@ -19,6 +19,7 @@ import { LevelComponent } from './components/level/level';
 import { HallOfFameComponent } from "./components/hof/hof";
 import { GettingStartedComponent } from './components/getting-started/getting-started';
 import { ResetPasswordComponent } from './components/reset-password/reset-password';
+import { LevelService } from './components/level/level.service';
 
 const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
@@ -57,7 +58,7 @@ const appRoutes: Routes = [
     GettingStartedComponent,
     ResetPasswordComponent
   ],
-  providers: [],
+  providers: [LevelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

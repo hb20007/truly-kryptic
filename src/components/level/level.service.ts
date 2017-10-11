@@ -1,36 +1,43 @@
-import * as LevelTpl from './level.html';
-import * as LevelSyl from './level.scss';
-import { Component, OnInit } from "@angular/core";
-import { Observable } from 'rxjs/Observable';
-import * as firebase from "firebase/app";
-import { AngularFireAuth } from 'angularfire2/auth';
-// import * as levels from '../../../Notes/levels.json';
-import { getLevelNumber } from '../../shared';
-import { ActivatedRoute, Router } from '@angular/router';
-import { DomSanitizer } from '@angular/platform-browser';
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-import "rxjs/add/operator/combineLatest";
-
-
-let levels = [];
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs/Observable";
 
 export type LevelIndices = { levelIndex: number; sublevelIndex: number };
 
-@Component({
-    selector: 'level',
-    template: LevelTpl,
-    styles: [LevelSyl]
-})
-// Implements: #SPC-level
-export class LevelComponent implements OnInit {
+@Injectable()
+export class LevelService {
 
     constructor() {
 
     }
 
-    ngOnInit() {
+    prevSublevel(levels: Level[][], { levelIndex, sublevelIndex }: LevelIndices) {
+        let prevLevelIndex = sublevelIndex == 0 ? levelIndex - 1 : levelIndex;
+        if (prevLevelIndex < 0) {
+            return undefined;
+        } else {
+            let prevSublevelIndex = sublevelIndex == 0 ? levels[prevLevelIndex].length - 1 : sublevelIndex - 1;
+            return { levelIndex: prevLevelIndex, sublevelIndex: prevSublevelIndex };
+        }
     }
 
+    nextSublevel(levels: Level[][], { levelIndex, sublevelIndex }: LevelIndices) {
+        let maxSublevel = levels[levelIndex].length - 1;
+        let nextLevelIndex = sublevelIndex == maxSublevel ? levelIndex + 1 : levelIndex;
+        if (nextLevelIndex < 0) {
+            return undefined;
+        } else {
+            let nextSublevelIndex = sublevelIndex == maxSublevel ? 0 : sublevelIndex + 1;
+            return { levelIndex: nextLevelIndex, sublevelIndex: nextSublevelIndex };
+        }
+    }
+
+    levelHints(indices: Observable<LevelIndices>) {
+        // return Observable.of([]);
+    }
+
+    levelGuesses(indices: Observable<LevelIndices>) {
+
+    }
 }
 
 // export class LevelComponent implements OnInit {

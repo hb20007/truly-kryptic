@@ -9,6 +9,7 @@ import { RouterLinkStubDirective } from '../../test-utils';
 
 describe('Landing-page Component', () => {
     beforeEach(() => {
+        console.log(12341234);
         // TestBed.configureTestingModule({
         //     declarations: [LevelComponent, RouterLinkStubDirective],
         //     providers: [
