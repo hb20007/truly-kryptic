@@ -17,4 +17,10 @@ declare interface HofUser {
     comment: String;
 }
 
+declare interface Guess {
+    value: String,
+    isAnswer: boolean,
+    unlocksHint: Hint,
+}
+
 declare type Hint = ({ image: String } | { text: String } | { audio: String }) & { triggers?: string[] };
