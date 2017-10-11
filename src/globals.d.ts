@@ -23,4 +23,13 @@ declare interface Guess {
     unlocksHint: Hint,
 }
 
+declare interface LevelSummary {
+    levelNumber: String,
+    title: String,
+    solvedTotal: Number,
+    solvedCurrentUser: boolean,
+    levelIndex: Number,
+    sublevelIndex: Number,
+}
+
 declare type Hint = ({ image: String } | { text: String } | { audio: String }) & { triggers?: string[] };
