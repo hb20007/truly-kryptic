@@ -20,7 +20,7 @@ declare interface HofUser {
 declare interface Guess {
     value: String,
     isAnswer: boolean,
-    unlocksHint: Hint | false,
+    unlocksHint: Hint | boolean,
 }
 
 declare interface LevelSummary {

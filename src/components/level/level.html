@@ -3,13 +3,13 @@
     <div class="level-top-bar">
         <div class="level-nav-title">
             <div class="level-prev">
-                <a [attr.disabled]="!(prevLevelLink | async) || null" [routerLink]="prevLevelLink | async"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                <a [attr.disabled]="!(prevIndices | async) || undefined" (click)="openLevelLink(prevIndices)"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
             </div>
             <div class="level-title">{{(basicInfo | async) && (basicInfo | async).title}}</div>
             <div class="level-next">
-                <a [attr.disabled]="!canGotoNextLevel || undefined" [routerLink]="nextLevelLink | async">
+                <a [attr.disabled]="!(completedWithAnswer | async) || undefined" (click)="openNextLevelIfCompleted()">
                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                    <i *ngIf="!canGotoNextLevel" class="fa fa-lock" aria-hidden="true"></i>
+                    <i *ngIf="!(completedWithAnswer | async)" class="fa fa-lock" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -42,13 +42,24 @@
         </div>
     </div>
 
-    <form class="submit-answer-form" (ngSubmit)="submitAnswer()" #answerForm="ngForm">
+    <form [class.level-completed]="completedWithAnswer | async" class="submit-answer-form" (ngSubmit)="submitAnswer()" #answerForm="ngForm">
         <div class="form-field">
             <div [hidden]="!submissionError" class="form-error">{{submissionError}}</div>
         </div>
-        <input class="form-input" [class.wrong-answer]="answeredWrong" (keydown)="answeredWrong = false; true" (focus)="answeredWrong = false; true"
-            autocomplete="off" type="text" [(ngModel)]="fields.answer" name="text" #answer="ngModel" id="answer">
-        <button type="submit">Submit answer</button>
+
+        <div [hidden]="(completedWithAnswer | async)">
+            <input class="form-input" [class.wrong-answer]="answeredWrong" (keydown)="answeredWrong = false; true" (focus)="answeredWrong = false; true"
+                autocomplete="off" type="text" [(ngModel)]="fields.answer" name="text" #answer="ngModel" id="answer"
+                (blur)="inputFocused = false" (focus)="inputFocused=true">
+
+            <button [disabled]="submissionStatus == 'waiting' || undefined" type="submit">Submit answer</button>
+        </div>
+
+        <div [hidden]="!(completedWithAnswer | async)">
+            <input [hidden]="!(completedWithAnswer | async)" class="form-input" disabled="true"[value]="completedWithAnswer | async">
+
+            <button (click)="openLevelLink(nextIndices)">Continue to Next Level</button>
+        </div>
     </form>
 
     <!-- Implements: #SPC-level-guesses -->
