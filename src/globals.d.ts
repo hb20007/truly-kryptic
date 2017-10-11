@@ -17,4 +17,4 @@ declare interface HofUser {
     comment: String;
 }
 
-declare type Hint = ({ image: String } | { text: String } | { audio: String }) & { triggers: string[] };
+declare type Hint = ({ image: String } | { text: String } | { audio: String }) & { triggers?: string[] };

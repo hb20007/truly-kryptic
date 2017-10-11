@@ -1,16 +1,25 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
+import "rxjs/add/operator/mergeAll";
+import { AngularFireAuth } from "angularfire2/auth";
+import { AngularFireDatabase } from "angularfire2/database";
 
 export type LevelIndices = { levelIndex: number; sublevelIndex: number };
 
 @Injectable()
 export class LevelService {
 
-    constructor() {
+    constructor(private db: AngularFireDatabase, private angularFireAuth: AngularFireAuth) { }
 
+    get userId() {
+        return this.angularFireAuth.auth.currentUser.uid.toString();
     }
 
-    prevSublevel(levels: Level[][], { levelIndex, sublevelIndex }: LevelIndices) {
+    userLevelPath({ levelIndex, sublevelIndex }: LevelIndices) {
+        return [this.userId, levelIndex, sublevelIndex].join('/');
+    }
+
+    prevSublevelInd(levels: Level[][], { levelIndex, sublevelIndex }: LevelIndices) {
         let prevLevelIndex = sublevelIndex == 0 ? levelIndex - 1 : levelIndex;
         if (prevLevelIndex < 0) {
             return undefined;
@@ -20,10 +29,10 @@ export class LevelService {
         }
     }
 
-    nextSublevel(levels: Level[][], { levelIndex, sublevelIndex }: LevelIndices) {
+    nextSublevelInd(levels: Level[][], { levelIndex, sublevelIndex }: LevelIndices) {
         let maxSublevel = levels[levelIndex].length - 1;
         let nextLevelIndex = sublevelIndex == maxSublevel ? levelIndex + 1 : levelIndex;
-        if (nextLevelIndex < 0) {
+        if (nextLevelIndex > levels.length - 1) {
             return undefined;
         } else {
             let nextSublevelIndex = sublevelIndex == maxSublevel ? 0 : sublevelIndex + 1;
@@ -37,6 +46,10 @@ export class LevelService {
 
     levelGuesses(indices: Observable<LevelIndices>) {
 
+    }
+
+    levelAnswer(indices: Observable<LevelIndices>) {
+        return indices.map(({ levelIndex, sublevelIndex }) => this.db.object([])).mergeAll();
     }
 }
 

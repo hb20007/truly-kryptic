@@ -1,4 +1,4 @@
-export const levelsBasic = () => [
+export const levelsBasic = (): Level[][] => [
     [
         {
             "title": "Change numbers to...",
@@ -35,9 +35,7 @@ export const levelsBasic = () => [
                 }
             ],
             "answers": ["knowledge"]
-        }
-    ],
-    [
+        },
         {
             "title": "Brighten her up",
             "hints": [
@@ -50,5 +48,5 @@ export const levelsBasic = () => [
             ],
             "answers": ["elephant"]
         }
-    ],
+    ]
 ];
