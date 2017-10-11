@@ -51,7 +51,7 @@ describe('Landing-page Component', () => {
     });
 
     it('retrieves guesses', () => {
-        db.object.and.returnValue(Observable.of(levelGuessesDatabaseMock()));
+        db.list.and.returnValue(Observable.of(levelGuessesDatabaseMock()));
 
         levelService.levelGuesses(indices).subscribe(guesses => expect(guesses).toEqual(levelGuesses()));
     });

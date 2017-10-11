@@ -1,5 +1,11 @@
 @import "../../mixins.scss";
 
+// so we can focus an input while it's hidden
+.transparent {
+    opacity: 0;
+    filter:alpha(opacity=0);
+}
+
 .level-area {
     // padding: 0 20%;
     margin-bottom: 4em;

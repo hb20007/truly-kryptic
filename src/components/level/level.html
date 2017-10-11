@@ -1,11 +1,11 @@
-<div (window:keydown)="onKey($event.keyCode)" class="level-area">
+<div (window:keydown)="onKey($event.keyCode)" class="level-area" [class.transparent]="!(basicInfo | async)">
 
-    <div class="level-top-bar" [hidden]="!(basicInfo | async)">
+    <div class="level-top-bar">
         <div class="level-nav-title">
             <div class="level-prev">
                 <a [attr.disabled]="!(prevLevelLink | async) || null" [routerLink]="prevLevelLink | async"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
             </div>
-            <div class="level-title">{{(basicInfo | async).title}}</div>
+            <div class="level-title">{{(basicInfo | async) && (basicInfo | async).title}}</div>
             <div class="level-next">
                 <a [attr.disabled]="!canGotoNextLevel || undefined" [routerLink]="nextLevelLink | async">
                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -13,7 +13,7 @@
                 </a>
             </div>
         </div>
-        <div class="level-number">Level {{(basicInfo | async).levelNumber}}</div>
+        <div class="level-number">Level {{(basicInfo | async) && (basicInfo | async).levelNumber}}</div>
     </div>
 
     <!-- Implements: #SPC-level-hint -->

@@ -51,17 +51,17 @@ export const levelsBasic = (): Level[][] => [
     ]
 ];
 
-export const levelGuessesDatabaseMock = () => ({
-    "chicken": false,
-    "entry": { text: 'nice try' },
-    "entryy": { text: 'nice try' },
-    "$$entryy": { text: 'nice try' },
-    "door": true,
-});
+export const levelGuessesDatabaseMock = () => [
+    { value: "chicken", isAnswer: false, unlocksHint: false },
+    { value: "entry", isAnswer: false, unlocksHint: { text: 'nice try' } },
+    { value: "entryy", isAnswer: false, unlocksHint: { text: 'nice try' } },
+    { value: "$entryy", isAnswer: false, unlocksHint: { text: 'nice try' } },
+    { value: "door", isAnswer: true, unlocksHint: false },
+];
 
 export const levelGuesses = () => [
-    { value: 'chicken', isAnswer: false, unlocksHint: undefined },
+    { value: 'chicken', isAnswer: false, unlocksHint: false },
     { value: 'entry', isAnswer: false, unlocksHint: { text: 'nice try' } },
     { value: 'entryy', isAnswer: false, unlocksHint: { text: 'nice try' } },
-    { value: 'door', isAnswer: true, unlocksHint: undefined },
+    { value: 'door', isAnswer: true, unlocksHint: false },
 ];
