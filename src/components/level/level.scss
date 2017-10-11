@@ -148,5 +148,14 @@
         display: inline-block;
         margin-right: 1em;
         margin-bottom: 1em;
+        border: 0.05em none rgba(map-get($colors, secondary), 0.3);
+
+        &.guess-trigger {
+            border-style: dashed;
+        }
+
+        &.guess-answer {
+            border-style: solid;
+        }
     }
 }
