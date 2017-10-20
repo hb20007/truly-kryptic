@@ -33,8 +33,10 @@
 
 .provider-google {
     @include provider(map-get($colors, google_red));
+    font-weight: bold;
 }
 
 .provider-facebook {
     @include provider(map-get($colors, facebook_blue));
+    font-weight: bold;
 }
