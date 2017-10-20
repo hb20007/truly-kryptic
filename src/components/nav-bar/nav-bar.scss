@@ -80,7 +80,7 @@ nav.shrink {
   background: map-get($colors, dark); // Change background to black on scroll
 
   .menu {
-    padding-top: 15px;
+    padding-top: 12.5px;
     transition: all ease .5s;
     height: 10px !important;
   }
@@ -91,6 +91,7 @@ nav.shrink {
   }
 
   #user {
+    padding-top: 15px;
     padding-bottom: 30px;
   }
 }
