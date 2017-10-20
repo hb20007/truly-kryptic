@@ -13,4 +13,15 @@ body {
 button {
   font-family: inherit;
   cursor: pointer;
+  outline: none;
+  font-weight: bold;
+  box-sizing: border-box;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+a {
+  outline: none;
 }

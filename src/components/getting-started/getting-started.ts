@@ -9,4 +9,8 @@ import { Component } from "@angular/core";
 })
 
 // partof: #SPC-getting-started
-export class GettingStartedComponent { }
+export class GettingStartedComponent {
+    goToCurrentLevel() {
+        //todo
+    }
+}

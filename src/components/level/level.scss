@@ -114,12 +114,10 @@
 
     // text-align: center;
 
-    input,
-    button {
+    input, button {
         padding: 0.8em;
         margin: 0;
         border: none;
-        box-sizing: border-box;
         font-family: inherit;
         font-size: 1em;
         outline: none;
@@ -129,6 +127,7 @@
         margin-right: 1em;
         color: map-get($colors, light);
         background: map-get($colors, primary);
+        box-sizing: border-box;
         border: 0.05em solid rgba(map-get($colors, secondary), 0.3);
 
         &:focus {
@@ -138,7 +137,6 @@
 
     button {
         background: map-get($colors, light);
-        font-weight: bold;
 
         &[disabled] {
             background: darken(map-get($colors, light), 20%);
