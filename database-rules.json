@@ -6,7 +6,15 @@
             }
         },
         "levels": {
-            ".read": true
+            ".read": true,
+            "$level": {
+                "$sublevel": {
+                    "timesCompleted": {
+                        ".validate": "(!data.exists() && newData.val() == 0) || (newData.val() == data.val() + 1)",
+                        ".write": true
+                    }
+                }
+            }
         },
         "hall-of-fame": {
             ".read": true,

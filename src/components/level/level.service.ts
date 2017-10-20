@@ -23,6 +23,10 @@ export class LevelService {
         return ['users', this.userId, levelIndex, sublevelIndex].join('/');
     }
 
+    sharedLevelPath({ levelIndex, sublevelIndex }: LevelIndices) {
+        return ['levels', levelIndex, sublevelIndex].join('/');
+    }
+
     prevSublevelInd(indices: Observable<LevelIndices>) {
         return indices.combineLatest(this.db.list('/levels')).map(([{ levelIndex, sublevelIndex }, levels]) => {
             let prevLevelIndex = sublevelIndex == 0 ? levelIndex - 1 : levelIndex;
@@ -89,7 +93,7 @@ export class LevelService {
                             let level = {
                                 levelNumber: getLevelNumber(levelIndex, sublevelIndex, sublevels.length),
                                 title: sublevel.title,
-                                solvedTotal: 0,
+                                solvedTotal: sublevel.timesCompleted || 0,
                                 solvedCurrentUser: solved,
                                 unlocked: prevSolved,
                                 levelIndex,
@@ -116,7 +120,6 @@ export class LevelService {
             } else {
                 // reverse order of levels again
                 let summaryIndex = summaries.length - 1 - revSummaryIndex;
-                console.log(revSummaryIndex, summaryIndex);
 
                 let summary = summaries[Math.min(summaryIndex + 1, summaries.length - 1)];
                 return { levelIndex: summary.levelIndex, sublevelIndex: summary.sublevelIndex };
@@ -139,6 +142,13 @@ export class LevelService {
         });
     }
 
+    incrementLevelTimesSolved(indices: LevelIndices) {
+        let timesCompleted = this.db.object(this.sharedLevelPath(indices) + '/timesCompleted');
+        return timesCompleted.first().subscribe(num => {
+            timesCompleted.set((num.$value || 0) + 1);
+        });
+    }
+
     submitAnswer(guess, indices: Observable<LevelIndices>): Promise<true | Object | null> {
         if (!guess) {
             return Promise.resolve(undefined);
@@ -155,6 +165,7 @@ export class LevelService {
                             this.db.list(this.userLevelPath(indices) + '/guesses')
                                 .push({ value: guess, isAnswer, unlocksHint }),
                             isAnswer && this.db.object(this.userLevelPath(indices) + '/answer').set(guess),
+                            isAnswer && this.incrementLevelTimesSolved(indices),
                         ]).then(() => v);
                     });
             });
