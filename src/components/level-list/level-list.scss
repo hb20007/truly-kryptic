@@ -40,6 +40,10 @@
     }
 }
 
+.level-locked-label {
+    color: lighten(map-get($colors, primary), 30);
+}
+
 .level:nth-child(even) {
     background: lighten(map-get($colors, primary), 5);
 }

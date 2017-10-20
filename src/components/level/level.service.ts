@@ -6,6 +6,7 @@ import * as groupBy from "lodash/groupBy";
 import * as mapKeys from "lodash/mapKeys";
 import * as uniqBy from "lodash/uniqBy";
 import * as flatten from "lodash/flatten";
+import * as getProp from "lodash/get";
 import { normalizeGuess, getLevelNumber } from "../../shared";
 
 @Injectable()
@@ -14,7 +15,8 @@ export class LevelService {
     constructor(private db: AngularFireDatabase, private angularFireAuth: AngularFireAuth) { }
 
     get userId() {
-        return this.angularFireAuth.auth.currentUser.uid.toString();
+        return this.angularFireAuth.auth.currentUser &&
+            this.angularFireAuth.auth.currentUser.uid.toString();
     }
 
     userLevelPath({ levelIndex, sublevelIndex }: LevelIndices) {
@@ -76,17 +78,56 @@ export class LevelService {
     }
 
     levelSummaries() {
-        return this.db.list('/levels')
-            .map(levels => flatten(levels
-                .map((sublevels, levelIndex) => sublevels
-                    .map((sublevel, sublevelIndex) => ({
-                        levelNumber: getLevelNumber(levelIndex, sublevelIndex, sublevels.length),
-                        title: sublevel.title,
-                        solvedTotal: 0,
-                        solvedCurrentUser: false,
-                        levelIndex,
-                        sublevelIndex,
-                    })))));
+        return this.db.list('/levels').combineLatest(this.db.list(`users/${this.userId}`))
+            .map(([levels, userLevels]) => {
+                let prevSolved = true;
+
+                return flatten(levels
+                    .map((sublevels, levelIndex) => sublevels
+                        .map((sublevel, sublevelIndex) => {
+                            let solved = !!getProp(userLevels, [levelIndex, sublevelIndex, 'answer']);
+                            let level = {
+                                levelNumber: getLevelNumber(levelIndex, sublevelIndex, sublevels.length),
+                                title: sublevel.title,
+                                solvedTotal: 0,
+                                solvedCurrentUser: solved,
+                                unlocked: prevSolved,
+                                levelIndex,
+                                sublevelIndex,
+                            };
+                            prevSolved = solved;
+
+                            return level;
+                        })))
+            });
+    }
+
+    // index of the highest level that the user has not compelted yet
+    currentLevelInd() {
+        return this.levelSummaries().map(summaries => {
+            let firstLevelInd = { levelIndex: 0, sublevelIndex: 0 };
+
+            // find the last completed level
+            let revSummaryIndex = summaries.concat([]).reverse().findIndex(summary => summary.solvedCurrentUser);
+
+            if (revSummaryIndex == -1) {
+                // no levels completed
+                return firstLevelInd;
+            } else {
+                // reverse order of levels again
+                let summaryIndex = summaries.length - 1 - revSummaryIndex;
+                console.log(revSummaryIndex, summaryIndex);
+
+                let summary = summaries[Math.min(summaryIndex + 1, summaries.length - 1)];
+                return { levelIndex: summary.levelIndex, sublevelIndex: summary.sublevelIndex };
+            }
+        });
+    }
+
+    currentLevelLink() {
+        return this.currentLevelInd().map(({ levelIndex, sublevelIndex }) => {
+            return `/level/${levelIndex}/${sublevelIndex}`;
+        });
     }
 
     basicLevelInfo(indices: Observable<LevelIndices>): Observable<BasicLevelInfo> {
