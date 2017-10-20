@@ -12,7 +12,8 @@
         <div *ngFor="let level of (levels | async)" class="sublevel">
             <div class="level-item">{{level.levelNumber}}</div>
             <div class="level-item">
-                <a class="level-link" [routerLink]="['/level', level.levelIndex, level.sublevelIndex]" href="">{{level.title}}</a>
+                <a *ngIf="level.unlocked" class="level-link" [routerLink]="['/level', level.levelIndex, level.sublevelIndex]" href="">{{level.title}}</a>
+                <span *ngIf="!level.unlocked" class="level-locked-label">LOCKED</span>
             </div>
             <div class="level-item">{{level.solvedCurrentUser ? 'Yes' : 'No'}}</div>
             <div class="level-item">{{level.solvedTotal}}</div>

@@ -3,6 +3,7 @@ import * as LoginSyl from './login.scss';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from "@angular/core";
 import { Router } from '@angular/router';
+import { LevelService } from '../level/level.service';
 
 // partof: #SPC-login
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent {
     fields = { email: '', password: '' };
     submissionError = '';
 
-    constructor(private router: Router, private angularFireAuth: AngularFireAuth) {
+    constructor(private router: Router, private angularFireAuth: AngularFireAuth, private levelService: LevelService) {
         if (angularFireAuth.auth.currentUser) {
             this.onAuthSuccess();
         }
@@ -44,6 +45,8 @@ export class LoginComponent {
     }
 
     onAuthSuccess() {
-        this.router.navigateByUrl('/level-list');
+        this.levelService.currentLevelLink().first().toPromise().then(link => {
+            this.router.navigateByUrl(link);
+        });
     }
 }

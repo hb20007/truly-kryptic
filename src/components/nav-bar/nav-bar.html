@@ -20,6 +20,7 @@
             <div (click)="signOut()">Sign out</div>
         </div>
     </i>
+    <div [routerLink]="currentLevelLink | async" routerLinkActive="active" *ngIf="user | async" class="menu">Play</div>
     <div routerLink="/level-list" routerLinkActive="active" *ngIf="user | async" class="menu">Levels</div>
     <div routerLink="/login" routerLinkActive="active" *ngIf="!(user | async)" class="menu">Log In</div>
     <div routerLink="/hof" routerLinkActive="active" class="menu">Hall of Fame</div>
