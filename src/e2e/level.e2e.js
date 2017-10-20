@@ -4,6 +4,7 @@ describe('Level List', () => {
     beforeEach(() => {
         signUp();
         browser.get('/#/level/0/0');
+        browser.get('/#/level/0/0');
         browser.wait(() => $('.hint').isPresent());
     });
 

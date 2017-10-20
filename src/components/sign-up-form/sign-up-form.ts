@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from "@angular/core";
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
+import { LevelService } from '../level/level.service';
 
 // partof: #SPC-landing-sign_up
 @Component({
@@ -15,7 +16,8 @@ export class SignUpFormComponent {
     fields = { email: '', password: '' };
     submissionError = '';
 
-    constructor(private router: Router, private angularFireAuth: AngularFireAuth) { }
+    constructor(private router: Router, private angularFireAuth: AngularFireAuth,
+        private levelService: LevelService) { }
 
     emailSignUp() {
         this.angularFireAuth.auth.createUserWithEmailAndPassword(this.fields.email, this.fields.password)
@@ -42,6 +44,8 @@ export class SignUpFormComponent {
     }
 
     onAuthSuccess() {
-        this.router.navigateByUrl('/level-list');
+        this.levelService.currentLevelLink().first().toPromise().then(link => {
+            this.router.navigateByUrl(link);
+        });
     }
 }

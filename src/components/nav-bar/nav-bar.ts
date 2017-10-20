@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import {Observable} from "rxjs/Observable";
 import * as firebase from "firebase/app";
 import { Router } from '@angular/router';
+import { LevelService } from '../level/level.service';
 
 @Component({
     selector: 'nav-bar',
@@ -17,9 +18,12 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
 
     user: Observable<firebase.User>;
+    currentLevelLink: Observable<String>;
 
-    constructor(private router: Router, private angularFireAuth: AngularFireAuth) {
+    constructor(private router: Router, private angularFireAuth: AngularFireAuth, private levelService: LevelService) {
         this.user = angularFireAuth.authState;
+
+        this.currentLevelLink = this.levelService.currentLevelLink();
     }
 
     signOut() {
