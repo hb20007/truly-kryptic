@@ -48,7 +48,7 @@
         </div>
 
         <div [hidden]="(completedWithAnswer | async)">
-            <input class="form-input" [class.wrong-answer]="answeredWrong" (keydown)="answeredWrong = false; true" (focus)="answeredWrong = false; true"
+            <input class="form-input" [class.wrong-guess-animation]="submissionStatus == 'wrong'"
                 autocomplete="off" type="text" [(ngModel)]="fields.answer" name="text" #answer="ngModel" id="answer"
                 (blur)="inputFocused = false" (focus)="inputFocused=true">
 
@@ -69,6 +69,7 @@
         </div>
 
         <span *ngFor="let guess of (guesses | async)" [class.guess-answer]="guess.isAnswer"
-            [class.guess-trigger]="guess.unlocksHint" class="guess"> {{guess.value}} </span>  
+            [class.guess-trigger]="guess.unlocksHint" 
+            [class.wrong-guess-animation]="guess.value == latestWrongGuess" class="guess"> {{guess.value}} </span>  
     </div>
 </div>
