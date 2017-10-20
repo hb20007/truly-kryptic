@@ -23,6 +23,8 @@ export type LevelIndices = { levelIndex: number; sublevelIndex: number };
 // Implements: #SPC-level
 export class LevelComponent implements OnInit {
 
+    latestWrongGuess = '';
+
     submissionStatus: 'waiting' | 'correct-answer' | 'correct-hint' | 'wrong' | undefined;
 
     imgHintDir = '/img/hints/';
@@ -106,6 +108,9 @@ export class LevelComponent implements OnInit {
     // Implements: #SPC-level-solution_input
     submitAnswer() {
         this.submissionStatus = 'waiting';
+        this.latestWrongGuess = '';
+
+        let guessValue = this.fields.answer;
 
         this.levelService.submitAnswer(this.fields.answer, this.indices).then(secret => {
             if (secret) {
@@ -118,6 +123,7 @@ export class LevelComponent implements OnInit {
                 }
             } else {
                 this.submissionStatus = 'wrong';
+                this.latestWrongGuess = guessValue;
             }
         }).catch(e => this.submissionStatus = undefined);
     }
