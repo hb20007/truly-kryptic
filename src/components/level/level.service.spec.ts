@@ -82,7 +82,7 @@ describe('Landing-page Component', () => {
     });
 
     it('correctly formats level summaries', () => {
-        db.list.and.returnValue(Observable.of(levelsBasic()));
+        db.list.and.returnValues(Observable.of(levelsBasic()), Observable.of({}));
 
         levelService.levelSummaries().subscribe(summaries => {
             expect(summaries[0]).toEqual({
@@ -95,6 +95,32 @@ describe('Landing-page Component', () => {
             });
 
             expect(summaries.length).toBe(3);
+        });
+    });
+
+    it('retrieves correct current level indicies', () => {
+        spyOn(levelService, 'levelSummaries').and
+            .returnValue(Observable.of([
+                {
+                    solvedCurrentUser: true,
+                    levelIndex: 0,
+                    sublevelIndex: 0,
+                },
+                {
+                    solvedCurrentUser: true,
+                    levelIndex: 1,
+                    sublevelIndex: 0,
+                },
+                {
+                    solvedCurrentUser: false,
+                    levelIndex: 1,
+                    sublevelIndex: 1,
+                }
+            ]));
+
+        levelService.currentLevelInd().subscribe(({ levelIndex, sublevelIndex }) => {
+            expect(levelIndex).toBe(1);
+            expect(sublevelIndex).toBe(1);
         });
     });
 

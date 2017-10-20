@@ -3,6 +3,7 @@ let { signUp } = require('./shared');
 describe('Level List', () => {
     beforeEach(() => {
         signUp();
+        browser.get('/#/level-list');
     });
 
     it('shows levels', () => {
