@@ -79,16 +79,27 @@ export class LevelService {
 
     levelSummaries() {
         return this.db.list('/levels').combineLatest(this.db.list(`users/${this.userId}`))
-            .map(([levels, userLevels]) => flatten(levels
-                .map((sublevels, levelIndex) => sublevels
-                    .map((sublevel, sublevelIndex) => ({
-                        levelNumber: getLevelNumber(levelIndex, sublevelIndex, sublevels.length),
-                        title: sublevel.title,
-                        solvedTotal: 0,
-                        solvedCurrentUser: !!getProp(userLevels, [levelIndex, sublevelIndex, 'answer']),
-                        levelIndex,
-                        sublevelIndex,
-                    })))));
+            .map(([levels, userLevels]) => {
+                let prevSolved = true;
+
+                return flatten(levels
+                    .map((sublevels, levelIndex) => sublevels
+                        .map((sublevel, sublevelIndex) => {
+                            let solved = !!getProp(userLevels, [levelIndex, sublevelIndex, 'answer']);
+                            let level = {
+                                levelNumber: getLevelNumber(levelIndex, sublevelIndex, sublevels.length),
+                                title: sublevel.title,
+                                solvedTotal: 0,
+                                solvedCurrentUser: solved,
+                                unlocked: prevSolved,
+                                levelIndex,
+                                sublevelIndex,
+                            };
+                            prevSolved = solved;
+
+                            return level;
+                        })))
+            });
     }
 
     // index of the highest level that the user has not compelted yet

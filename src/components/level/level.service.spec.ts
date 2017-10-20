@@ -89,6 +89,7 @@ describe('Landing-page Component', () => {
                 levelNumber: '1',
                 title: "Change numbers to...",
                 solvedTotal: 0,
+                unlocked: true,
                 solvedCurrentUser: false,
                 levelIndex: 0,
                 sublevelIndex: 0,
