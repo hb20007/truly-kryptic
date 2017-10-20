@@ -7,13 +7,15 @@ body {
   margin: 0 !important;
   background: map-get($colors, primary);
   font-family: 'Titillium Web', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 button {
   font-family: inherit;
   cursor: pointer;
   outline: none;
+  font-weight: bold;
+  box-sizing: border-box;
 
   &::-moz-focus-inner {
     border: 0;
