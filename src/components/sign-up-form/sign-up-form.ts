@@ -32,7 +32,7 @@ export class SignUpFormComponent {
                         this.submissionError = 'Email Address already in use';
                         break;
                     case 'auth/weak-password':
-                        this.submissionError = 'Weak Password';
+                        this.submissionError = 'Password must be at least 6 characters';
                         break;
                     default:
                         this.submissionError = 'Unknown Error';

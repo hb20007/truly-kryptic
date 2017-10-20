@@ -5,9 +5,25 @@
     text-align: center;
 }
 
-ul {
-}
-
 li {
     padding: 1em;
+}
+
+.button-container {
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+
+    button {
+        padding: 0.8em;
+        margin: 0;
+        border: none;
+        box-sizing: border-box;
+        font-family: inherit;
+        font-size: 1.2em;
+        background: map-get($colors, light);
+        font-weight: bold;
+
+        @include hover-brighten-displace(map-get($colors, light), 0.6em);
+    }
 }
