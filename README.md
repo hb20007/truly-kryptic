@@ -1,6 +1,6 @@
 # Truly Kryptic
 
-A competetive puzzle game with a ranking system.
+A competitive puzzle game with a ranking system.
 
 |Environment|Deployed To|Branch|Build Status|
 |-|-|-|-|
