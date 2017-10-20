@@ -12,7 +12,7 @@ describe('Level List', () => {
     });
 
     /// Implements: #TST-level-list-totals
-    it('shows times completed which increase when level is completed', () => {
+    fit('shows times completed which increase when level is completed', () => {
         browser.wait(() => $('.level-item').isPresent());
 
         let startCount = $$('.sublevel .level-item').get(3).getText();
@@ -31,7 +31,7 @@ describe('Level List', () => {
         let endCount = $$('.sublevel .level-item').get(3).getText();
 
         Promise.all([startCount, endCount]).then(([start, end]) => {
-            expect(start).toBeLessThan(end);
+            expect(start + 0).toBeLessThan(end + 0);
         });
     });
 });
