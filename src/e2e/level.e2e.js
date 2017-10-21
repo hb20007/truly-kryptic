@@ -3,13 +3,7 @@ let { signUp } = require('./shared');
 describe('Level List', () => {
     beforeEach(() => {
         signUp();
-        browser.get('/#/level/0/0');
-        browser.get('/#/level/0/0');
         browser.wait(() => $('.hint').isPresent());
-    });
-
-    xit('the home page automatically redirects to the current level', () => {
-        //  todo
     });
 
     // Implements: #TST-level-guesses
