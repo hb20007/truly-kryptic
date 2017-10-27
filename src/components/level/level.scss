@@ -18,7 +18,7 @@
 
 .level-nav-title {
     display: flex;
-    font-size: 2em;
+    font-size: $font-xlarge;
 
     // text-align: center;
     justify-content: flex-start;
@@ -27,8 +27,7 @@
         padding: 0 1em;
     }
 
-    .level-next,
-    .level-prev {
+    .level-next, .level-prev {
         & a {
             @include link;
         }
@@ -44,7 +43,7 @@
 }
 
 .level-number {
-    font-size: 2em;
+    font-size: $font-xlarge;
 }
 
 .hint-area {
@@ -61,11 +60,11 @@
             writing-mode: vertical-lr;
             line-height: 2em;
             width: 2em;
-            font-size: 0.9em;
+            font-size: $font-small;
         }
 
         .hint-unlockedby {
-            font-size: 1em;
+            font-size: $font-small;
             margin-bottom: 0.2em;
         }
 
@@ -81,13 +80,12 @@
             .hint-triggers {
                 // margin-bottom: 1em;
                 // margin-top: 1em;
-           
             }
         }
 
         .hint-image {
             width: 100%;
-            height: 20em;
+            height: calc(28vw);
             background-size: contain;
 
             // background-size: auto 100%;
@@ -96,7 +94,7 @@
         }
 
         .hint-text {
-            font-size: 1.5em;
+            font-size: $font-large;
             padding: 0.5em 0;
         }
     }
@@ -119,8 +117,8 @@
         margin: 0;
         border: none;
         font-family: inherit;
-        font-size: 1em;
         outline: none;
+        font-size: $font-small;
     }
 
     input {
@@ -157,7 +155,7 @@
 
 .previous-guesses {
     .title {
-        font-size: 1.2em;
+        font-size: $font-medium;
         margin-bottom: 0.5em;
         margin-top: 1.1em;
     }

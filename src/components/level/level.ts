@@ -1,17 +1,17 @@
 import * as LevelTpl from './level.html';
 import * as LevelSyl from './level.scss';
-import { Component, OnInit, ElementRef, Renderer } from "@angular/core";
+import { Component, OnInit, Renderer } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
-import * as firebase from "firebase/app";
-import { AngularFireAuth } from 'angularfire2/auth';
+// import * as firebase from "firebase/app";
+// import { AngularFireAuth } from 'angularfire2/auth';
 // import * as levels from '../../../Notes/levels.json';
-import { getLevelNumber, isTouchDevice } from '../../shared';
+import { isTouchDevice } from '../../shared';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+// import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { LevelService } from './level.service';
 
-let levels = [];
+// let levels = [];
 
 export type LevelIndices = { levelIndex: number; sublevelIndex: number };
 
@@ -143,6 +143,7 @@ export class LevelComponent implements OnInit {
             } else {
                 this.submissionStatus = 'wrong';
                 this.latestWrongGuess = guessValue;
+                this.fields.answer = '';
             }
         }).catch(e => this.submissionStatus = undefined);
     }

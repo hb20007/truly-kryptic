@@ -12,6 +12,12 @@ $colors: (
         google_red: #dd4b39,
         facebook_blue: #3B5998
 );
+// Example use:  background: color($colors, primary)
 
 $min-desktop-pixels: 780px;
-// Example use:  background: color($colors, primary)
+
+$font-xlarge: calc(130% + 0.7vw);
+$font-large: calc(100% + 0.5vw);
+$font-medium: calc(90% + 0.3vw);
+$font-small: calc(60% + 0.5vw);
+$font-xsmall: calc(50% + 0.5vw);
