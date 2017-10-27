@@ -1,7 +1,7 @@
 <div>
-    <div class="title-centered">All Levels Complete!</div>
+    <div class="title-centered">All levels complete!</div>
     <div class="title-centered-subtext">
-        (Optional) Complete this form to be added to the Hall of Fame
+        Write your name and a comment of your choice for the Hall of Fame.
     </div>
 
     <div class="form-centered">
@@ -10,7 +10,7 @@
                 <div [hidden]="!submissionError" class="form-error">{{submissionError}}</div>
             </div>
             <div class="form-field">
-                <label class="form-label" for="hofNickname">Nickname</label><br>
+                <label class="form-label" for="hofNickname">Name</label><br>
                 <input class="form-input" placeholder="..." type="text" [(ngModel)]="fields.nickname" name="nickname" #nickname="ngModel" id="hofNickname">
             </div>
 
