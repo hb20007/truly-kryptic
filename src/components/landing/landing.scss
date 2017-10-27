@@ -1,25 +1,29 @@
 @import "../../mixins.scss";
 @import '../../screens.scss';
 
-.side-img-container {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-}
+//.side-img-container {
+//    position: fixed;
+//    top: 0;
+//    left: 0;
+//    height: 100%;
+//    width: 100%;
+//}
+
 .side-img {
     position: fixed;
     bottom: 0;
     left: -20em;
+    top: -3em;
     z-index: -923;
-    opacity: 0.2;
+    opacity: 0.1;
 }
 
 .top-area-split {
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
 
     @media #{$large-up} {
-        flex-direction: row;   
+        flex-direction: row;
     }
 
     .website-info {

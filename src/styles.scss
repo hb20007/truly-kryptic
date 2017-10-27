@@ -7,7 +7,7 @@ body {
   margin: 0 !important;
   background: map-get($colors, primary);
   font-family: 'Titillium Web', sans-serif;
-  font-size: 20px;
+  font-size: $font-medium;
 }
 
 button {
@@ -24,4 +24,14 @@ button {
 
 a {
   outline: none;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
