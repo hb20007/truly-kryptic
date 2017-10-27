@@ -20,15 +20,7 @@ export class HallOfFameFormComponent {
     fields = { nickname: '', comment: '' };
     submissionError = undefined;
 
-    constructor(private db: AngularFireDatabase, private router: Router, private levelService: LevelService) {
-        this.levelService.hofEntry().first().toPromise().then(entry => {
-            // if (entry) {
-            //     this.router.navigateByUrl(`/hof`);
-            // } else {
-            //     this.
-            // }
-        });
-    }
+    constructor(private db: AngularFireDatabase, private router: Router, private levelService: LevelService) { }
 
     submitHofInfo() {
         this.submissionError = '';
