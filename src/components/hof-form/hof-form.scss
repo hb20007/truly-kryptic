@@ -1,0 +1,10 @@
+@import "../../mixins.scss";
+
+@include centered-layout();
+@include form-large();
+
+.form-centered {
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 2em;
+}

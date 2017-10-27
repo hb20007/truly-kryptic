@@ -171,4 +171,22 @@ export class LevelService {
             });
         }
     }
+
+    hofEntry() {
+        return this.db.object('hall-of-fame/' + this.userId);
+    }
+
+    submitHofInfo(nickname: String, comment: String) {
+        return this.levelSummaries().first().toPromise().then((levels) => {
+            let lastLevel = levels[levels.length - 1];
+
+            return this.hofEntry().set({
+                nickname,
+                comment,
+                datetime: new Date().getTime(),
+                'last-level-index': lastLevel.levelIndex,
+                'last-sublevel-index': lastLevel.sublevelIndex,
+            });
+        });
+    }
 }
