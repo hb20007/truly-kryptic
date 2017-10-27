@@ -58,7 +58,7 @@
         <div [hidden]="!(completedWithAnswer | async)">
             <input [hidden]="!(completedWithAnswer | async)" class="form-input" disabled="true"[value]="completedWithAnswer | async">
 
-            <button (click)="openLevelLink(nextIndices)" class="level-continue-next">Next level</button>
+            <button (click)="openNextLevelIfCompleted()" class="level-continue-next">Next level</button>
         </div>
     </form>
 

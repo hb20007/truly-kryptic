@@ -36,6 +36,8 @@ export class LevelComponent implements OnInit {
     prevIndices: Observable<LevelIndices>;
     nextIndices: Observable<LevelIndices>;
 
+    isLastLevel: Observable<Boolean>;
+
     basicInfo: Observable<BasicLevelInfo>;
 
     hints: Observable<Hint[]>;
@@ -53,6 +55,8 @@ export class LevelComponent implements OnInit {
         }));
         this.nextIndices = this.levelService.nextSublevelInd(this.indices);
         this.prevIndices = this.levelService.prevSublevelInd(this.indices);
+
+        this.isLastLevel = this.nextIndices.map(ind => ind === undefined);
 
         this.guesses = this.levelService.levelGuesses(this.indices);
 
@@ -100,7 +104,22 @@ export class LevelComponent implements OnInit {
     openNextLevelIfCompleted() {
         this.completedWithAnswer.first().toPromise().then(completed => {
             if (completed) {
-                this.openLevelLink(this.nextIndices);
+                this.submissionStatus = undefined;
+
+                this.isLastLevel.first().toPromise().then(last => {
+                    // we've finished the last level!
+                    if (last) {
+                        this.levelService.hofEntry().first().toPromise().then(entry => {
+                            if (entry.$exists()) {
+                                this.router.navigateByUrl('/hof');
+                            } else {
+                                this.router.navigateByUrl('/hof-form');
+                            }
+                        });
+                    } else {
+                        this.openLevelLink(this.nextIndices);
+                    }
+                });
             }
         });
     }

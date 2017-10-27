@@ -12,7 +12,7 @@ describe('Level List', () => {
     });
 
     /// Implements: #TST-level-list-totals
-    fit('shows times completed which increase when level is completed', () => {
+    it('shows times completed which increase when level is completed', () => {
         browser.wait(() => $('.level-item').isPresent());
 
         let startCount = $$('.sublevel .level-item').get(3).getText();

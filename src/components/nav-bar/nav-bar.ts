@@ -23,7 +23,9 @@ export class NavbarComponent {
     constructor(private router: Router, private angularFireAuth: AngularFireAuth, private levelService: LevelService) {
         this.user = angularFireAuth.authState;
 
-        this.currentLevelLink = this.levelService.currentLevelLink();
+        this.user.subscribe(() => {
+            this.currentLevelLink = this.levelService.currentLevelLink();
+        });
     }
 
     signOut() {
