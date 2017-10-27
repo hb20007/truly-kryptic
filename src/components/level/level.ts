@@ -100,6 +100,7 @@ export class LevelComponent implements OnInit {
     openNextLevelIfCompleted() {
         this.completedWithAnswer.first().toPromise().then(completed => {
             if (completed) {
+                this.submissionStatus = undefined;
                 this.openLevelLink(this.nextIndices);
             }
         });
