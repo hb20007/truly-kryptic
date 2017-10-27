@@ -20,6 +20,7 @@ import { HallOfFameComponent } from "./components/hof/hof";
 import { GettingStartedComponent } from './components/getting-started/getting-started';
 import { ResetPasswordComponent } from './components/reset-password/reset-password';
 import { LevelService } from './components/level/level.service';
+import { HallOfFameFormComponent } from './components/hof-form/hof-form';
 
 const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
   { path: 'level-list', component: LevelListComponent },
   { path: 'level/:level_id/:sublevel_id', component: LevelComponent },
   { path: 'hof', component: HallOfFameComponent },
+  { path: 'hof-form', component: HallOfFameFormComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
 ];
 
@@ -55,6 +57,7 @@ const appRoutes: Routes = [
     LevelListComponent,
     LevelComponent,
     HallOfFameComponent,
+    HallOfFameFormComponent,
     GettingStartedComponent,
     ResetPasswordComponent
   ],
