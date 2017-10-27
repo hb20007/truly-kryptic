@@ -1,0 +1,26 @@
+<div>
+    <div class="title-centered">All Levels Complete!</div>
+    <div class="title-centered-subtext">
+        (Optional) Complete this form to be added to the Hall of Fame
+    </div>
+
+    <div class="form-centered">
+        <form class="form-container" (ngSubmit)="submitHofInfo()" #hofForm="ngForm">
+            <div class="form-field">
+                <div [hidden]="!submissionError" class="form-error">{{submissionError}}</div>
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="hofNickname">Nickname</label><br>
+                <input class="form-input" placeholder="..." type="text" [(ngModel)]="fields.nickname" name="nickname" #nickname="ngModel" id="hofNickname">
+            </div>
+
+            <!-- Implements: #SPC-hof-form-comment -->
+            <div class="form-field">
+                <label class="form-label" for="hofComment">Comment</label><br>
+                <input class="form-input" placeholder="..." type="text" [(ngModel)]="fields.comment" name="comment" #comment="ngModel" id="hofComment">
+            </div>
+
+            <button class="form-action" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
