@@ -120,7 +120,7 @@ $hover-displacement: 0.1em;
         .form-action {
             cursor: pointer;
             color: map-get($colors, primary);
-            font-size: 1.2em;
+            font-size: $font-medium;
             font-weight: bold;
             margin-top: 1em;
             display: inline-block;

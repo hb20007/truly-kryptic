@@ -13,7 +13,7 @@
                 </a>
             </div>
         </div>
-        <div class="level-number">Level {{(basicInfo | async) && (basicInfo | async).levelNumber}}</div>
+        <div class="level-number">Level&nbsp;{{(basicInfo | async) && (basicInfo | async).levelNumber}}</div>
     </div>
 
     <!-- Implements: #SPC-level-hint -->
@@ -56,7 +56,7 @@
         </div>
 
         <div [hidden]="!(completedWithAnswer | async)">
-            <input [hidden]="!(completedWithAnswer | async)" class="form-input" disabled="true"[value]="completedWithAnswer | async">
+            <input [hidden]="!(completedWithAnswer | async)" class="form-input" disabled="true" [value]="completedWithAnswer | async">
 
             <button (click)="openLevelLink(nextIndices)" class="level-continue-next">Next level</button>
         </div>
