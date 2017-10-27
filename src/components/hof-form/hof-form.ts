@@ -25,10 +25,10 @@ export class HallOfFameFormComponent {
     submitHofInfo() {
         this.submissionError = '';
 
-        if (this.fields.nickname.length < 5) {
-            this.submissionError = 'Nickname cannot be shorter than 5 characters';
+        if (this.fields.nickname.length < 2) {
+            this.submissionError = 'Name cannot be shorter than 2 characters.';
         } else if (!this.fields.comment) {
-            this.submissionError = 'Please fill in all fields';
+            this.submissionError = 'Your comment could be general feedback or your favorite level.';
         } else {
             this.levelService.submitHofInfo(this.fields.nickname, this.fields.comment)
                 .then(() => this.router.navigateByUrl(`/hof`))
