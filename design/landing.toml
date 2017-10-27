@@ -40,3 +40,12 @@ the purpose of the site.
 text = '''
 make sure it appears
 '''
+
+[SPC-landing-redirect]
+text = '''
+If logged in user goes to the level page, they should be redirected 
+
+the redirect should happen before the page is opened
+'''
+
+[TST-landing-redirect]
