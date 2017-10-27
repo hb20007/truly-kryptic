@@ -1,6 +1,6 @@
 <!-- implements: #SPC-getting_started -->
 
-<div class="title-centered">Getting Started</div>
+<div class="title-centered">Getting started</div>
 
 <ul>
     <li>
@@ -19,5 +19,5 @@
     </li>
 </ul>
 <div class="button-container">
-    <button (click)="goToCurrentLevel()">Play now</button>
+    <button [routerLink]="currentLevelLink | async" routerLinkActive="active">Play now</button>
 </div>

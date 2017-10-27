@@ -5,6 +5,7 @@
         <div class="burgermenu"></div>
         <div class="burgermenu"></div>
         <div class="burger-dropdown">
+            <div [routerLink]="currentLevelLink | async" routerLinkActive="active" *ngIf="user | async" class="burger-items">Play</div>
             <div routerLink="/account" routerLinkActive="active" *ngIf="user | async" class="burger-items">Account settings</div>
             <div routerLink="/getting-started" routerLinkActive="active" class="burger-items">Getting started</div>
             <div routerLink="/hof" routerLinkActive="active" class="burger-items">Hall of Fame</div>

@@ -1,19 +1,11 @@
 @import '../../screens.scss';
+@import "../../variables";
 
 .page-content {
-    padding: 1em;
-    padding-top: 8em;
+    padding: 5em 1em 1em 1em;
 
-    font-size: 0.7em;
+    font-size: $font-medium;
 
     margin: 0 auto;
     max-width: 960px;
-
-    @media #{$large-up} {
-        padding: 0;
-        padding-top: 6em; 
-        padding-bottom: 4em; 
-
-        font-size: 1em;
-    }
 }
