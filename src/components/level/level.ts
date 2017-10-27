@@ -109,7 +109,13 @@ export class LevelComponent implements OnInit {
                 this.isLastLevel.first().toPromise().then(last => {
                     // we've finished the last level!
                     if (last) {
-                        this.router.navigateByUrl('/hof-form');
+                        this.levelService.hofEntry().first().toPromise().then(entry => {
+                            if (entry.$exists()) {
+                                this.router.navigateByUrl('/hof');
+                            } else {
+                                this.router.navigateByUrl('/hof-form');
+                            }
+                        });
                     } else {
                         this.openLevelLink(this.nextIndices);
                     }
