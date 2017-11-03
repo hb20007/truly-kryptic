@@ -43,7 +43,7 @@ describe('Level List', () => {
     });
 
     // Implements: #TST-level-redirect
-    fit('redirects to the current level when a wrong level index is typed', () => {
+    it('redirects to the current level when a wrong level index is typed', () => {
         $('.form-input').sendKeys('hallway');
         $('[type=submit]').click();
         browser.wait(() => $('.guess-answer').isPresent());
