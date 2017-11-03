@@ -43,9 +43,10 @@ describe('Level List', () => {
     });
 
     // Implements: #TST-level-redirect
-    it('redirects to the current level when a wrong level index is typed', () => {
+    fit('redirects to the current level when a wrong level index is typed', () => {
         $('.form-input').sendKeys('hallway');
         $('[type=submit]').click();
+        browser.wait(() => $('.guess-answer').isPresent());
 
         // we finished the first level
         // go to another page to test the redirect
@@ -54,6 +55,6 @@ describe('Level List', () => {
 
         browser.get('/#/level/30/0');
         browser.wait(() => $('.level-number').isPresent());
-        expect($('.level-number').getText()).toBe('Level 1');
+        expect($('.level-number').getText()).toBe('Level 2');
     });
 });
