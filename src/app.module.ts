@@ -21,17 +21,20 @@ import { GettingStartedComponent } from './components/getting-started/getting-st
 import { ResetPasswordComponent } from './components/reset-password/reset-password';
 import { LevelService } from './components/level/level.service';
 import { HallOfFameFormComponent } from './components/hof-form/hof-form';
+import { LevelGuard } from './components/level/level.guard';
+import { LoggedOutGuard } from './logged-out.guard';
+import { LoggedInGuard } from './logged-in.guard';
 
 const appRoutes: Routes = [
-  { path: '', component: LandingpageComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'account', component: AccountComponent },
+  { path: '', canActivate: [LoggedOutGuard], component: LandingpageComponent },
+  { path: 'login', canActivate: [LoggedOutGuard], component: LoginComponent },
+  { path: 'account', canActivate: [LoggedInGuard], component: AccountComponent },
   { path: 'getting-started', component: GettingStartedComponent },
-  { path: 'level-list', component: LevelListComponent },
-  { path: 'level/:level_id/:sublevel_id', component: LevelComponent },
+  { path: 'level-list', canActivate: [LoggedInGuard], component: LevelListComponent },
+  { path: 'level/:level_id/:sublevel_id', canActivate: [LoggedInGuard, LevelGuard], component: LevelComponent },
   { path: 'hof', component: HallOfFameComponent },
-  { path: 'hof-form', component: HallOfFameFormComponent },
-  { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'hof-form', canActivate: [LoggedInGuard], component: HallOfFameFormComponent },
+  { path: 'reset-password', canActivate: [LoggedOutGuard], component: ResetPasswordComponent },
 ];
 
 @NgModule({
@@ -59,9 +62,9 @@ const appRoutes: Routes = [
     HallOfFameComponent,
     HallOfFameFormComponent,
     GettingStartedComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
   ],
-  providers: [LevelService],
+  providers: [LevelService, LevelGuard, LoggedOutGuard, LoggedInGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

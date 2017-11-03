@@ -32,3 +32,11 @@ Display previous guesses for the level.
 '''
 
 [TST-level-guesses]
+
+[SPC-level-redirect]
+text = '''
+When the user goes to a url of a level higher than they are allowed, 
+they are redirected to their current level
+'''
+
+[TST-level-redirect]

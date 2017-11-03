@@ -15,6 +15,6 @@ export class GettingStartedComponent {
     currentLevelLink: Observable<String>;
 
     constructor(private levelService: LevelService) {
-        this.currentLevelLink = this.levelService.currentLevelLink();
+        this.currentLevelLink = this.levelService.userId && this.levelService.currentLevelLink();
     }
 }

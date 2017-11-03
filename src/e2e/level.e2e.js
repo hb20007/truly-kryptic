@@ -41,4 +41,20 @@ describe('Level List', () => {
         browser.actions().sendKeys(protractor.Key.ARROW_LEFT).perform();
         browser.wait(() => $('.level-number').getText().then(t => t == 'Level 1'));
     });
+
+    // Implements: #TST-level-redirect
+    fit('redirects to the current level when a wrong level index is typed', () => {
+        $('.form-input').sendKeys('hallway');
+        $('[type=submit]').click();
+        browser.wait(() => $('.guess-answer').isPresent());
+
+        // we finished the first level
+        // go to another page to test the redirect
+        browser.get('/#/hof');
+        browser.wait(() => $('hall-of-fame').isPresent());
+
+        browser.get('/#/level/30/0');
+        browser.wait(() => $('.level-number').isPresent());
+        expect($('.level-number').getText()).toBe('Level 2');
+    });
 });
