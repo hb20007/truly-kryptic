@@ -67,6 +67,7 @@ export class LevelComponent implements OnInit {
 
         this.indices.subscribe(() => {
             this.fields.answer = '';
+            this.submissionStatus = undefined;
             this.inputFocused = false;
         });
 
@@ -126,25 +127,28 @@ export class LevelComponent implements OnInit {
 
     // Implements: #SPC-level-solution_input
     submitAnswer() {
-        this.submissionStatus = 'waiting';
-        this.latestWrongGuess = '';
-
         let guessValue = this.fields.answer;
 
-        this.levelService.submitAnswer(this.fields.answer, this.indices).then(secret => {
-            if (secret) {
-                this.fields.answer = '';
+        if (guessValue) {
+            this.submissionStatus = 'waiting';
+            this.latestWrongGuess = '';
 
-                if (typeof secret == 'object') {
-                    this.submissionStatus = 'correct-hint';
-                } else if (secret === true) {
-                    this.submissionStatus = 'correct-answer';
+
+            this.levelService.submitAnswer(this.fields.answer, this.indices).then(secret => {
+                if (secret) {
+                    this.fields.answer = '';
+
+                    if (typeof secret == 'object') {
+                        this.submissionStatus = 'correct-hint';
+                    } else if (secret === true) {
+                        this.submissionStatus = 'correct-answer';
+                    }
+                } else {
+                    this.submissionStatus = 'wrong';
+                    this.latestWrongGuess = guessValue;
+                    this.fields.answer = '';
                 }
-            } else {
-                this.submissionStatus = 'wrong';
-                this.latestWrongGuess = guessValue;
-                this.fields.answer = '';
-            }
-        }).catch(e => this.submissionStatus = undefined);
+            }).catch(e => this.submissionStatus = undefined);
+        }
     }
 }
