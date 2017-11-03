@@ -14,12 +14,4 @@ import { Router } from '@angular/router';
 })
 
 // partof: #SPC-landing
-export class LandingpageComponent {
-
-    user: Observable<firebase.User>;
-
-    constructor(private angularFireAuth: AngularFireAuth) {
-
-        this.user = angularFireAuth.authState;
-    }
-}
+export class LandingpageComponent { }
