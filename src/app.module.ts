@@ -21,6 +21,7 @@ import { GettingStartedComponent } from './components/getting-started/getting-st
 import { ResetPasswordComponent } from './components/reset-password/reset-password';
 import { LevelService } from './components/level/level.service';
 import { HallOfFameFormComponent } from './components/hof-form/hof-form';
+import { LevelGuard } from './components/level/level.guard';
 
 const appRoutes: Routes = [
   { path: '', component: LandingpageComponent },
@@ -28,7 +29,7 @@ const appRoutes: Routes = [
   { path: 'account', component: AccountComponent },
   { path: 'getting-started', component: GettingStartedComponent },
   { path: 'level-list', component: LevelListComponent },
-  { path: 'level/:level_id/:sublevel_id', component: LevelComponent },
+  { path: 'level/:level_id/:sublevel_id', canActivate: [LevelGuard], component: LevelComponent },
   { path: 'hof', component: HallOfFameComponent },
   { path: 'hof-form', component: HallOfFameFormComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
@@ -59,9 +60,9 @@ const appRoutes: Routes = [
     HallOfFameComponent,
     HallOfFameFormComponent,
     GettingStartedComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
   ],
-  providers: [LevelService],
+  providers: [LevelService, LevelGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
