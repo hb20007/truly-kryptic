@@ -28,16 +28,16 @@ export class SignUpFormComponent {
             }).catch((err: any) => {
                 switch (err.code) {
                     case 'auth/invalid-email':
-                        this.submissionError = 'Invalid Email Address';
+                        this.submissionError = 'Invalid email address';
                         break;
                     case 'auth/email-already-in-use':
-                        this.submissionError = 'Email Address already in use';
+                        this.submissionError = 'Email address already in use.';
                         break;
                     case 'auth/weak-password':
-                        this.submissionError = 'Password must be at least 6 characters';
+                        this.submissionError = 'Password must be at least 6 characters.';
                         break;
                     default:
-                        this.submissionError = 'Unknown Error';
+                        this.submissionError = 'Unknown error';
                 }
                 throw err;
             });

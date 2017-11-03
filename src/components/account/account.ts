@@ -34,7 +34,7 @@ export class AccountComponent {
     reauthAndDeleteUser() {
         if (this.deleteFields.verify) {
             if (this.deleteFields.password == '')
-                this.deleteAccountSubmissionError = 'Please enter your current password'; 
+                this.deleteAccountSubmissionError = 'Please enter your current password.';
             else {
                 this.angularFireAuth.auth.signInWithEmailAndPassword(this.email, this.deleteFields.password)
                     .then(() => {
@@ -44,10 +44,10 @@ export class AccountComponent {
                     }).catch((err: any) => {
                     switch (err.code) {
                         case 'auth/wrong-password':
-                            this.deleteAccountSubmissionError = 'Wrong Password';
+                            this.deleteAccountSubmissionError = 'Wrong password';
                             break;
                         default:
-                            this.deleteAccountSubmissionError = 'Unknown Error';
+                            this.deleteAccountSubmissionError = 'Unknown error';
                     }
                     throw err;
                 });
@@ -62,9 +62,9 @@ export class AccountComponent {
 
     reauthAndChangePass() {
         if (this.fields.currentPassword == '' || this.fields.confirmPassword == '' || this.fields.password == '')
-            this.changePasswordSubmissionError = 'Please fill in the required fields';
+            this.changePasswordSubmissionError = 'Please fill in the required fields.';
         else if (this.fields.confirmPassword != this.fields.password) {
-            this.changePasswordSubmissionError = 'Passwords do not match';
+            this.changePasswordSubmissionError = 'Passwords do not match.';
         }
         else {
             this.angularFireAuth.auth.signInWithEmailAndPassword(this.email, this.fields.currentPassword)
@@ -74,10 +74,10 @@ export class AccountComponent {
                 }).catch((err: any) => {
                 switch (err.code) {
                     case 'auth/wrong-password':
-                        this.changePasswordSubmissionError = 'Wrong Password';
+                        this.changePasswordSubmissionError = 'Wrong password';
                         break;
                     default:
-                        this.changePasswordSubmissionError = 'Unknown Error';
+                        this.changePasswordSubmissionError = 'Unknown error';
                 }
                 throw err;
             });
@@ -95,18 +95,18 @@ export class AccountComponent {
                 }).catch((err: any) => {
                 switch (err.code) {
                     case 'auth/weak-password':
-                        this.changePasswordSubmissionError = 'Weak Password';
+                        this.changePasswordSubmissionError = 'Weak password';
                         break;
                     default:
-                        this.changePasswordSubmissionError = 'Unknown Error';
+                        this.changePasswordSubmissionError = 'Unknown error';
                 }
                 throw err;
             });
         }
-        else this.changePasswordSubmissionError = 'Passwords do not match';
+        else this.changePasswordSubmissionError = 'Passwords do not match.';
     }
 
     onAuthSuccess() {
-        this.changePasswordSubmissionError = 'Password changed successfully';
+        this.changePasswordSubmissionError = 'Password successfully changed.';
     }
 }

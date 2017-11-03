@@ -31,14 +31,15 @@ export class LoginComponent {
                 this.onAuthSuccess();
             }).catch((err: any) => {
                 switch (err.code) {
+                    case 'auth/user-not-found':
                     case 'auth/invalid-email':
-                        this.submissionError = 'Invalid Email Address';
+                        this.submissionError = 'No user was found with that email address.';
                         break;
                     case 'auth/wrong-password':
-                        this.submissionError = 'Wrong Password';
+                        this.submissionError = 'Wrong password';
                         break;
                     default:
-                        this.submissionError = 'Unknown Error';
+                        this.submissionError = 'Unknown error';
                 }
                 throw err;
             });
