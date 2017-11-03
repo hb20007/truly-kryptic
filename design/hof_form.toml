@@ -6,13 +6,6 @@ a donate button, and a HOF comment submission field
 
 [TST-hof-form]
 
-[SPC-hof-form-donate]
-text = '''
-A donate button powered by stripe.
-'''
-
-[TST-hof-form-donate]
-
 [SPC-hof-form-comment]
 text = '''
 A required comment field that stores the user's comment for the hall of fame.

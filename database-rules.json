@@ -10,7 +10,7 @@
             "$level": {
                 "$sublevel": {
                     "timesCompleted": {
-                        ".validate": "(!data.exists() && newData.val() == 0) || (newData.val() == data.val() + 1)",
+                        ".validate": "(!data.exists() && newData.val() == 1) || (newData.val() == data.val() + 1)",
                         ".write": true
                     }
                 }
