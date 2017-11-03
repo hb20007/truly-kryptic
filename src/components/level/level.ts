@@ -69,6 +69,7 @@ export class LevelComponent implements OnInit {
             this.fields.answer = '';
             this.submissionStatus = undefined;
             this.inputFocused = false;
+            this.latestWrongGuess = undefined;
         });
 
         if (!isTouchDevice()) {

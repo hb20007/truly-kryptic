@@ -48,7 +48,7 @@
         </div>
 
         <div [hidden]="(completedWithAnswer | async)">
-            <input class="form-input" [class.wrong-guess-animation]="submissionStatus == 'wrong'"
+            <input class="form-input" [class.wrong-guess-animation]="submissionStatus == 'wrong'" maxlength="25"
                 autocomplete="off" type="text" [(ngModel)]="fields.answer" name="text" #answer="ngModel" id="answer"
                 (blur)="inputFocused = false" (focus)="inputFocused=true">
 
