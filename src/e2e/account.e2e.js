@@ -18,7 +18,7 @@ describe('Account', () => {
             $('#resetEmail').sendKeys(testEmail);
             $('button[type=submit]').click();
 
-            browser.wait(() => $('.form-error').getText().then(t => t == 'Password reset link sent'));
+            browser.wait(() => $('.form-error').getText().then(t => t == 'Password reset link sent.'));
         });
     });
 
@@ -47,7 +47,7 @@ describe('Account', () => {
 
             $('button[type=submit]').click();
 
-            browser.wait(() => $('.form-error').getText().then(t => t == 'Password changed successfully'))
+            browser.wait(() => $('.form-error').getText().then(t => t == 'Password successfully changed.'))
 
             logout();
 

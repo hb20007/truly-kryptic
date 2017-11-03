@@ -22,10 +22,10 @@ export class ResetPasswordComponent {
 
     sendResetLink() {
         if (!this.fields.email) {
-            this.submissionError = 'Please enter an email address';
+            this.submissionError = 'Please enter an email address.';
         } else {
             this.angularFireAuth.auth.sendPasswordResetEmail(this.fields.email).then(() => {
-                this.submissionError = 'Password reset link sent';
+                this.submissionError = 'Password reset link sent.';
             });
         }
     }
