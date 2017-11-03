@@ -177,3 +177,20 @@
         }
     }
 }
+
+hr {
+    color: lighten(map-get($colors, primary), 40%);
+}
+
+.like {
+    text-align: center;
+}
+
+iframe {
+    padding-left: 220px;
+    border: none;
+    overflow: hidden;
+    width: 450px;
+    height: 30px;
+    vertical-align: center;
+}
