@@ -21,7 +21,7 @@ export class HallOfFameComponent implements OnInit {
 
     ngOnInit() {
         this.db.object('/hall-of-fame').$ref.once('value').then((hofUsers) => {
-            let users = hofUsers.val();
+            let users = hofUsers.val() || {};
             this.hofUsers = orderBy(Object.keys(users).map(k => users[k]), 'datetime');
         });
     }
