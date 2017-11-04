@@ -52,7 +52,7 @@ module.exports = {
         new HtmlWebpackPlugin({ template: './index.html', hash: true }),
         new CopyWebpackPlugin([{ from: 'img', to: 'img' }]),
         new webpack.DefinePlugin({
-            NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+            NODE_ENV: JSON.stringify(prod ? 'production' : 'development'),
             FIREBASE_PROJECT: JSON.stringify(process.env.FIREBASE_PROJECT),
         }),
         new webpack.ContextReplacementPlugin(
