@@ -136,7 +136,7 @@ export class LevelService {
     basicLevelInfo(indices: Observable<LevelIndices>): Observable<BasicLevelInfo> {
         return indices.combineLatest(this.levelSummaries()).map(([indices, summaries]) => {
             let summary = summaries.find(s =>
-                s.levelIndex == indices.levelIndex && s.levelIndex == indices.levelIndex);
+                s.levelIndex == indices.levelIndex && s.sublevelIndex == indices.sublevelIndex);
 
             return { title: summary.title, levelNumber: summary.levelNumber };
         });
