@@ -34,9 +34,11 @@
 .provider-google {
     @include provider(map-get($colors, google_red));
     font-weight: bold;
+    font-size: $font-mediumsmall;
 }
 
 .provider-facebook {
     @include provider(map-get($colors, facebook_blue));
     font-weight: bold;
+    font-size: $font-mediumsmall;
 }
