@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="hint-text" *ngIf="hint.text">{{hint.text}}</div>
-                <a *ngIf="hint.image" [href]="imgHintDir + hint.image" [download]="hint.image">
+                <a *ngIf="hint.image" [href]="imgHintDir + hint.image">
                     <div class="hint-image" [style.background-image]="getBackgroundUrl(hint.image)"></div>
                 </a>
 
