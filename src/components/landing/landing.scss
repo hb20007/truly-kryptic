@@ -21,6 +21,7 @@
 .top-area-split {
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
 
     @media #{$large-up} {
         flex-direction: row;
