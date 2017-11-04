@@ -47,7 +47,7 @@ const appRoutes: Routes = [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig[FIREBASE_PROJECT]),
     AngularFireAuthModule,
-    AngularFireDatabaseModule,
+    AngularFireDatabaseModule
   ],
   declarations: [
     AppComponent,
