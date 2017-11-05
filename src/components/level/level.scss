@@ -184,13 +184,15 @@ hr {
 
 .like {
     text-align: center;
+    width: 100%;
 }
 
 iframe {
-    padding-left: 220px;
     border: none;
     overflow: hidden;
-    width: 450px;
     height: 30px;
     vertical-align: center;
+    @media(min-width: 360px) {
+        padding-left: 15vw;
+    }
 }
