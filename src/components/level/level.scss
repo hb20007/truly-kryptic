@@ -195,4 +195,11 @@ iframe {
     @media(min-width: 360px) {
         padding-left: 15vw;
     }
+    @media(min-width: 768px) {
+        padding-left: 8vw;
+    }
+}
+
+a:hover {
+    cursor: default;
 }

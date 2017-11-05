@@ -32,7 +32,9 @@
                 </div>
 
                 <div class="hint-text" *ngIf="hint.text">{{hint.text}}</div>
-                <div class="hint-image" *ngIf="hint.image" [style.background-image]="getBackgroundUrl(hint.image)"></div>
+                <a *ngIf="hint.image" [href]="imgHintDir + hint.image">
+                    <div class="hint-image" [style.background-image]="getBackgroundUrl(hint.image)"></div>
+                </a>
 
                 <audio controls="controls" class="hint-audio" *ngIf="hint.audio">
                     Your browser does not support the <code>audio</code> element.

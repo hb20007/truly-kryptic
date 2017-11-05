@@ -22,9 +22,13 @@ export class LevelGuard implements CanActivate {
 
         return this.angularFireAuth.authState.first().toPromise().then(() => {
             return this.levelService.currentLevelInd().first().toPromise().then(({ levelIndex, sublevelIndex }) => {
-                if (levelIndex >= urlInd.levelIndex && sublevelIndex >= urlInd.sublevelIndex) {
+                if (levelIndex > urlInd.levelIndex) {
                     return true;
-                } else {
+                }
+                else if (levelIndex == urlInd.levelIndex && sublevelIndex >= urlInd.sublevelIndex) {
+                    return true;
+                }
+                else {
                     // if the user attempts to access a locked level by it's url, navigate to their current level
                     return this.levelService.currentLevelLink().first().toPromise().then(url => {
                         this.router.navigateByUrl(url);
