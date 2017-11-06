@@ -190,14 +190,14 @@ hr {
 iframe {
     border: none;
     overflow: hidden;
-    height: 30px;
+    width: 250px;
     vertical-align: center;
-    @media(min-width: 360px) {
-        padding-left: 15vw;
-    }
-    @media(min-width: 768px) {
-        padding-left: 8vw;
-    }
+    //@media(min-width: 360px) {
+    //    padding-left: 0vw;
+    //}
+    //@media(min-width: 768px) {
+    //    padding-left: 0vw;
+    //}
 }
 
 a:hover {
