@@ -25,7 +25,7 @@
                 ".write": "!data.exists() && $uid === auth.uid && root.child('users/' + $uid + '/' + newData.child('last-level-index').val() + '/' + newData.child('last-sublevel-index').val() + '/answer').exists()",
                 ".validate": "newData.hasChildren(['nickname', 'comment', 'datetime'])",
                 "nickname": {
-                    ".validate": "newData.isString() && newData.val().length >= 5"
+                    ".validate": "newData.isString() && newData.val().length >= 1"
                 },
                 "comment": {
                     ".validate": "newData.isString() && newData.val().length >= 1"
