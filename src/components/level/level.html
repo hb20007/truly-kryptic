@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="hint-text" *ngIf="hint.text">{{hint.text}}</div>
-                <a *ngIf="hint.image" [href]="imgHintDir + hint.image">
+                <a *ngIf="hint.image" [href]="imgHintDir + hint.image" target="_blank">
                     <div class="hint-image" [style.background-image]="getBackgroundUrl(hint.image)"></div>
                 </a>
 
@@ -79,7 +79,7 @@
     <!-- Like button -->
     <div class="like">
         <iframe src="//www.facebook.com/plugins/like.php?href=https://www.facebook.com/trulykryptic/&amp;layout=standard&amp;
-		show_faces=false&amp;width=450&amp;action=like&amp;colorscheme=dark&amp;height=30&amp;share=true"
+		show_faces=false&amp;width=440&amp;action=like&amp;colorscheme=dark&amp;height=30&amp;share=true"
                 scrolling="no" frameborder="0"></iframe>
     </div>
 </div>
