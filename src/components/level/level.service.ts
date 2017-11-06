@@ -150,11 +150,14 @@ export class LevelService {
     }
 
     submitAnswer(guess, indices: Observable<LevelIndices>): Promise<true | Object | null> {
-        if (!guess) {
+        let trimmedGuess = guess.replace(/[.,\/#!$%\^&\*\"\';:{}=\-_`~()]/g,"");
+        trimmedGuess = trimmedGuess.replace(/\s+/g, '');
+        trimmedGuess = trimmedGuess.toLowerCase();
+        if (!trimmedGuess) {
             return Promise.resolve(undefined);
         } else {
             return indices.first().toPromise().then((indices) => {
-                let path = `level-secrets/${indices.levelIndex}-${indices.sublevelIndex}-${guess}`;
+                let path = `level-secrets/${indices.levelIndex}-${indices.sublevelIndex}-${trimmedGuess}`;
                 return this.db.object(path).$ref.once('value')
                     .then(v => v.val())
                     .then(v => {
@@ -164,7 +167,7 @@ export class LevelService {
                         return Promise.all([
                             this.db.list(this.userLevelPath(indices) + '/guesses')
                                 .push({ value: guess, isAnswer, unlocksHint }),
-                            isAnswer && this.db.object(this.userLevelPath(indices) + '/answer').set(guess),
+                            isAnswer && this.db.object(this.userLevelPath(indices) + '/answer').set(trimmedGuess),
                             isAnswer && this.incrementLevelTimesSolved(indices),
                         ]).then(() => v);
                     });
