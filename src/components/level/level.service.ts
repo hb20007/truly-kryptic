@@ -150,7 +150,7 @@ export class LevelService {
     }
 
     submitAnswer(guess, indices: Observable<LevelIndices>): Promise<true | Object | null> {
-        let trimmedGuess = guess.replace(/[.,\/#!$%\^&\*\"\';:{}=\-_`~()]/g,"");
+        let trimmedGuess = guess.replace(/[.,\/#!$%\^&\*\"\';:{}=\-_`~()]/g, "");
         trimmedGuess = trimmedGuess.replace(/\s+/g, '');
         trimmedGuess = trimmedGuess.toLowerCase();
         if (!trimmedGuess) {
@@ -179,16 +179,24 @@ export class LevelService {
         return this.db.object('hall-of-fame/' + this.userId);
     }
 
+    currentDbTime() {
+        return this.db.database.ref('/.info/serverTimeOffset')
+            .once('value')
+            .then(data => data.val() + Date.now());
+    }
+
     submitHofInfo(nickname: String, comment: String) {
         return this.levelSummaries().first().toPromise().then((levels) => {
             let lastLevel = levels[levels.length - 1];
 
-            return this.hofEntry().set({
-                nickname,
-                comment,
-                datetime: new Date().getTime(),
-                'last-level-index': lastLevel.levelIndex,
-                'last-sublevel-index': lastLevel.sublevelIndex,
+            return this.currentDbTime().then(time => {
+                return this.hofEntry().set({
+                    nickname,
+                    comment,
+                    datetime: time,
+                    'last-level-index': lastLevel.levelIndex,
+                    'last-sublevel-index': lastLevel.sublevelIndex,
+                });
             });
         });
     }
