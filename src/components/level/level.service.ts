@@ -150,7 +150,7 @@ export class LevelService {
     }
 
     submitAnswer(guess, indices: Observable<LevelIndices>): Promise<true | Object | null> {
-        let trimmedGuess = guess.replace(/[.,\/#!$%\^&\*\"\';:{}=\-_`~()]/g,"");
+        let trimmedGuess = guess.replace(/[.,\/#!$%\^&\*\"\';:{}=\-_`~()“”‘’]/g,"");
         trimmedGuess = trimmedGuess.replace(/\s+/g, '');
         trimmedGuess = trimmedGuess.toLowerCase();
         if (!trimmedGuess) {
