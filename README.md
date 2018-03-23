@@ -1,4 +1,4 @@
-# ![](img/icons/apple-touch-icon-57x57.png) Truly Kryptic
+# ![](img/icons/favicon-32x32.png) Truly Kryptic
 
 A competitive puzzle game with a ranking system.
 
