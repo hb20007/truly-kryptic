@@ -1,7 +1,7 @@
 cache:
   directories:
     - "node_modules"
-language: node_js 
+language: node_js
 node_js:
   - "8"
 
@@ -14,6 +14,6 @@ install:
 
 script:
   - npm test
-  - npm run e2e-travis 
+  - npm run e2e-travis
   - if [ "$TRAVIS_BRANCH" == "stable" ]; then npm run deploy-dev; fi
   - if [ "$TRAVIS_BRANCH" == "master" ]; then npm run deploy-prod; fi
