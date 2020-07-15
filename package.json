@@ -30,7 +30,7 @@
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.4",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "ng-router-loader": "^2.1.0",
     "ngc-webpack": "^3.2.2",
     "node-sass": "^4.5.3",
