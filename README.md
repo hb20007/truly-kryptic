@@ -1,4 +1,4 @@
-# ![](img/icons/favicon-32x32.png) Truly Kryptic
+# ![Truly Kryptic logo](img/icons/favicon-32x32.png) Truly Kryptic
 
 A competitive puzzle game with a ranking system.
 
