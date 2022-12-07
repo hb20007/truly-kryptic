@@ -45,7 +45,7 @@
     "wallaby-webpack": "0.0.39",
     "webdriver-manager": "^12.0.6",
     "webpack": "^3.5.6",
-    "webpack-dev-server": "^2.7.1",
+    "webpack-dev-server": "^3.1.11",
     "zone.js": "^0.8.17"
   },
   "scripts": {
