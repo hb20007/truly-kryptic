@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Truly Kryptic",
   "dependencies": {
-    "@angular/cli": "^1.4.1",
+    "@angular/cli": "^15.0.2",
     "@angular/common": "^4.4.0-RC.0",
     "@angular/compiler": "^4.4.0-RC.0",
     "@angular/compiler-cli": "^4.4.0-RC.0",
