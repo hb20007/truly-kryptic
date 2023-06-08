@@ -33,7 +33,7 @@
     "lodash": "^4.17.21",
     "ng-router-loader": "^2.1.0",
     "ngc-webpack": "^3.2.2",
-    "node-sass": "^4.5.3",
+    "node-sass": "^7.0.0",
     "protractor": "^5.1.2",
     "raw-loader": "^0.5.1",
     "reflect-metadata": "^0.1.10",
