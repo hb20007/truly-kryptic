@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Truly Kryptic",
   "dependencies": {
-    "@angular/cli": "^1.4.1",
+    "@angular/cli": "^15.0.2",
     "@angular/common": "^4.4.0-RC.0",
     "@angular/compiler": "^4.4.0-RC.0",
     "@angular/compiler-cli": "^4.4.0-RC.0",
@@ -20,7 +20,7 @@
     "awesome-typescript-loader": "^3.2.3",
     "copy-webpack-plugin": "^4.0.1",
     "core-js": "^2.5.1",
-    "css-loader": "^0.28.7",
+    "css-loader": "^6.7.2",
     "firebase": "^4.3.1",
     "html-webpack-plugin": "^2.30.1",
     "http-server": "^0.10.0",
