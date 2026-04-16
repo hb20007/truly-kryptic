@@ -1,7 +1,5 @@
 # ![Truly Kryptic logo](img/icons/favicon-32x32.png) Truly Kryptic
 
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-
 A competitive puzzle game with a ranking system. <https://trulykryptic.com/>
 
 |Environment|Deployed To|Branch|Build Status|
